@@ -1,0 +1,37 @@
+{
+  "direction": "LR",
+  "nodes": [
+    {"id":"view","label":"bi.ba_order_line_shipping_cost\nVIEW · derived output","style":"rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;","width":220,"height":60},
+    {"id":"fedex","label":"datas.shipping_invoice_fedex","group":"shipping","groupLabel":"Shipping invoice entities","width":220,"height":52},
+    {"id":"ups","label":"datas.shipping_invoice_ups","group":"shipping","width":200,"height":52},
+    {"id":"amazon_ship","label":"datas.shipping_invoice_amazon_shipping","group":"shipping","width":260,"height":52},
+    {"id":"amazon_adj","label":"datas.shipping_invoice_amazon_shipping_adjustments","group":"shipping","width":300,"height":52},
+    {"id":"package","label":"sale_order_package","group":"order","groupLabel":"Order core entities","width":190,"height":52},
+    {"id":"order","label":"sale_order","group":"order","width":150,"height":52},
+    {"id":"line","label":"sale_order_line","group":"order","width":170,"height":52},
+    {"id":"product","label":"product_product","group":"order","width":160,"height":52},
+    {"id":"settlement","label":"settlement_report_info","group":"external","groupLabel":"Other shipping-cost sources","width":220,"height":52},
+    {"id":"temu","label":"datas.shipping_invoice_temu","group":"external","width":220,"height":52}
+  ],
+  "edges": [
+    {"source":"fedex","target":"package","label":"Logical Join · express_or_ground_tracking_id = tracking_id"},
+    {"source":"ups","target":"package","label":"Logical Join · track_num = tracking_id"},
+    {"source":"amazon_ship","target":"package","label":"Logical Join · tracking_id = tracking_id"},
+    {"source":"amazon_adj","target":"amazon_ship","label":"Logical Join · tracking_id = tracking_id"},
+    {"source":"package","target":"order","label":"Logical Join · order_id = id"},
+    {"source":"line","target":"order","label":"Logical Join · order_id = id"},
+    {"source":"line","target":"product","label":"Logical Join · product_id = id"},
+    {"source":"settlement","target":"order","label":"Logical Join · order_id = name"},
+    {"source":"temu","target":"order","label":"Logical Join · order_id = name"},
+    {"source":"view","target":"fedex","label":"Derived/View Dependency"},
+    {"source":"view","target":"ups","label":"Derived/View Dependency"},
+    {"source":"view","target":"amazon_ship","label":"Derived/View Dependency"},
+    {"source":"view","target":"amazon_adj","label":"Derived/View Dependency"},
+    {"source":"view","target":"package","label":"Derived/View Dependency"},
+    {"source":"view","target":"order","label":"Derived/View Dependency"},
+    {"source":"view","target":"line","label":"Derived/View Dependency"},
+    {"source":"view","target":"product","label":"Derived/View Dependency"},
+    {"source":"view","target":"settlement","label":"Derived/View Dependency"},
+    {"source":"view","target":"temu","label":"Derived/View Dependency"}
+  ]
+}
