@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>数据血缘 · Lineage Explorer</title>
-  <link rel="stylesheet" href="styles.css?v=20260721-source-fields-2">
+  <link rel="stylesheet" href="styles.css?v=20260907-er-focus-instant">
 </head>
 <body>
   <header class="topbar">
@@ -19,13 +19,24 @@
   <main>
     <aside class="sidebar">
       <button class="collapse-side" data-collapse="left" title="收起左侧栏">‹</button>
+      <div class="sidebar-section controls">
+        <label>工作视图</label>
+        <div class="mode-buttons"><button id="lineageMode" class="active">数据血缘</button><button id="erMode">ER 图</button></div>
+      </div>
+      <div class="sidebar-section controls er-only">
+        <label>ER 图范围</label>
+        <select id="erDomainFilter"><option value="">全部候选业务域</option></select>
+        <button id="erIncludeContext" class="toggle active"><span>显示跨域关联</span><b>On</b></button>
+        <button id="erShowIsolated" class="toggle"><span>显示孤立源表</span><b>Off</b></button>
+        <button id="erIncludeDerived" class="toggle"><span>显示 View 实体</span><b>On</b></button>
+      </div>
       <div class="sidebar-section">
         <label>当前分析对象</label>
         <div id="currentObject" class="current-object">尚未选择对象</div>
         <div class="history-controls"><button id="backButton" disabled>← Back</button><button id="forwardButton" disabled>Forward →</button></div>
         <div id="breadcrumb" class="breadcrumb">搜索一个对象后开始追溯</div>
       </div>
-      <div class="sidebar-section controls">
+      <div class="sidebar-section controls lineage-only">
         <label>搜索与筛选</label>
         <select id="schemaFilter"><option value="">All schemas</option></select>
         <select id="typeFilter"><option value="">All object types</option></select>
@@ -33,7 +44,7 @@
         <input id="objectSearch" placeholder="搜索并定位对象…">
         <div id="objectResults" class="object-results hidden"></div>
       </div>
-      <div class="sidebar-section controls">
+      <div class="sidebar-section controls lineage-only">
         <label>血缘方向</label>
         <select id="directionSelect"><option value="upstream">Upstream</option><option value="downstream">Downstream</option><option value="both">Both</option></select>
         <label>完整展开</label>
@@ -47,7 +58,7 @@
         <button id="fitGraph" class="secondary">适配画布</button>
         <button id="fullScreen" class="secondary">Full Screen</button>
       </div>
-      <div class="sidebar-section legend">
+      <div class="sidebar-section legend lineage-only">
         <label>对象图例</label>
         <div><i class="dot table"></i>物理表 / 外部源</div>
         <div><i class="dot view"></i>普通视图</div>
@@ -68,6 +79,7 @@
         <svg id="graph" aria-label="数据血缘图"><g id="graphScene"></g></svg>
         <div id="edgeTooltip" class="edge-tooltip hidden"></div>
         <div id="contextMenu" class="context-menu hidden"></div>
+        <div id="erDomainNotice" class="er-domain-notice hidden"></div>
         <div id="emptyState" class="empty-state"><div class="loader"></div><p>正在构建血缘图</p></div>
       </div>
     </section>
@@ -78,6 +90,6 @@
       <div id="detailBody" class="detail-body"><div class="detail-placeholder">点击节点、关系线或字段查看结构化元数据。</div></div>
     </aside>
   </main>
-  <script src="global_app.js?v=20260721-source-fields-2"></script>
+  <script src="global_app.js?v=20260907-er-multi-select"></script>
 </body>
 </html>

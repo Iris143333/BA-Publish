@@ -1,0 +1,2815 @@
+{
+  "format_version": "3.0",
+  "domains": [
+    {
+      "domain_id": "ORDER_TRANSACTION",
+      "label": "订单交易",
+      "status": "CANDIDATE",
+      "evidence": "订单、订单行与销售订单 SQL 的共同使用"
+    },
+    {
+      "domain_id": "LOGISTICS_FULFILLMENT",
+      "label": "物流履约",
+      "status": "CANDIDATE",
+      "evidence": "包裹、运单、物流账单与发货成本 SQL 的共同使用"
+    },
+    {
+      "domain_id": "FINANCE_SETTLEMENT",
+      "label": "财务结算与利润",
+      "status": "CANDIDATE",
+      "evidence": "结算、对账、利润、佣金与成本 SQL 的共同使用"
+    },
+    {
+      "domain_id": "ADVERTISING",
+      "label": "广告与投放",
+      "status": "CANDIDATE",
+      "evidence": "广告报表、campaign、portfolio、预算与 spend SQL 的共同使用"
+    },
+    {
+      "domain_id": "INVENTORY_SUPPLY",
+      "label": "库存与供应",
+      "status": "CANDIDATE",
+      "evidence": "库存、仓库、采购与生产 SQL 的共同使用"
+    },
+    {
+      "domain_id": "PRODUCT_MASTER",
+      "label": "产品、SKU 与主数据",
+      "status": "CANDIDATE",
+      "evidence": "产品、SKU、Bundle、品牌与类目映射 SQL 的共同使用"
+    },
+    {
+      "domain_id": "ORGANIZATION_SUPPORT",
+      "label": "组织与支持数据",
+      "status": "CANDIDATE",
+      "evidence": "人员、部门、用户与关注记录在多个业务 SQL 中作为辅助来源"
+    }
+  ],
+  "assignments": [
+    {
+      "entity_id": "amazon_custom_v3_3",
+      "primary_domain": "UNCLASSIFIED",
+      "related_domains": [],
+      "domain_ids": [
+        "UNCLASSIFIED"
+      ],
+      "entity_role": "CORE_BUSINESS_ENTITY",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "amazon_instance_ept",
+      "primary_domain": "PRODUCT_MASTER",
+      "related_domains": [],
+      "domain_ids": [
+        "PRODUCT_MASTER"
+      ],
+      "entity_role": "SHARED_MASTER_DATA",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "amazon_product_asin",
+      "primary_domain": "PRODUCT_MASTER",
+      "related_domains": [],
+      "domain_ids": [
+        "PRODUCT_MASTER"
+      ],
+      "entity_role": "SHARED_MASTER_DATA",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "amazon_product_sku",
+      "primary_domain": "PRODUCT_MASTER",
+      "related_domains": [],
+      "domain_ids": [
+        "PRODUCT_MASTER"
+      ],
+      "entity_role": "SHARED_MASTER_DATA",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "amazon_return_fbm_info",
+      "primary_domain": "ORDER_TRANSACTION",
+      "related_domains": [],
+      "domain_ids": [
+        "ORDER_TRANSACTION"
+      ],
+      "entity_role": "CORE_BUSINESS_ENTITY",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "amazon_sponsored_display_advertised_product",
+      "primary_domain": "ADVERTISING",
+      "related_domains": [
+        "PRODUCT_MASTER"
+      ],
+      "domain_ids": [
+        "ADVERTISING",
+        "PRODUCT_MASTER"
+      ],
+      "entity_role": "CORE_BUSINESS_ENTITY",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "amazon_sponsored_products_advertised_product",
+      "primary_domain": "ADVERTISING",
+      "related_domains": [
+        "PRODUCT_MASTER"
+      ],
+      "domain_ids": [
+        "ADVERTISING",
+        "PRODUCT_MASTER"
+      ],
+      "entity_role": "CORE_BUSINESS_ENTITY",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "ba_mv_sync_inventory_report",
+      "primary_domain": "INVENTORY_SUPPLY",
+      "related_domains": [],
+      "domain_ids": [
+        "INVENTORY_SUPPLY"
+      ],
+      "entity_role": "CORE_BUSINESS_ENTITY",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "bi.ad_info_summary",
+      "primary_domain": "ADVERTISING",
+      "related_domains": [],
+      "domain_ids": [
+        "ADVERTISING"
+      ],
+      "entity_role": "DERIVED_VIEW",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "bi.ad_info_summary_1d",
+      "primary_domain": "ADVERTISING",
+      "related_domains": [],
+      "domain_ids": [
+        "ADVERTISING"
+      ],
+      "entity_role": "DERIVED_VIEW",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "bi.ba_ad_filter_campaign_name",
+      "primary_domain": "ADVERTISING",
+      "related_domains": [],
+      "domain_ids": [
+        "ADVERTISING"
+      ],
+      "entity_role": "DERIVED_VIEW",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "bi.ba_ad_low_efficiency_kw",
+      "primary_domain": "ADVERTISING",
+      "related_domains": [],
+      "domain_ids": [
+        "ADVERTISING"
+      ],
+      "entity_role": "DERIVED_VIEW",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "bi.ba_ad_low_efficiency_sku",
+      "primary_domain": "ADVERTISING",
+      "related_domains": [
+        "PRODUCT_MASTER"
+      ],
+      "domain_ids": [
+        "ADVERTISING",
+        "PRODUCT_MASTER"
+      ],
+      "entity_role": "DERIVED_VIEW",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "bi.ba_ad_low_efficiency_st_daily",
+      "primary_domain": "ADVERTISING",
+      "related_domains": [],
+      "domain_ids": [
+        "ADVERTISING"
+      ],
+      "entity_role": "DERIVED_VIEW",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "bi.ba_ad_spend",
+      "primary_domain": "ADVERTISING",
+      "related_domains": [],
+      "domain_ids": [
+        "ADVERTISING"
+      ],
+      "entity_role": "DERIVED_VIEW",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "bi.ba_ad_spend_daily",
+      "primary_domain": "ADVERTISING",
+      "related_domains": [],
+      "domain_ids": [
+        "ADVERTISING"
+      ],
+      "entity_role": "DERIVED_VIEW",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "bi.ba_bfcm_ads_perf_rank_change_by_campaign",
+      "primary_domain": "ADVERTISING",
+      "related_domains": [],
+      "domain_ids": [
+        "ADVERTISING"
+      ],
+      "entity_role": "DERIVED_VIEW",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "bi.ba_bfcm_all_channel_daily_sales",
+      "primary_domain": "UNCLASSIFIED",
+      "related_domains": [],
+      "domain_ids": [
+        "UNCLASSIFIED"
+      ],
+      "entity_role": "DERIVED_VIEW",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "bi.ba_bfcm_buybox_info_by_sku",
+      "primary_domain": "PRODUCT_MASTER",
+      "related_domains": [],
+      "domain_ids": [
+        "PRODUCT_MASTER"
+      ],
+      "entity_role": "DERIVED_VIEW",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "bi.ba_bfcm_daily_accu_sales_by_sku",
+      "primary_domain": "PRODUCT_MASTER",
+      "related_domains": [],
+      "domain_ids": [
+        "PRODUCT_MASTER"
+      ],
+      "entity_role": "DERIVED_VIEW",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "bi.ba_bfcm_daily_profit_by_sku",
+      "primary_domain": "FINANCE_SETTLEMENT",
+      "related_domains": [
+        "PRODUCT_MASTER"
+      ],
+      "domain_ids": [
+        "FINANCE_SETTLEMENT",
+        "PRODUCT_MASTER"
+      ],
+      "entity_role": "DERIVED_VIEW",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "bi.ba_bfcm_hourly_ads_data_bigevent",
+      "primary_domain": "ADVERTISING",
+      "related_domains": [],
+      "domain_ids": [
+        "ADVERTISING"
+      ],
+      "entity_role": "DERIVED_VIEW",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "bi.ba_bfcm_hourly_ads_data_by_product_line",
+      "primary_domain": "ADVERTISING",
+      "related_domains": [
+        "PRODUCT_MASTER"
+      ],
+      "domain_ids": [
+        "ADVERTISING",
+        "PRODUCT_MASTER"
+      ],
+      "entity_role": "DERIVED_VIEW",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "bi.ba_bfcm_hourly_ads_data_total",
+      "primary_domain": "ADVERTISING",
+      "related_domains": [],
+      "domain_ids": [
+        "ADVERTISING"
+      ],
+      "entity_role": "DERIVED_VIEW",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "bi.ba_bfcm_hourly_ads_placement_by_portfolio",
+      "primary_domain": "ADVERTISING",
+      "related_domains": [],
+      "domain_ids": [
+        "ADVERTISING"
+      ],
+      "entity_role": "DERIVED_VIEW",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "bi.ba_bfcm_hourly_sales_by_ir",
+      "primary_domain": "UNCLASSIFIED",
+      "related_domains": [],
+      "domain_ids": [
+        "UNCLASSIFIED"
+      ],
+      "entity_role": "DERIVED_VIEW",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "bi.ba_bfcm_hourly_ttl_sales_by_marketplace",
+      "primary_domain": "UNCLASSIFIED",
+      "related_domains": [],
+      "domain_ids": [
+        "UNCLASSIFIED"
+      ],
+      "entity_role": "DERIVED_VIEW",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "bi.ba_bfcm_lead_time_daily_ads_data_total",
+      "primary_domain": "ADVERTISING",
+      "related_domains": [],
+      "domain_ids": [
+        "ADVERTISING"
+      ],
+      "entity_role": "DERIVED_VIEW",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "bi.ba_bfcm_rank_info_by_asin",
+      "primary_domain": "UNCLASSIFIED",
+      "related_domains": [],
+      "domain_ids": [
+        "UNCLASSIFIED"
+      ],
+      "entity_role": "DERIVED_VIEW",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "bi.ba_bfcm_realtime_inventory_by_ir",
+      "primary_domain": "INVENTORY_SUPPLY",
+      "related_domains": [],
+      "domain_ids": [
+        "INVENTORY_SUPPLY"
+      ],
+      "entity_role": "DERIVED_VIEW",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "bi.ba_bfcm_unit_change_rank_by_origin_ir",
+      "primary_domain": "UNCLASSIFIED",
+      "related_domains": [],
+      "domain_ids": [
+        "UNCLASSIFIED"
+      ],
+      "entity_role": "DERIVED_VIEW",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "bi.ba_budget_recommendation",
+      "primary_domain": "ADVERTISING",
+      "related_domains": [],
+      "domain_ids": [
+        "ADVERTISING"
+      ],
+      "entity_role": "DERIVED_VIEW",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "bi.ba_bundle_accessory_ir_inv",
+      "primary_domain": "PRODUCT_MASTER",
+      "related_domains": [],
+      "domain_ids": [
+        "PRODUCT_MASTER"
+      ],
+      "entity_role": "DERIVED_VIEW",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "bi.ba_daily_product_info",
+      "primary_domain": "PRODUCT_MASTER",
+      "related_domains": [],
+      "domain_ids": [
+        "PRODUCT_MASTER"
+      ],
+      "entity_role": "DERIVED_VIEW",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "bi.ba_dm_weekly_report_by_dm",
+      "primary_domain": "UNCLASSIFIED",
+      "related_domains": [],
+      "domain_ids": [
+        "UNCLASSIFIED"
+      ],
+      "entity_role": "DERIVED_VIEW",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "bi.ba_dm_weekly_report_total",
+      "primary_domain": "UNCLASSIFIED",
+      "related_domains": [],
+      "domain_ids": [
+        "UNCLASSIFIED"
+      ],
+      "entity_role": "DERIVED_VIEW",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "bi.ba_ir_category_mapping",
+      "primary_domain": "PRODUCT_MASTER",
+      "related_domains": [],
+      "domain_ids": [
+        "PRODUCT_MASTER"
+      ],
+      "entity_role": "DERIVED_VIEW",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "bi.ba_main_product_info",
+      "primary_domain": "PRODUCT_MASTER",
+      "related_domains": [],
+      "domain_ids": [
+        "PRODUCT_MASTER"
+      ],
+      "entity_role": "DERIVED_VIEW",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "bi.ba_mv_abnormal_tracking_status_order",
+      "primary_domain": "LOGISTICS_FULFILLMENT",
+      "related_domains": [],
+      "domain_ids": [
+        "LOGISTICS_FULFILLMENT"
+      ],
+      "entity_role": "DERIVED_VIEW",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "bi.ba_mv_dm_weekly_report_by_dm",
+      "primary_domain": "UNCLASSIFIED",
+      "related_domains": [],
+      "domain_ids": [
+        "UNCLASSIFIED"
+      ],
+      "entity_role": "DERIVED_VIEW",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "bi.ba_mv_outbound_order_return_data",
+      "primary_domain": "LOGISTICS_FULFILLMENT",
+      "related_domains": [
+        "ORDER_TRANSACTION"
+      ],
+      "domain_ids": [
+        "LOGISTICS_FULFILLMENT",
+        "ORDER_TRANSACTION"
+      ],
+      "entity_role": "DERIVED_VIEW",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "bi.ba_mv_profit_order_line_and_ad_info",
+      "primary_domain": "FINANCE_SETTLEMENT",
+      "related_domains": [
+        "ADVERTISING",
+        "ORDER_TRANSACTION"
+      ],
+      "domain_ids": [
+        "FINANCE_SETTLEMENT",
+        "ADVERTISING",
+        "ORDER_TRANSACTION"
+      ],
+      "entity_role": "DERIVED_VIEW",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "bi.ba_no_dm_ir_list",
+      "primary_domain": "UNCLASSIFIED",
+      "related_domains": [],
+      "domain_ids": [
+        "UNCLASSIFIED"
+      ],
+      "entity_role": "DERIVED_VIEW",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "bi.ba_not_received_inv_info",
+      "primary_domain": "UNCLASSIFIED",
+      "related_domains": [],
+      "domain_ids": [
+        "UNCLASSIFIED"
+      ],
+      "entity_role": "DERIVED_VIEW",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "bi.ba_order_line_info",
+      "primary_domain": "ORDER_TRANSACTION",
+      "related_domains": [],
+      "domain_ids": [
+        "ORDER_TRANSACTION"
+      ],
+      "entity_role": "DERIVED_VIEW",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "bi.ba_order_line_shipping_cost",
+      "primary_domain": "FINANCE_SETTLEMENT",
+      "related_domains": [
+        "ORDER_TRANSACTION"
+      ],
+      "domain_ids": [
+        "FINANCE_SETTLEMENT",
+        "ORDER_TRANSACTION"
+      ],
+      "entity_role": "DERIVED_VIEW",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "bi.ba_order_line_shipping_cost_organized",
+      "primary_domain": "FINANCE_SETTLEMENT",
+      "related_domains": [
+        "ORDER_TRANSACTION"
+      ],
+      "domain_ids": [
+        "FINANCE_SETTLEMENT",
+        "ORDER_TRANSACTION"
+      ],
+      "entity_role": "DERIVED_VIEW",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "bi.ba_order_line_tob_rc_info",
+      "primary_domain": "ORDER_TRANSACTION",
+      "related_domains": [],
+      "domain_ids": [
+        "ORDER_TRANSACTION"
+      ],
+      "entity_role": "DERIVED_VIEW",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "bi.ba_overstock_product_info",
+      "primary_domain": "INVENTORY_SUPPLY",
+      "related_domains": [
+        "PRODUCT_MASTER"
+      ],
+      "domain_ids": [
+        "INVENTORY_SUPPLY",
+        "PRODUCT_MASTER"
+      ],
+      "entity_role": "DERIVED_VIEW",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "bi.ba_pm_daily_sales_inventory_info",
+      "primary_domain": "INVENTORY_SUPPLY",
+      "related_domains": [],
+      "domain_ids": [
+        "INVENTORY_SUPPLY"
+      ],
+      "entity_role": "DERIVED_VIEW",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "bi.ba_product_attribute_info",
+      "primary_domain": "PRODUCT_MASTER",
+      "related_domains": [],
+      "domain_ids": [
+        "PRODUCT_MASTER"
+      ],
+      "entity_role": "DERIVED_VIEW",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "bi.ba_profit_order_line_info",
+      "primary_domain": "FINANCE_SETTLEMENT",
+      "related_domains": [
+        "ORDER_TRANSACTION"
+      ],
+      "domain_ids": [
+        "FINANCE_SETTLEMENT",
+        "ORDER_TRANSACTION"
+      ],
+      "entity_role": "DERIVED_VIEW",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "bi.ba_report_order_line",
+      "primary_domain": "ORDER_TRANSACTION",
+      "related_domains": [],
+      "domain_ids": [
+        "ORDER_TRANSACTION"
+      ],
+      "entity_role": "DERIVED_VIEW",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "bi.ba_sale_purchased",
+      "primary_domain": "UNCLASSIFIED",
+      "related_domains": [],
+      "domain_ids": [
+        "UNCLASSIFIED"
+      ],
+      "entity_role": "DERIVED_VIEW",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "bi.ba_ship_invoice_tracking_without_order",
+      "primary_domain": "LOGISTICS_FULFILLMENT",
+      "related_domains": [],
+      "domain_ids": [
+        "LOGISTICS_FULFILLMENT"
+      ],
+      "entity_role": "DERIVED_VIEW",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "bi.ba_so_mp_store",
+      "primary_domain": "UNCLASSIFIED",
+      "related_domains": [],
+      "domain_ids": [
+        "UNCLASSIFIED"
+      ],
+      "entity_role": "DERIVED_VIEW",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "bi.ba_store_commission",
+      "primary_domain": "FINANCE_SETTLEMENT",
+      "related_domains": [],
+      "domain_ids": [
+        "FINANCE_SETTLEMENT"
+      ],
+      "entity_role": "DERIVED_VIEW",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "bi.ba_warranty_warehouse_rate",
+      "primary_domain": "UNCLASSIFIED",
+      "related_domains": [],
+      "domain_ids": [
+        "UNCLASSIFIED"
+      ],
+      "entity_role": "DERIVED_VIEW",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "bi.ba_warranty_warehouse_sn_stock",
+      "primary_domain": "UNCLASSIFIED",
+      "related_domains": [],
+      "domain_ids": [
+        "UNCLASSIFIED"
+      ],
+      "entity_role": "DERIVED_VIEW",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "bi.ba_warranty_warehouse_stock_move_history",
+      "primary_domain": "INVENTORY_SUPPLY",
+      "related_domains": [],
+      "domain_ids": [
+        "INVENTORY_SUPPLY"
+      ],
+      "entity_role": "DERIVED_VIEW",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "bi.bi_pm_sku_ir_marketplace_mapping",
+      "primary_domain": "PRODUCT_MASTER",
+      "related_domains": [],
+      "domain_ids": [
+        "PRODUCT_MASTER"
+      ],
+      "entity_role": "DERIVED_VIEW",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "bi.budget_usage",
+      "primary_domain": "ADVERTISING",
+      "related_domains": [],
+      "domain_ids": [
+        "ADVERTISING"
+      ],
+      "entity_role": "DERIVED_VIEW",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "bi.bundle_sku_primary_product",
+      "primary_domain": "PRODUCT_MASTER",
+      "related_domains": [],
+      "domain_ids": [
+        "PRODUCT_MASTER"
+      ],
+      "entity_role": "DERIVED_VIEW",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "bi.correct_bundle_promotion_shipping_fee",
+      "primary_domain": "FINANCE_SETTLEMENT",
+      "related_domains": [
+        "PRODUCT_MASTER"
+      ],
+      "domain_ids": [
+        "FINANCE_SETTLEMENT",
+        "PRODUCT_MASTER"
+      ],
+      "entity_role": "DERIVED_VIEW",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "bi.lenovo_sales_statistics_last_week",
+      "primary_domain": "UNCLASSIFIED",
+      "related_domains": [],
+      "domain_ids": [
+        "UNCLASSIFIED"
+      ],
+      "entity_role": "DERIVED_VIEW",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "bi.pm_marketplace_order_line_report_hourly",
+      "primary_domain": "ORDER_TRANSACTION",
+      "related_domains": [],
+      "domain_ids": [
+        "ORDER_TRANSACTION"
+      ],
+      "entity_role": "DERIVED_VIEW",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "bi_pm_amazon_sku_ir_mapping",
+      "primary_domain": "PRODUCT_MASTER",
+      "related_domains": [],
+      "domain_ids": [
+        "PRODUCT_MASTER"
+      ],
+      "entity_role": "SHARED_MASTER_DATA",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "bi_pm_ir_info",
+      "primary_domain": "UNCLASSIFIED",
+      "related_domains": [],
+      "domain_ids": [
+        "UNCLASSIFIED"
+      ],
+      "entity_role": "CORE_BUSINESS_ENTITY",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "cwzy_amazon_promotion",
+      "primary_domain": "UNCLASSIFIED",
+      "related_domains": [],
+      "domain_ids": [
+        "UNCLASSIFIED"
+      ],
+      "entity_role": "CORE_BUSINESS_ENTITY",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "cwzy_bundle_sku",
+      "primary_domain": "PRODUCT_MASTER",
+      "related_domains": [],
+      "domain_ids": [
+        "PRODUCT_MASTER"
+      ],
+      "entity_role": "SHARED_MASTER_DATA",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "cwzy_bundle_sku_lines",
+      "primary_domain": "PRODUCT_MASTER",
+      "related_domains": [],
+      "domain_ids": [
+        "PRODUCT_MASTER"
+      ],
+      "entity_role": "SHARED_MASTER_DATA",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "cwzy_newegg_settlement_info",
+      "primary_domain": "FINANCE_SETTLEMENT",
+      "related_domains": [],
+      "domain_ids": [
+        "FINANCE_SETTLEMENT"
+      ],
+      "entity_role": "EXTERNAL_RECONCILIATION_SOURCE",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "cwzy_shipstation_sku",
+      "primary_domain": "LOGISTICS_FULFILLMENT",
+      "related_domains": [
+        "PRODUCT_MASTER"
+      ],
+      "domain_ids": [
+        "LOGISTICS_FULFILLMENT",
+        "PRODUCT_MASTER"
+      ],
+      "entity_role": "CORE_BUSINESS_ENTITY",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "cwzy_shipstation_store",
+      "primary_domain": "LOGISTICS_FULFILLMENT",
+      "related_domains": [],
+      "domain_ids": [
+        "LOGISTICS_FULFILLMENT"
+      ],
+      "entity_role": "CORE_BUSINESS_ENTITY",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "cwzy_walmart_recon_info",
+      "primary_domain": "FINANCE_SETTLEMENT",
+      "related_domains": [],
+      "domain_ids": [
+        "FINANCE_SETTLEMENT"
+      ],
+      "entity_role": "EXTERNAL_RECONCILIATION_SOURCE",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "datas.ads_budget_usage",
+      "primary_domain": "ADVERTISING",
+      "related_domains": [],
+      "domain_ids": [
+        "ADVERTISING"
+      ],
+      "entity_role": "EXTERNAL_RECONCILIATION_SOURCE",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "datas.ads_console_campaign_report",
+      "primary_domain": "ADVERTISING",
+      "related_domains": [],
+      "domain_ids": [
+        "ADVERTISING"
+      ],
+      "entity_role": "EXTERNAL_RECONCILIATION_SOURCE",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "datas.daily_product_info",
+      "primary_domain": "PRODUCT_MASTER",
+      "related_domains": [],
+      "domain_ids": [
+        "PRODUCT_MASTER"
+      ],
+      "entity_role": "SHARED_MASTER_DATA",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "datas.newegg_advertised_product_reports",
+      "primary_domain": "ADVERTISING",
+      "related_domains": [
+        "PRODUCT_MASTER"
+      ],
+      "domain_ids": [
+        "ADVERTISING",
+        "PRODUCT_MASTER"
+      ],
+      "entity_role": "EXTERNAL_RECONCILIATION_SOURCE",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "datas.newegg_item_report",
+      "primary_domain": "UNCLASSIFIED",
+      "related_domains": [],
+      "domain_ids": [
+        "UNCLASSIFIED"
+      ],
+      "entity_role": "EXTERNAL_RECONCILIATION_SOURCE",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "datas.pm_amazon_asin_rank",
+      "primary_domain": "UNCLASSIFIED",
+      "related_domains": [],
+      "domain_ids": [
+        "UNCLASSIFIED"
+      ],
+      "entity_role": "EXTERNAL_RECONCILIATION_SOURCE",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "datas.pm_amazon_sku_buy_box_info",
+      "primary_domain": "PRODUCT_MASTER",
+      "related_domains": [],
+      "domain_ids": [
+        "PRODUCT_MASTER"
+      ],
+      "entity_role": "SHARED_MASTER_DATA",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "datas.pm_product_line_mapping_2024",
+      "primary_domain": "PRODUCT_MASTER",
+      "related_domains": [],
+      "domain_ids": [
+        "PRODUCT_MASTER"
+      ],
+      "entity_role": "SHARED_MASTER_DATA",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "datas.pm_realtime_order_line_all_channels",
+      "primary_domain": "ORDER_TRANSACTION",
+      "related_domains": [],
+      "domain_ids": [
+        "ORDER_TRANSACTION"
+      ],
+      "entity_role": "EXTERNAL_RECONCILIATION_SOURCE",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "datas.portfolio_id_name",
+      "primary_domain": "ADVERTISING",
+      "related_domains": [],
+      "domain_ids": [
+        "ADVERTISING"
+      ],
+      "entity_role": "EXTERNAL_RECONCILIATION_SOURCE",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "datas.real_time_inventory",
+      "primary_domain": "INVENTORY_SUPPLY",
+      "related_domains": [],
+      "domain_ids": [
+        "INVENTORY_SUPPLY"
+      ],
+      "entity_role": "EXTERNAL_RECONCILIATION_SOURCE",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "datas.sd_advertised_product_reports",
+      "primary_domain": "ADVERTISING",
+      "related_domains": [
+        "PRODUCT_MASTER"
+      ],
+      "domain_ids": [
+        "ADVERTISING",
+        "PRODUCT_MASTER"
+      ],
+      "entity_role": "EXTERNAL_RECONCILIATION_SOURCE",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "datas.sd_product_ad_reports",
+      "primary_domain": "ADVERTISING",
+      "related_domains": [
+        "PRODUCT_MASTER"
+      ],
+      "domain_ids": [
+        "ADVERTISING",
+        "PRODUCT_MASTER"
+      ],
+      "entity_role": "EXTERNAL_RECONCILIATION_SOURCE",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "datas.shipping_invoice_amazon_shipping",
+      "primary_domain": "LOGISTICS_FULFILLMENT",
+      "related_domains": [],
+      "domain_ids": [
+        "LOGISTICS_FULFILLMENT"
+      ],
+      "entity_role": "EXTERNAL_RECONCILIATION_SOURCE",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "datas.shipping_invoice_amazon_shipping_adjustments",
+      "primary_domain": "LOGISTICS_FULFILLMENT",
+      "related_domains": [],
+      "domain_ids": [
+        "LOGISTICS_FULFILLMENT"
+      ],
+      "entity_role": "EXTERNAL_RECONCILIATION_SOURCE",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "datas.shipping_invoice_fedex",
+      "primary_domain": "LOGISTICS_FULFILLMENT",
+      "related_domains": [],
+      "domain_ids": [
+        "LOGISTICS_FULFILLMENT"
+      ],
+      "entity_role": "EXTERNAL_RECONCILIATION_SOURCE",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "datas.shipping_invoice_fedex_charge",
+      "primary_domain": "LOGISTICS_FULFILLMENT",
+      "related_domains": [],
+      "domain_ids": [
+        "LOGISTICS_FULFILLMENT"
+      ],
+      "entity_role": "EXTERNAL_RECONCILIATION_SOURCE",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "datas.shipping_invoice_temu",
+      "primary_domain": "LOGISTICS_FULFILLMENT",
+      "related_domains": [],
+      "domain_ids": [
+        "LOGISTICS_FULFILLMENT"
+      ],
+      "entity_role": "EXTERNAL_RECONCILIATION_SOURCE",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "datas.shipping_invoice_ups",
+      "primary_domain": "LOGISTICS_FULFILLMENT",
+      "related_domains": [],
+      "domain_ids": [
+        "LOGISTICS_FULFILLMENT"
+      ],
+      "entity_role": "EXTERNAL_RECONCILIATION_SOURCE",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "datas.sp_advertised_product_reports",
+      "primary_domain": "ADVERTISING",
+      "related_domains": [
+        "PRODUCT_MASTER"
+      ],
+      "domain_ids": [
+        "ADVERTISING",
+        "PRODUCT_MASTER"
+      ],
+      "entity_role": "EXTERNAL_RECONCILIATION_SOURCE",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "datas.sp_campaign_reports",
+      "primary_domain": "ADVERTISING",
+      "related_domains": [],
+      "domain_ids": [
+        "ADVERTISING"
+      ],
+      "entity_role": "EXTERNAL_RECONCILIATION_SOURCE",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "datas.sp_conversion",
+      "primary_domain": "ADVERTISING",
+      "related_domains": [],
+      "domain_ids": [
+        "ADVERTISING"
+      ],
+      "entity_role": "EXTERNAL_RECONCILIATION_SOURCE",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "datas.sp_search_term_reports",
+      "primary_domain": "ADVERTISING",
+      "related_domains": [],
+      "domain_ids": [
+        "ADVERTISING"
+      ],
+      "entity_role": "EXTERNAL_RECONCILIATION_SOURCE",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "datas.sp_targeting_reports",
+      "primary_domain": "ADVERTISING",
+      "related_domains": [],
+      "domain_ids": [
+        "ADVERTISING"
+      ],
+      "entity_role": "EXTERNAL_RECONCILIATION_SOURCE",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "datas.sp_traffic",
+      "primary_domain": "ADVERTISING",
+      "related_domains": [],
+      "domain_ids": [
+        "ADVERTISING"
+      ],
+      "entity_role": "EXTERNAL_RECONCILIATION_SOURCE",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "fbm_return_sn_history",
+      "primary_domain": "ORDER_TRANSACTION",
+      "related_domains": [],
+      "domain_ids": [
+        "ORDER_TRANSACTION"
+      ],
+      "entity_role": "CORE_BUSINESS_ENTITY",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "fbm_return_upc_history",
+      "primary_domain": "ORDER_TRANSACTION",
+      "related_domains": [],
+      "domain_ids": [
+        "ORDER_TRANSACTION"
+      ],
+      "entity_role": "CORE_BUSINESS_ENTITY",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "hr_department",
+      "primary_domain": "ORGANIZATION_SUPPORT",
+      "related_domains": [],
+      "domain_ids": [
+        "ORGANIZATION_SUPPORT"
+      ],
+      "entity_role": "SUPPORTING_REFERENCE",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "hr_employee",
+      "primary_domain": "ORGANIZATION_SUPPORT",
+      "related_domains": [],
+      "domain_ids": [
+        "ORGANIZATION_SUPPORT"
+      ],
+      "entity_role": "SUPPORTING_REFERENCE",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "ir_property",
+      "primary_domain": "INVENTORY_SUPPLY",
+      "related_domains": [],
+      "domain_ids": [
+        "INVENTORY_SUPPLY"
+      ],
+      "entity_role": "CORE_BUSINESS_ENTITY",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "mail_followers",
+      "primary_domain": "ORGANIZATION_SUPPORT",
+      "related_domains": [],
+      "domain_ids": [
+        "ORGANIZATION_SUPPORT"
+      ],
+      "entity_role": "SUPPORTING_REFERENCE",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "mrp_production",
+      "primary_domain": "INVENTORY_SUPPLY",
+      "related_domains": [
+        "PRODUCT_MASTER"
+      ],
+      "domain_ids": [
+        "INVENTORY_SUPPLY",
+        "PRODUCT_MASTER"
+      ],
+      "entity_role": "CORE_BUSINESS_ENTITY",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "newegg_marketplace",
+      "primary_domain": "UNCLASSIFIED",
+      "related_domains": [],
+      "domain_ids": [
+        "UNCLASSIFIED"
+      ],
+      "entity_role": "CORE_BUSINESS_ENTITY",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "newegg_sku",
+      "primary_domain": "PRODUCT_MASTER",
+      "related_domains": [],
+      "domain_ids": [
+        "PRODUCT_MASTER"
+      ],
+      "entity_role": "SHARED_MASTER_DATA",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "order_outbound_history",
+      "primary_domain": "LOGISTICS_FULFILLMENT",
+      "related_domains": [
+        "ORDER_TRANSACTION"
+      ],
+      "domain_ids": [
+        "LOGISTICS_FULFILLMENT",
+        "ORDER_TRANSACTION"
+      ],
+      "entity_role": "CORE_BUSINESS_ENTITY",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "product_attribute",
+      "primary_domain": "PRODUCT_MASTER",
+      "related_domains": [],
+      "domain_ids": [
+        "PRODUCT_MASTER"
+      ],
+      "entity_role": "SHARED_MASTER_DATA",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "product_attribute_line",
+      "primary_domain": "PRODUCT_MASTER",
+      "related_domains": [],
+      "domain_ids": [
+        "PRODUCT_MASTER"
+      ],
+      "entity_role": "SHARED_MASTER_DATA",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "product_attribute_line_product_attribute_value_rel",
+      "primary_domain": "PRODUCT_MASTER",
+      "related_domains": [],
+      "domain_ids": [
+        "PRODUCT_MASTER"
+      ],
+      "entity_role": "SHARED_MASTER_DATA",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "product_attribute_value",
+      "primary_domain": "PRODUCT_MASTER",
+      "related_domains": [],
+      "domain_ids": [
+        "PRODUCT_MASTER"
+      ],
+      "entity_role": "SHARED_MASTER_DATA",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "product_brand",
+      "primary_domain": "PRODUCT_MASTER",
+      "related_domains": [],
+      "domain_ids": [
+        "PRODUCT_MASTER"
+      ],
+      "entity_role": "SHARED_MASTER_DATA",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "product_category",
+      "primary_domain": "PRODUCT_MASTER",
+      "related_domains": [],
+      "domain_ids": [
+        "PRODUCT_MASTER"
+      ],
+      "entity_role": "SHARED_MASTER_DATA",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "product_product",
+      "primary_domain": "PRODUCT_MASTER",
+      "related_domains": [],
+      "domain_ids": [
+        "PRODUCT_MASTER"
+      ],
+      "entity_role": "SHARED_MASTER_DATA",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "product_template",
+      "primary_domain": "PRODUCT_MASTER",
+      "related_domains": [],
+      "domain_ids": [
+        "PRODUCT_MASTER"
+      ],
+      "entity_role": "SHARED_MASTER_DATA",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "public.newegg_sku",
+      "primary_domain": "PRODUCT_MASTER",
+      "related_domains": [],
+      "domain_ids": [
+        "PRODUCT_MASTER"
+      ],
+      "entity_role": "SHARED_MASTER_DATA",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "public.walmart_sku",
+      "primary_domain": "PRODUCT_MASTER",
+      "related_domains": [],
+      "domain_ids": [
+        "PRODUCT_MASTER"
+      ],
+      "entity_role": "SHARED_MASTER_DATA",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "purchase_order",
+      "primary_domain": "INVENTORY_SUPPLY",
+      "related_domains": [],
+      "domain_ids": [
+        "INVENTORY_SUPPLY"
+      ],
+      "entity_role": "CORE_BUSINESS_ENTITY",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "purchase_order_line",
+      "primary_domain": "INVENTORY_SUPPLY",
+      "related_domains": [
+        "ORDER_TRANSACTION"
+      ],
+      "domain_ids": [
+        "INVENTORY_SUPPLY",
+        "ORDER_TRANSACTION"
+      ],
+      "entity_role": "CORE_BUSINESS_ENTITY",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "res_country",
+      "primary_domain": "ORGANIZATION_SUPPORT",
+      "related_domains": [],
+      "domain_ids": [
+        "ORGANIZATION_SUPPORT"
+      ],
+      "entity_role": "SUPPORTING_REFERENCE",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "res_country_state",
+      "primary_domain": "ORGANIZATION_SUPPORT",
+      "related_domains": [],
+      "domain_ids": [
+        "ORGANIZATION_SUPPORT"
+      ],
+      "entity_role": "SUPPORTING_REFERENCE",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "res_partner",
+      "primary_domain": "ORGANIZATION_SUPPORT",
+      "related_domains": [],
+      "domain_ids": [
+        "ORGANIZATION_SUPPORT"
+      ],
+      "entity_role": "SUPPORTING_REFERENCE",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "res_users",
+      "primary_domain": "ORGANIZATION_SUPPORT",
+      "related_domains": [],
+      "domain_ids": [
+        "ORGANIZATION_SUPPORT"
+      ],
+      "entity_role": "SUPPORTING_REFERENCE",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "resource_resource",
+      "primary_domain": "ORGANIZATION_SUPPORT",
+      "related_domains": [],
+      "domain_ids": [
+        "ORGANIZATION_SUPPORT"
+      ],
+      "entity_role": "SUPPORTING_REFERENCE",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "sale_order",
+      "primary_domain": "ORDER_TRANSACTION",
+      "related_domains": [],
+      "domain_ids": [
+        "ORDER_TRANSACTION"
+      ],
+      "entity_role": "CORE_BUSINESS_ENTITY",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "sale_order_line",
+      "primary_domain": "ORDER_TRANSACTION",
+      "related_domains": [],
+      "domain_ids": [
+        "ORDER_TRANSACTION"
+      ],
+      "entity_role": "CORE_BUSINESS_ENTITY",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "sale_order_package",
+      "primary_domain": "LOGISTICS_FULFILLMENT",
+      "related_domains": [
+        "ORDER_TRANSACTION"
+      ],
+      "domain_ids": [
+        "LOGISTICS_FULFILLMENT",
+        "ORDER_TRANSACTION"
+      ],
+      "entity_role": "CORE_BUSINESS_ENTITY",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "settlement_report_info",
+      "primary_domain": "FINANCE_SETTLEMENT",
+      "related_domains": [],
+      "domain_ids": [
+        "FINANCE_SETTLEMENT"
+      ],
+      "entity_role": "EXTERNAL_RECONCILIATION_SOURCE",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "stock_move",
+      "primary_domain": "INVENTORY_SUPPLY",
+      "related_domains": [],
+      "domain_ids": [
+        "INVENTORY_SUPPLY"
+      ],
+      "entity_role": "CORE_BUSINESS_ENTITY",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "stock_move_line",
+      "primary_domain": "INVENTORY_SUPPLY",
+      "related_domains": [],
+      "domain_ids": [
+        "INVENTORY_SUPPLY"
+      ],
+      "entity_role": "CORE_BUSINESS_ENTITY",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "stock_production_lot",
+      "primary_domain": "INVENTORY_SUPPLY",
+      "related_domains": [
+        "PRODUCT_MASTER"
+      ],
+      "domain_ids": [
+        "INVENTORY_SUPPLY",
+        "PRODUCT_MASTER"
+      ],
+      "entity_role": "CORE_BUSINESS_ENTITY",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "stock_quant",
+      "primary_domain": "INVENTORY_SUPPLY",
+      "related_domains": [],
+      "domain_ids": [
+        "INVENTORY_SUPPLY"
+      ],
+      "entity_role": "CORE_BUSINESS_ENTITY",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "stock_warehouse",
+      "primary_domain": "INVENTORY_SUPPLY",
+      "related_domains": [],
+      "domain_ids": [
+        "INVENTORY_SUPPLY"
+      ],
+      "entity_role": "CORE_BUSINESS_ENTITY",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "walmart_marketplace",
+      "primary_domain": "UNCLASSIFIED",
+      "related_domains": [],
+      "domain_ids": [
+        "UNCLASSIFIED"
+      ],
+      "entity_role": "CORE_BUSINESS_ENTITY",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    },
+    {
+      "entity_id": "walmart_sku",
+      "primary_domain": "PRODUCT_MASTER",
+      "related_domains": [],
+      "domain_ids": [
+        "PRODUCT_MASTER"
+      ],
+      "entity_role": "SHARED_MASTER_DATA",
+      "status": "CANDIDATE",
+      "basis": "ordered object-name pattern plus SQL relationship usage; requires business review"
+    }
+  ],
+  "relationship_assignments": [
+    {
+      "relationship_id": "rel::amazon_custom_v3_3::amazon_product_sku::amazon_product_sku_id.id",
+      "domain_ids": [
+        "PRODUCT_MASTER"
+      ],
+      "scope": "CROSS_DOMAIN",
+      "relationship_role": "MASTER_DATA_REFERENCE",
+      "status": "CANDIDATE",
+      "basis": "inherits candidate domains and roles from real ER endpoints; requires business review"
+    },
+    {
+      "relationship_id": "rel::amazon_custom_v3_3::product_product::product_id.id",
+      "domain_ids": [
+        "PRODUCT_MASTER"
+      ],
+      "scope": "CROSS_DOMAIN",
+      "relationship_role": "MASTER_DATA_REFERENCE",
+      "status": "CANDIDATE",
+      "basis": "inherits candidate domains and roles from real ER endpoints; requires business review"
+    },
+    {
+      "relationship_id": "rel::amazon_instance_ept::sale_order::id.amz_instance_id",
+      "domain_ids": [
+        "ORDER_TRANSACTION",
+        "PRODUCT_MASTER"
+      ],
+      "scope": "CROSS_DOMAIN",
+      "relationship_role": "MASTER_DATA_REFERENCE",
+      "status": "CANDIDATE",
+      "basis": "inherits candidate domains and roles from real ER endpoints; requires business review"
+    },
+    {
+      "relationship_id": "rel::amazon_product_asin::amazon_product_sku::id.product_asin_id",
+      "domain_ids": [
+        "PRODUCT_MASTER"
+      ],
+      "scope": "INTRA_DOMAIN",
+      "relationship_role": "MASTER_DATA_REFERENCE",
+      "status": "CANDIDATE",
+      "basis": "inherits candidate domains and roles from real ER endpoints; requires business review"
+    },
+    {
+      "relationship_id": "rel::amazon_product_asin::cwzy_bundle_sku::id.product_asin_id",
+      "domain_ids": [
+        "PRODUCT_MASTER"
+      ],
+      "scope": "INTRA_DOMAIN",
+      "relationship_role": "MASTER_DATA_REFERENCE",
+      "status": "CANDIDATE",
+      "basis": "inherits candidate domains and roles from real ER endpoints; requires business review"
+    },
+    {
+      "relationship_id": "rel::amazon_product_sku::bi.ba_ad_spend_daily::name.sku",
+      "domain_ids": [
+        "ADVERTISING",
+        "PRODUCT_MASTER"
+      ],
+      "scope": "CROSS_DOMAIN",
+      "relationship_role": "MASTER_DATA_REFERENCE",
+      "status": "CANDIDATE",
+      "basis": "inherits candidate domains and roles from real ER endpoints; requires business review"
+    },
+    {
+      "relationship_id": "rel::amazon_product_sku::datas.sp_advertised_product_reports::name.advertisedSku",
+      "domain_ids": [
+        "ADVERTISING",
+        "PRODUCT_MASTER"
+      ],
+      "scope": "CROSS_DOMAIN",
+      "relationship_role": "EXTERNAL_RECONCILIATION",
+      "status": "CANDIDATE",
+      "basis": "inherits candidate domains and roles from real ER endpoints; requires business review"
+    },
+    {
+      "relationship_id": "rel::amazon_product_sku::product_product::product_id.id",
+      "domain_ids": [
+        "PRODUCT_MASTER"
+      ],
+      "scope": "INTRA_DOMAIN",
+      "relationship_role": "MASTER_DATA_REFERENCE",
+      "status": "CANDIDATE",
+      "basis": "inherits candidate domains and roles from real ER endpoints; requires business review"
+    },
+    {
+      "relationship_id": "rel::amazon_product_sku::sale_order_line::id.product_sku",
+      "domain_ids": [
+        "ORDER_TRANSACTION",
+        "PRODUCT_MASTER"
+      ],
+      "scope": "CROSS_DOMAIN",
+      "relationship_role": "MASTER_DATA_REFERENCE",
+      "status": "CANDIDATE",
+      "basis": "inherits candidate domains and roles from real ER endpoints; requires business review"
+    },
+    {
+      "relationship_id": "rel::amazon_return_fbm_info::order_outbound_history::order_id.order_id|product_id.product_id",
+      "domain_ids": [
+        "LOGISTICS_FULFILLMENT",
+        "ORDER_TRANSACTION"
+      ],
+      "scope": "CROSS_DOMAIN",
+      "relationship_role": "CROSS_DOMAIN_BRIDGE",
+      "status": "CANDIDATE",
+      "basis": "inherits candidate domains and roles from real ER endpoints; requires business review"
+    },
+    {
+      "relationship_id": "rel::ba_mv_sync_inventory_report::product_product::default_code.default_code",
+      "domain_ids": [
+        "INVENTORY_SUPPLY",
+        "PRODUCT_MASTER"
+      ],
+      "scope": "CROSS_DOMAIN",
+      "relationship_role": "MASTER_DATA_REFERENCE",
+      "status": "CANDIDATE",
+      "basis": "inherits candidate domains and roles from real ER endpoints; requires business review"
+    },
+    {
+      "relationship_id": "rel::ba_mv_sync_inventory_report::product_template::default_code.default_code",
+      "domain_ids": [
+        "INVENTORY_SUPPLY",
+        "PRODUCT_MASTER"
+      ],
+      "scope": "CROSS_DOMAIN",
+      "relationship_role": "MASTER_DATA_REFERENCE",
+      "status": "CANDIDATE",
+      "basis": "inherits candidate domains and roles from real ER endpoints; requires business review"
+    },
+    {
+      "relationship_id": "rel::bi.ad_info_summary::datas.ads_budget_usage::campaign_id.budget_scope_id",
+      "domain_ids": [
+        "ADVERTISING"
+      ],
+      "scope": "INTRA_DOMAIN",
+      "relationship_role": "EXTERNAL_RECONCILIATION",
+      "status": "CANDIDATE",
+      "basis": "inherits candidate domains and roles from real ER endpoints; requires business review"
+    },
+    {
+      "relationship_id": "rel::bi.ad_info_summary::datas.sp_advertised_product_reports::ad_id.adId",
+      "domain_ids": [
+        "ADVERTISING",
+        "PRODUCT_MASTER"
+      ],
+      "scope": "INTRA_DOMAIN",
+      "relationship_role": "EXTERNAL_RECONCILIATION",
+      "status": "CANDIDATE",
+      "basis": "inherits candidate domains and roles from real ER endpoints; requires business review"
+    },
+    {
+      "relationship_id": "rel::bi.ba_bfcm_hourly_sales_by_ir::datas.pm_product_line_mapping_2024::origin_ir.origin_ir",
+      "domain_ids": [
+        "PRODUCT_MASTER"
+      ],
+      "scope": "CROSS_DOMAIN",
+      "relationship_role": "MASTER_DATA_REFERENCE",
+      "status": "CANDIDATE",
+      "basis": "inherits candidate domains and roles from real ER endpoints; requires business review"
+    },
+    {
+      "relationship_id": "rel::bi.ba_daily_product_info::product_product::ir.default_code",
+      "domain_ids": [
+        "PRODUCT_MASTER"
+      ],
+      "scope": "INTRA_DOMAIN",
+      "relationship_role": "MASTER_DATA_REFERENCE",
+      "status": "CANDIDATE",
+      "basis": "inherits candidate domains and roles from real ER endpoints; requires business review"
+    },
+    {
+      "relationship_id": "rel::bi.ba_main_product_info::bi.ba_profit_order_line_info::ir.main_ir",
+      "domain_ids": [
+        "FINANCE_SETTLEMENT",
+        "ORDER_TRANSACTION",
+        "PRODUCT_MASTER"
+      ],
+      "scope": "CROSS_DOMAIN",
+      "relationship_role": "CROSS_DOMAIN_BRIDGE",
+      "status": "CANDIDATE",
+      "basis": "inherits candidate domains and roles from real ER endpoints; requires business review"
+    },
+    {
+      "relationship_id": "rel::bi.ba_main_product_info::bi_pm_amazon_sku_ir_mapping::ir.origin_ir",
+      "domain_ids": [
+        "PRODUCT_MASTER"
+      ],
+      "scope": "INTRA_DOMAIN",
+      "relationship_role": "MASTER_DATA_REFERENCE",
+      "status": "CANDIDATE",
+      "basis": "inherits candidate domains and roles from real ER endpoints; requires business review"
+    },
+    {
+      "relationship_id": "rel::bi.ba_main_product_info::product_product::ir.default_code",
+      "domain_ids": [
+        "PRODUCT_MASTER"
+      ],
+      "scope": "INTRA_DOMAIN",
+      "relationship_role": "MASTER_DATA_REFERENCE",
+      "status": "CANDIDATE",
+      "basis": "inherits candidate domains and roles from real ER endpoints; requires business review"
+    },
+    {
+      "relationship_id": "rel::bi.ba_mv_profit_order_line_and_ad_info::product_template::ir.default_code",
+      "domain_ids": [
+        "ADVERTISING",
+        "FINANCE_SETTLEMENT",
+        "ORDER_TRANSACTION",
+        "PRODUCT_MASTER"
+      ],
+      "scope": "CROSS_DOMAIN",
+      "relationship_role": "MASTER_DATA_REFERENCE",
+      "status": "CANDIDATE",
+      "basis": "inherits candidate domains and roles from real ER endpoints; requires business review"
+    },
+    {
+      "relationship_id": "rel::bi.ba_order_line_info::bi.ba_order_line_shipping_cost_organized::order_line_id.sale_order_line_id",
+      "domain_ids": [
+        "FINANCE_SETTLEMENT",
+        "ORDER_TRANSACTION"
+      ],
+      "scope": "CROSS_DOMAIN",
+      "relationship_role": "CROSS_DOMAIN_BRIDGE",
+      "status": "CANDIDATE",
+      "basis": "inherits candidate domains and roles from real ER endpoints; requires business review"
+    },
+    {
+      "relationship_id": "rel::bi.ba_order_line_info::bi.ba_store_commission::store.store",
+      "domain_ids": [
+        "FINANCE_SETTLEMENT",
+        "ORDER_TRANSACTION"
+      ],
+      "scope": "CROSS_DOMAIN",
+      "relationship_role": "CROSS_DOMAIN_BRIDGE",
+      "status": "CANDIDATE",
+      "basis": "inherits candidate domains and roles from real ER endpoints; requires business review"
+    },
+    {
+      "relationship_id": "rel::bi.ba_order_line_info::cwzy_amazon_promotion::order_line_id.sale_order_line_id",
+      "domain_ids": [
+        "ORDER_TRANSACTION"
+      ],
+      "scope": "CROSS_DOMAIN",
+      "relationship_role": "CROSS_DOMAIN_BRIDGE",
+      "status": "CANDIDATE",
+      "basis": "inherits candidate domains and roles from real ER endpoints; requires business review"
+    },
+    {
+      "relationship_id": "rel::bi.ba_order_line_info::cwzy_bundle_sku_lines::bundle_sku_line_id.id",
+      "domain_ids": [
+        "ORDER_TRANSACTION",
+        "PRODUCT_MASTER"
+      ],
+      "scope": "CROSS_DOMAIN",
+      "relationship_role": "MASTER_DATA_REFERENCE",
+      "status": "CANDIDATE",
+      "basis": "inherits candidate domains and roles from real ER endpoints; requires business review"
+    },
+    {
+      "relationship_id": "rel::bi.ba_order_line_info::cwzy_newegg_settlement_info::order_name.order_ID|sku.seller_part_number",
+      "domain_ids": [
+        "FINANCE_SETTLEMENT",
+        "ORDER_TRANSACTION"
+      ],
+      "scope": "CROSS_DOMAIN",
+      "relationship_role": "EXTERNAL_RECONCILIATION",
+      "status": "CANDIDATE",
+      "basis": "inherits candidate domains and roles from real ER endpoints; requires business review"
+    },
+    {
+      "relationship_id": "rel::bi.ba_order_line_info::cwzy_walmart_recon_info::order_name.purchase_order|sku.partner_item_id",
+      "domain_ids": [
+        "FINANCE_SETTLEMENT",
+        "ORDER_TRANSACTION"
+      ],
+      "scope": "CROSS_DOMAIN",
+      "relationship_role": "EXTERNAL_RECONCILIATION",
+      "status": "CANDIDATE",
+      "basis": "inherits candidate domains and roles from real ER endpoints; requires business review"
+    },
+    {
+      "relationship_id": "rel::bi.ba_profit_order_line_info::bi.bundle_sku_primary_product::bundle_sku_id.bundle_sku_id",
+      "domain_ids": [
+        "FINANCE_SETTLEMENT",
+        "ORDER_TRANSACTION",
+        "PRODUCT_MASTER"
+      ],
+      "scope": "CROSS_DOMAIN",
+      "relationship_role": "CROSS_DOMAIN_BRIDGE",
+      "status": "CANDIDATE",
+      "basis": "inherits candidate domains and roles from real ER endpoints; requires business review"
+    },
+    {
+      "relationship_id": "rel::bi.ba_profit_order_line_info::cwzy_bundle_sku_lines::bundle_sku_line_id.id",
+      "domain_ids": [
+        "FINANCE_SETTLEMENT",
+        "ORDER_TRANSACTION",
+        "PRODUCT_MASTER"
+      ],
+      "scope": "CROSS_DOMAIN",
+      "relationship_role": "MASTER_DATA_REFERENCE",
+      "status": "CANDIDATE",
+      "basis": "inherits candidate domains and roles from real ER endpoints; requires business review"
+    },
+    {
+      "relationship_id": "rel::bi.ba_profit_order_line_info::sale_order_line::order_line_id.id",
+      "domain_ids": [
+        "FINANCE_SETTLEMENT",
+        "ORDER_TRANSACTION"
+      ],
+      "scope": "CROSS_DOMAIN",
+      "relationship_role": "CROSS_DOMAIN_BRIDGE",
+      "status": "CANDIDATE",
+      "basis": "inherits candidate domains and roles from real ER endpoints; requires business review"
+    },
+    {
+      "relationship_id": "rel::bi.ba_so_mp_store::sale_order::order_id.id",
+      "domain_ids": [
+        "ORDER_TRANSACTION"
+      ],
+      "scope": "CROSS_DOMAIN",
+      "relationship_role": "CROSS_DOMAIN_BRIDGE",
+      "status": "CANDIDATE",
+      "basis": "inherits candidate domains and roles from real ER endpoints; requires business review"
+    },
+    {
+      "relationship_id": "rel::bi.ba_so_mp_store::sale_order_line::order_id.order_id",
+      "domain_ids": [
+        "ORDER_TRANSACTION"
+      ],
+      "scope": "CROSS_DOMAIN",
+      "relationship_role": "CROSS_DOMAIN_BRIDGE",
+      "status": "CANDIDATE",
+      "basis": "inherits candidate domains and roles from real ER endpoints; requires business review"
+    },
+    {
+      "relationship_id": "rel::bi.ba_store_commission::datas.pm_realtime_order_line_all_channels::store.store_name",
+      "domain_ids": [
+        "FINANCE_SETTLEMENT",
+        "ORDER_TRANSACTION"
+      ],
+      "scope": "CROSS_DOMAIN",
+      "relationship_role": "EXTERNAL_RECONCILIATION",
+      "status": "CANDIDATE",
+      "basis": "inherits candidate domains and roles from real ER endpoints; requires business review"
+    },
+    {
+      "relationship_id": "rel::bi.bi_pm_sku_ir_marketplace_mapping::bi.pm_marketplace_order_line_report_hourly::marketplace.marketplace|sku.sku",
+      "domain_ids": [
+        "ORDER_TRANSACTION",
+        "PRODUCT_MASTER"
+      ],
+      "scope": "CROSS_DOMAIN",
+      "relationship_role": "CROSS_DOMAIN_BRIDGE",
+      "status": "CANDIDATE",
+      "basis": "inherits candidate domains and roles from real ER endpoints; requires business review"
+    },
+    {
+      "relationship_id": "rel::bi.bi_pm_sku_ir_marketplace_mapping::datas.newegg_item_report::sku.seller_part_number",
+      "domain_ids": [
+        "PRODUCT_MASTER"
+      ],
+      "scope": "CROSS_DOMAIN",
+      "relationship_role": "EXTERNAL_RECONCILIATION",
+      "status": "CANDIDATE",
+      "basis": "inherits candidate domains and roles from real ER endpoints; requires business review"
+    },
+    {
+      "relationship_id": "rel::bi.bi_pm_sku_ir_marketplace_mapping::datas.pm_amazon_asin_rank::asin.asin",
+      "domain_ids": [
+        "PRODUCT_MASTER"
+      ],
+      "scope": "CROSS_DOMAIN",
+      "relationship_role": "EXTERNAL_RECONCILIATION",
+      "status": "CANDIDATE",
+      "basis": "inherits candidate domains and roles from real ER endpoints; requires business review"
+    },
+    {
+      "relationship_id": "rel::bi.bi_pm_sku_ir_marketplace_mapping::datas.pm_amazon_sku_buy_box_info::sku.sku",
+      "domain_ids": [
+        "PRODUCT_MASTER"
+      ],
+      "scope": "INTRA_DOMAIN",
+      "relationship_role": "MASTER_DATA_REFERENCE",
+      "status": "CANDIDATE",
+      "basis": "inherits candidate domains and roles from real ER endpoints; requires business review"
+    },
+    {
+      "relationship_id": "rel::bi.bi_pm_sku_ir_marketplace_mapping::datas.pm_product_line_mapping_2024::origin_ir.origin_ir",
+      "domain_ids": [
+        "PRODUCT_MASTER"
+      ],
+      "scope": "INTRA_DOMAIN",
+      "relationship_role": "MASTER_DATA_REFERENCE",
+      "status": "CANDIDATE",
+      "basis": "inherits candidate domains and roles from real ER endpoints; requires business review"
+    },
+    {
+      "relationship_id": "rel::bi.bi_pm_sku_ir_marketplace_mapping::datas.sd_advertised_product_reports::sku.promotedSku",
+      "domain_ids": [
+        "ADVERTISING",
+        "PRODUCT_MASTER"
+      ],
+      "scope": "CROSS_DOMAIN",
+      "relationship_role": "EXTERNAL_RECONCILIATION",
+      "status": "CANDIDATE",
+      "basis": "inherits candidate domains and roles from real ER endpoints; requires business review"
+    },
+    {
+      "relationship_id": "rel::bi.bi_pm_sku_ir_marketplace_mapping::datas.sp_advertised_product_reports::sku.advertisedSku",
+      "domain_ids": [
+        "ADVERTISING",
+        "PRODUCT_MASTER"
+      ],
+      "scope": "CROSS_DOMAIN",
+      "relationship_role": "EXTERNAL_RECONCILIATION",
+      "status": "CANDIDATE",
+      "basis": "inherits candidate domains and roles from real ER endpoints; requires business review"
+    },
+    {
+      "relationship_id": "rel::bi.pm_marketplace_order_line_report_hourly::bi_pm_ir_info::ir.ir",
+      "domain_ids": [
+        "ORDER_TRANSACTION"
+      ],
+      "scope": "CROSS_DOMAIN",
+      "relationship_role": "CROSS_DOMAIN_BRIDGE",
+      "status": "CANDIDATE",
+      "basis": "inherits candidate domains and roles from real ER endpoints; requires business review"
+    },
+    {
+      "relationship_id": "rel::bi.pm_marketplace_order_line_report_hourly::datas.pm_product_line_mapping_2024::main_ir.origin_ir",
+      "domain_ids": [
+        "ORDER_TRANSACTION",
+        "PRODUCT_MASTER"
+      ],
+      "scope": "CROSS_DOMAIN",
+      "relationship_role": "MASTER_DATA_REFERENCE",
+      "status": "CANDIDATE",
+      "basis": "inherits candidate domains and roles from real ER endpoints; requires business review"
+    },
+    {
+      "relationship_id": "rel::bi_pm_amazon_sku_ir_mapping::datas.sp_advertised_product_reports::sku.advertisedSku",
+      "domain_ids": [
+        "ADVERTISING",
+        "PRODUCT_MASTER"
+      ],
+      "scope": "CROSS_DOMAIN",
+      "relationship_role": "EXTERNAL_RECONCILIATION",
+      "status": "CANDIDATE",
+      "basis": "inherits candidate domains and roles from real ER endpoints; requires business review"
+    },
+    {
+      "relationship_id": "rel::bi_pm_ir_info::product_product::ir.default_code",
+      "domain_ids": [
+        "PRODUCT_MASTER"
+      ],
+      "scope": "CROSS_DOMAIN",
+      "relationship_role": "MASTER_DATA_REFERENCE",
+      "status": "CANDIDATE",
+      "basis": "inherits candidate domains and roles from real ER endpoints; requires business review"
+    },
+    {
+      "relationship_id": "rel::bi_pm_ir_info::product_template::ir.default_code",
+      "domain_ids": [
+        "PRODUCT_MASTER"
+      ],
+      "scope": "CROSS_DOMAIN",
+      "relationship_role": "MASTER_DATA_REFERENCE",
+      "status": "CANDIDATE",
+      "basis": "inherits candidate domains and roles from real ER endpoints; requires business review"
+    },
+    {
+      "relationship_id": "rel::cwzy_bundle_sku::cwzy_bundle_sku_lines::id.bundle_sku_id",
+      "domain_ids": [
+        "PRODUCT_MASTER"
+      ],
+      "scope": "INTRA_DOMAIN",
+      "relationship_role": "MASTER_DATA_REFERENCE",
+      "status": "CANDIDATE",
+      "basis": "inherits candidate domains and roles from real ER endpoints; requires business review"
+    },
+    {
+      "relationship_id": "rel::cwzy_bundle_sku::sale_order_line::id.bundle_sku_id",
+      "domain_ids": [
+        "ORDER_TRANSACTION",
+        "PRODUCT_MASTER"
+      ],
+      "scope": "CROSS_DOMAIN",
+      "relationship_role": "MASTER_DATA_REFERENCE",
+      "status": "CANDIDATE",
+      "basis": "inherits candidate domains and roles from real ER endpoints; requires business review"
+    },
+    {
+      "relationship_id": "rel::cwzy_bundle_sku_lines::product_product::default_code.default_code",
+      "domain_ids": [
+        "PRODUCT_MASTER"
+      ],
+      "scope": "INTRA_DOMAIN",
+      "relationship_role": "MASTER_DATA_REFERENCE",
+      "status": "CANDIDATE",
+      "basis": "inherits candidate domains and roles from real ER endpoints; requires business review"
+    },
+    {
+      "relationship_id": "rel::cwzy_bundle_sku_lines::product_product::product_id.id",
+      "domain_ids": [
+        "PRODUCT_MASTER"
+      ],
+      "scope": "INTRA_DOMAIN",
+      "relationship_role": "MASTER_DATA_REFERENCE",
+      "status": "CANDIDATE",
+      "basis": "inherits candidate domains and roles from real ER endpoints; requires business review"
+    },
+    {
+      "relationship_id": "rel::cwzy_bundle_sku_lines::sale_order_line::id.bundle_sku_line_id",
+      "domain_ids": [
+        "ORDER_TRANSACTION",
+        "PRODUCT_MASTER"
+      ],
+      "scope": "CROSS_DOMAIN",
+      "relationship_role": "MASTER_DATA_REFERENCE",
+      "status": "CANDIDATE",
+      "basis": "inherits candidate domains and roles from real ER endpoints; requires business review"
+    },
+    {
+      "relationship_id": "rel::cwzy_shipstation_sku::cwzy_shipstation_store::store_id.id",
+      "domain_ids": [
+        "LOGISTICS_FULFILLMENT",
+        "PRODUCT_MASTER"
+      ],
+      "scope": "INTRA_DOMAIN",
+      "relationship_role": "INTRA_DOMAIN_RELATION",
+      "status": "CANDIDATE",
+      "basis": "inherits candidate domains and roles from real ER endpoints; requires business review"
+    },
+    {
+      "relationship_id": "rel::cwzy_shipstation_store::sale_order::id.cwzy_store_id",
+      "domain_ids": [
+        "LOGISTICS_FULFILLMENT",
+        "ORDER_TRANSACTION"
+      ],
+      "scope": "CROSS_DOMAIN",
+      "relationship_role": "CROSS_DOMAIN_BRIDGE",
+      "status": "CANDIDATE",
+      "basis": "inherits candidate domains and roles from real ER endpoints; requires business review"
+    },
+    {
+      "relationship_id": "rel::datas.ads_budget_usage::datas.sp_campaign_reports::budget_scope_id.campaignId",
+      "domain_ids": [
+        "ADVERTISING"
+      ],
+      "scope": "INTRA_DOMAIN",
+      "relationship_role": "EXTERNAL_RECONCILIATION",
+      "status": "CANDIDATE",
+      "basis": "inherits candidate domains and roles from real ER endpoints; requires business review"
+    },
+    {
+      "relationship_id": "rel::datas.ads_budget_usage::datas.sp_targeting_reports::budget_scope_id.campaignId",
+      "domain_ids": [
+        "ADVERTISING"
+      ],
+      "scope": "INTRA_DOMAIN",
+      "relationship_role": "EXTERNAL_RECONCILIATION",
+      "status": "CANDIDATE",
+      "basis": "inherits candidate domains and roles from real ER endpoints; requires business review"
+    },
+    {
+      "relationship_id": "rel::datas.ads_budget_usage::datas.sp_traffic::budget_scope_id.campaign_id",
+      "domain_ids": [
+        "ADVERTISING"
+      ],
+      "scope": "INTRA_DOMAIN",
+      "relationship_role": "EXTERNAL_RECONCILIATION",
+      "status": "CANDIDATE",
+      "basis": "inherits candidate domains and roles from real ER endpoints; requires business review"
+    },
+    {
+      "relationship_id": "rel::datas.ads_console_campaign_report::datas.sp_advertised_product_reports::campaignId.campaignId",
+      "domain_ids": [
+        "ADVERTISING",
+        "PRODUCT_MASTER"
+      ],
+      "scope": "INTRA_DOMAIN",
+      "relationship_role": "EXTERNAL_RECONCILIATION",
+      "status": "CANDIDATE",
+      "basis": "inherits candidate domains and roles from real ER endpoints; requires business review"
+    },
+    {
+      "relationship_id": "rel::datas.newegg_advertised_product_reports::datas.newegg_item_report::itemNumber.item_number",
+      "domain_ids": [
+        "ADVERTISING",
+        "PRODUCT_MASTER"
+      ],
+      "scope": "CROSS_DOMAIN",
+      "relationship_role": "EXTERNAL_RECONCILIATION",
+      "status": "CANDIDATE",
+      "basis": "inherits candidate domains and roles from real ER endpoints; requires business review"
+    },
+    {
+      "relationship_id": "rel::datas.pm_realtime_order_line_all_channels::newegg_sku::sku.name",
+      "domain_ids": [
+        "ORDER_TRANSACTION",
+        "PRODUCT_MASTER"
+      ],
+      "scope": "CROSS_DOMAIN",
+      "relationship_role": "EXTERNAL_RECONCILIATION",
+      "status": "CANDIDATE",
+      "basis": "inherits candidate domains and roles from real ER endpoints; requires business review"
+    },
+    {
+      "relationship_id": "rel::datas.pm_realtime_order_line_all_channels::walmart_sku::sku.name",
+      "domain_ids": [
+        "ORDER_TRANSACTION",
+        "PRODUCT_MASTER"
+      ],
+      "scope": "CROSS_DOMAIN",
+      "relationship_role": "EXTERNAL_RECONCILIATION",
+      "status": "CANDIDATE",
+      "basis": "inherits candidate domains and roles from real ER endpoints; requires business review"
+    },
+    {
+      "relationship_id": "rel::datas.portfolio_id_name::datas.sp_advertised_product_reports::portfolio_id.portfolioId",
+      "domain_ids": [
+        "ADVERTISING",
+        "PRODUCT_MASTER"
+      ],
+      "scope": "INTRA_DOMAIN",
+      "relationship_role": "EXTERNAL_RECONCILIATION",
+      "status": "CANDIDATE",
+      "basis": "inherits candidate domains and roles from real ER endpoints; requires business review"
+    },
+    {
+      "relationship_id": "rel::datas.portfolio_id_name::datas.sp_search_term_reports::portfolio_id.portfolioId",
+      "domain_ids": [
+        "ADVERTISING"
+      ],
+      "scope": "INTRA_DOMAIN",
+      "relationship_role": "EXTERNAL_RECONCILIATION",
+      "status": "CANDIDATE",
+      "basis": "inherits candidate domains and roles from real ER endpoints; requires business review"
+    },
+    {
+      "relationship_id": "rel::datas.portfolio_id_name::datas.sp_targeting_reports::portfolio_id.portfolioId",
+      "domain_ids": [
+        "ADVERTISING"
+      ],
+      "scope": "INTRA_DOMAIN",
+      "relationship_role": "EXTERNAL_RECONCILIATION",
+      "status": "CANDIDATE",
+      "basis": "inherits candidate domains and roles from real ER endpoints; requires business review"
+    },
+    {
+      "relationship_id": "rel::datas.real_time_inventory::product_template::default_code.default_code",
+      "domain_ids": [
+        "INVENTORY_SUPPLY",
+        "PRODUCT_MASTER"
+      ],
+      "scope": "CROSS_DOMAIN",
+      "relationship_role": "EXTERNAL_RECONCILIATION",
+      "status": "CANDIDATE",
+      "basis": "inherits candidate domains and roles from real ER endpoints; requires business review"
+    },
+    {
+      "relationship_id": "rel::datas.shipping_invoice_amazon_shipping::datas.shipping_invoice_amazon_shipping_adjustments::tracking_id.tracking_id",
+      "domain_ids": [
+        "LOGISTICS_FULFILLMENT"
+      ],
+      "scope": "INTRA_DOMAIN",
+      "relationship_role": "EXTERNAL_RECONCILIATION",
+      "status": "CANDIDATE",
+      "basis": "inherits candidate domains and roles from real ER endpoints; requires business review"
+    },
+    {
+      "relationship_id": "rel::datas.shipping_invoice_fedex_charge::sale_order_package::express_or_ground_tracking_id.tracking_id",
+      "domain_ids": [
+        "LOGISTICS_FULFILLMENT",
+        "ORDER_TRANSACTION"
+      ],
+      "scope": "INTRA_DOMAIN",
+      "relationship_role": "EXTERNAL_RECONCILIATION",
+      "status": "CANDIDATE",
+      "basis": "inherits candidate domains and roles from real ER endpoints; requires business review"
+    },
+    {
+      "relationship_id": "rel::datas.shipping_invoice_temu::sale_order::order_id.name",
+      "domain_ids": [
+        "LOGISTICS_FULFILLMENT",
+        "ORDER_TRANSACTION"
+      ],
+      "scope": "CROSS_DOMAIN",
+      "relationship_role": "EXTERNAL_RECONCILIATION",
+      "status": "CANDIDATE",
+      "basis": "inherits candidate domains and roles from real ER endpoints; requires business review"
+    },
+    {
+      "relationship_id": "rel::datas.shipping_invoice_ups::sale_order_package::track_num.tracking_id",
+      "domain_ids": [
+        "LOGISTICS_FULFILLMENT",
+        "ORDER_TRANSACTION"
+      ],
+      "scope": "INTRA_DOMAIN",
+      "relationship_role": "EXTERNAL_RECONCILIATION",
+      "status": "CANDIDATE",
+      "basis": "inherits candidate domains and roles from real ER endpoints; requires business review"
+    },
+    {
+      "relationship_id": "rel::datas.sp_campaign_reports::datas.sp_targeting_reports::campaignId.campaignId",
+      "domain_ids": [
+        "ADVERTISING"
+      ],
+      "scope": "INTRA_DOMAIN",
+      "relationship_role": "EXTERNAL_RECONCILIATION",
+      "status": "CANDIDATE",
+      "basis": "inherits candidate domains and roles from real ER endpoints; requires business review"
+    },
+    {
+      "relationship_id": "rel::datas.sp_campaign_reports::datas.sp_traffic::campaignId.campaign_id",
+      "domain_ids": [
+        "ADVERTISING"
+      ],
+      "scope": "INTRA_DOMAIN",
+      "relationship_role": "EXTERNAL_RECONCILIATION",
+      "status": "CANDIDATE",
+      "basis": "inherits candidate domains and roles from real ER endpoints; requires business review"
+    },
+    {
+      "relationship_id": "rel::datas.sp_conversion::datas.sp_traffic::placement.placement|time_window_start.time_window_start",
+      "domain_ids": [
+        "ADVERTISING"
+      ],
+      "scope": "INTRA_DOMAIN",
+      "relationship_role": "EXTERNAL_RECONCILIATION",
+      "status": "CANDIDATE",
+      "basis": "inherits candidate domains and roles from real ER endpoints; requires business review"
+    },
+    {
+      "relationship_id": "rel::datas.sp_targeting_reports::datas.sp_traffic::campaignId.campaign_id",
+      "domain_ids": [
+        "ADVERTISING"
+      ],
+      "scope": "INTRA_DOMAIN",
+      "relationship_role": "EXTERNAL_RECONCILIATION",
+      "status": "CANDIDATE",
+      "basis": "inherits candidate domains and roles from real ER endpoints; requires business review"
+    },
+    {
+      "relationship_id": "rel::hr_department::hr_employee::id.department_id",
+      "domain_ids": [
+        "ORGANIZATION_SUPPORT"
+      ],
+      "scope": "INTRA_DOMAIN",
+      "relationship_role": "INTRA_DOMAIN_RELATION",
+      "status": "CANDIDATE",
+      "basis": "inherits candidate domains and roles from real ER endpoints; requires business review"
+    },
+    {
+      "relationship_id": "rel::hr_employee::resource_resource::resource_id.id",
+      "domain_ids": [
+        "ORGANIZATION_SUPPORT"
+      ],
+      "scope": "INTRA_DOMAIN",
+      "relationship_role": "INTRA_DOMAIN_RELATION",
+      "status": "CANDIDATE",
+      "basis": "inherits candidate domains and roles from real ER endpoints; requires business review"
+    },
+    {
+      "relationship_id": "rel::mail_followers::product_template::res_id.id",
+      "domain_ids": [
+        "ORGANIZATION_SUPPORT",
+        "PRODUCT_MASTER"
+      ],
+      "scope": "CROSS_DOMAIN",
+      "relationship_role": "MASTER_DATA_REFERENCE",
+      "status": "CANDIDATE",
+      "basis": "inherits candidate domains and roles from real ER endpoints; requires business review"
+    },
+    {
+      "relationship_id": "rel::mail_followers::res_partner::partner_id.id",
+      "domain_ids": [
+        "ORGANIZATION_SUPPORT"
+      ],
+      "scope": "INTRA_DOMAIN",
+      "relationship_role": "INTRA_DOMAIN_RELATION",
+      "status": "CANDIDATE",
+      "basis": "inherits candidate domains and roles from real ER endpoints; requires business review"
+    },
+    {
+      "relationship_id": "rel::mail_followers::res_users::partner_id.partner_id",
+      "domain_ids": [
+        "ORGANIZATION_SUPPORT"
+      ],
+      "scope": "INTRA_DOMAIN",
+      "relationship_role": "INTRA_DOMAIN_RELATION",
+      "status": "CANDIDATE",
+      "basis": "inherits candidate domains and roles from real ER endpoints; requires business review"
+    },
+    {
+      "relationship_id": "rel::mrp_production::product_product::product_id.id",
+      "domain_ids": [
+        "INVENTORY_SUPPLY",
+        "PRODUCT_MASTER"
+      ],
+      "scope": "CROSS_DOMAIN",
+      "relationship_role": "MASTER_DATA_REFERENCE",
+      "status": "CANDIDATE",
+      "basis": "inherits candidate domains and roles from real ER endpoints; requires business review"
+    },
+    {
+      "relationship_id": "rel::newegg_marketplace::sale_order::id.newegg_market_id",
+      "domain_ids": [
+        "ORDER_TRANSACTION"
+      ],
+      "scope": "CROSS_DOMAIN",
+      "relationship_role": "CROSS_DOMAIN_BRIDGE",
+      "status": "CANDIDATE",
+      "basis": "inherits candidate domains and roles from real ER endpoints; requires business review"
+    },
+    {
+      "relationship_id": "rel::order_outbound_history::product_product::product_id.id",
+      "domain_ids": [
+        "LOGISTICS_FULFILLMENT",
+        "ORDER_TRANSACTION",
+        "PRODUCT_MASTER"
+      ],
+      "scope": "CROSS_DOMAIN",
+      "relationship_role": "MASTER_DATA_REFERENCE",
+      "status": "CANDIDATE",
+      "basis": "inherits candidate domains and roles from real ER endpoints; requires business review"
+    },
+    {
+      "relationship_id": "rel::order_outbound_history::sale_order_line::order_id.order_id|product_id.product_id",
+      "domain_ids": [
+        "LOGISTICS_FULFILLMENT",
+        "ORDER_TRANSACTION"
+      ],
+      "scope": "CROSS_DOMAIN",
+      "relationship_role": "CROSS_DOMAIN_BRIDGE",
+      "status": "CANDIDATE",
+      "basis": "inherits candidate domains and roles from real ER endpoints; requires business review"
+    },
+    {
+      "relationship_id": "rel::product_attribute::product_attribute_line::id.attribute_id",
+      "domain_ids": [
+        "PRODUCT_MASTER"
+      ],
+      "scope": "INTRA_DOMAIN",
+      "relationship_role": "MASTER_DATA_REFERENCE",
+      "status": "CANDIDATE",
+      "basis": "inherits candidate domains and roles from real ER endpoints; requires business review"
+    },
+    {
+      "relationship_id": "rel::product_attribute_line::product_attribute_line_product_attribute_value_rel::id.product_attribute_line_id",
+      "domain_ids": [
+        "PRODUCT_MASTER"
+      ],
+      "scope": "INTRA_DOMAIN",
+      "relationship_role": "MASTER_DATA_REFERENCE",
+      "status": "CANDIDATE",
+      "basis": "inherits candidate domains and roles from real ER endpoints; requires business review"
+    },
+    {
+      "relationship_id": "rel::product_attribute_line::product_template::product_tmpl_id.id",
+      "domain_ids": [
+        "PRODUCT_MASTER"
+      ],
+      "scope": "INTRA_DOMAIN",
+      "relationship_role": "MASTER_DATA_REFERENCE",
+      "status": "CANDIDATE",
+      "basis": "inherits candidate domains and roles from real ER endpoints; requires business review"
+    },
+    {
+      "relationship_id": "rel::product_attribute_line_product_attribute_value_rel::product_attribute_value::product_attribute_value_id.id",
+      "domain_ids": [
+        "PRODUCT_MASTER"
+      ],
+      "scope": "INTRA_DOMAIN",
+      "relationship_role": "MASTER_DATA_REFERENCE",
+      "status": "CANDIDATE",
+      "basis": "inherits candidate domains and roles from real ER endpoints; requires business review"
+    },
+    {
+      "relationship_id": "rel::product_brand::product_template::id.product_brand_id",
+      "domain_ids": [
+        "PRODUCT_MASTER"
+      ],
+      "scope": "INTRA_DOMAIN",
+      "relationship_role": "MASTER_DATA_REFERENCE",
+      "status": "CANDIDATE",
+      "basis": "inherits candidate domains and roles from real ER endpoints; requires business review"
+    },
+    {
+      "relationship_id": "rel::product_category::product_template::id.categ_id",
+      "domain_ids": [
+        "PRODUCT_MASTER"
+      ],
+      "scope": "INTRA_DOMAIN",
+      "relationship_role": "MASTER_DATA_REFERENCE",
+      "status": "CANDIDATE",
+      "basis": "inherits candidate domains and roles from real ER endpoints; requires business review"
+    },
+    {
+      "relationship_id": "rel::product_product::product_template::product_tmpl_id.id",
+      "domain_ids": [
+        "PRODUCT_MASTER"
+      ],
+      "scope": "INTRA_DOMAIN",
+      "relationship_role": "MASTER_DATA_REFERENCE",
+      "status": "CANDIDATE",
+      "basis": "inherits candidate domains and roles from real ER endpoints; requires business review"
+    },
+    {
+      "relationship_id": "rel::product_product::purchase_order_line::id.product_id",
+      "domain_ids": [
+        "INVENTORY_SUPPLY",
+        "ORDER_TRANSACTION",
+        "PRODUCT_MASTER"
+      ],
+      "scope": "CROSS_DOMAIN",
+      "relationship_role": "MASTER_DATA_REFERENCE",
+      "status": "CANDIDATE",
+      "basis": "inherits candidate domains and roles from real ER endpoints; requires business review"
+    },
+    {
+      "relationship_id": "rel::product_product::sale_order_line::id.product_id",
+      "domain_ids": [
+        "ORDER_TRANSACTION",
+        "PRODUCT_MASTER"
+      ],
+      "scope": "CROSS_DOMAIN",
+      "relationship_role": "MASTER_DATA_REFERENCE",
+      "status": "CANDIDATE",
+      "basis": "inherits candidate domains and roles from real ER endpoints; requires business review"
+    },
+    {
+      "relationship_id": "rel::product_product::stock_move::id.product_id",
+      "domain_ids": [
+        "INVENTORY_SUPPLY",
+        "PRODUCT_MASTER"
+      ],
+      "scope": "CROSS_DOMAIN",
+      "relationship_role": "MASTER_DATA_REFERENCE",
+      "status": "CANDIDATE",
+      "basis": "inherits candidate domains and roles from real ER endpoints; requires business review"
+    },
+    {
+      "relationship_id": "rel::product_product::stock_production_lot::id.product_id",
+      "domain_ids": [
+        "INVENTORY_SUPPLY",
+        "PRODUCT_MASTER"
+      ],
+      "scope": "CROSS_DOMAIN",
+      "relationship_role": "MASTER_DATA_REFERENCE",
+      "status": "CANDIDATE",
+      "basis": "inherits candidate domains and roles from real ER endpoints; requires business review"
+    },
+    {
+      "relationship_id": "rel::product_product::stock_quant::id.product_id",
+      "domain_ids": [
+        "INVENTORY_SUPPLY",
+        "PRODUCT_MASTER"
+      ],
+      "scope": "CROSS_DOMAIN",
+      "relationship_role": "MASTER_DATA_REFERENCE",
+      "status": "CANDIDATE",
+      "basis": "inherits candidate domains and roles from real ER endpoints; requires business review"
+    },
+    {
+      "relationship_id": "rel::purchase_order::purchase_order_line::id.order_id",
+      "domain_ids": [
+        "INVENTORY_SUPPLY",
+        "ORDER_TRANSACTION"
+      ],
+      "scope": "INTRA_DOMAIN",
+      "relationship_role": "INTRA_DOMAIN_RELATION",
+      "status": "CANDIDATE",
+      "basis": "inherits candidate domains and roles from real ER endpoints; requires business review"
+    },
+    {
+      "relationship_id": "rel::purchase_order_line::res_partner::partner_id.id",
+      "domain_ids": [
+        "INVENTORY_SUPPLY",
+        "ORDER_TRANSACTION",
+        "ORGANIZATION_SUPPORT"
+      ],
+      "scope": "CROSS_DOMAIN",
+      "relationship_role": "CROSS_DOMAIN_BRIDGE",
+      "status": "CANDIDATE",
+      "basis": "inherits candidate domains and roles from real ER endpoints; requires business review"
+    },
+    {
+      "relationship_id": "rel::res_country::res_partner::id.country_id",
+      "domain_ids": [
+        "ORGANIZATION_SUPPORT"
+      ],
+      "scope": "INTRA_DOMAIN",
+      "relationship_role": "INTRA_DOMAIN_RELATION",
+      "status": "CANDIDATE",
+      "basis": "inherits candidate domains and roles from real ER endpoints; requires business review"
+    },
+    {
+      "relationship_id": "rel::res_country_state::res_partner::id.state_id",
+      "domain_ids": [
+        "ORGANIZATION_SUPPORT"
+      ],
+      "scope": "INTRA_DOMAIN",
+      "relationship_role": "INTRA_DOMAIN_RELATION",
+      "status": "CANDIDATE",
+      "basis": "inherits candidate domains and roles from real ER endpoints; requires business review"
+    },
+    {
+      "relationship_id": "rel::res_partner::sale_order::id.partner_shipping_id",
+      "domain_ids": [
+        "ORDER_TRANSACTION",
+        "ORGANIZATION_SUPPORT"
+      ],
+      "scope": "CROSS_DOMAIN",
+      "relationship_role": "CROSS_DOMAIN_BRIDGE",
+      "status": "CANDIDATE",
+      "basis": "inherits candidate domains and roles from real ER endpoints; requires business review"
+    },
+    {
+      "relationship_id": "rel::res_users::resource_resource::id.user_id",
+      "domain_ids": [
+        "ORGANIZATION_SUPPORT"
+      ],
+      "scope": "INTRA_DOMAIN",
+      "relationship_role": "INTRA_DOMAIN_RELATION",
+      "status": "CANDIDATE",
+      "basis": "inherits candidate domains and roles from real ER endpoints; requires business review"
+    },
+    {
+      "relationship_id": "rel::res_users::stock_move_line::id.write_uid",
+      "domain_ids": [
+        "INVENTORY_SUPPLY",
+        "ORGANIZATION_SUPPORT"
+      ],
+      "scope": "CROSS_DOMAIN",
+      "relationship_role": "CROSS_DOMAIN_BRIDGE",
+      "status": "CANDIDATE",
+      "basis": "inherits candidate domains and roles from real ER endpoints; requires business review"
+    },
+    {
+      "relationship_id": "rel::sale_order::sale_order_line::id.order_id",
+      "domain_ids": [
+        "ORDER_TRANSACTION"
+      ],
+      "scope": "INTRA_DOMAIN",
+      "relationship_role": "INTRA_DOMAIN_RELATION",
+      "status": "CANDIDATE",
+      "basis": "inherits candidate domains and roles from real ER endpoints; requires business review"
+    },
+    {
+      "relationship_id": "rel::sale_order::sale_order_package::id.order_id",
+      "domain_ids": [
+        "LOGISTICS_FULFILLMENT",
+        "ORDER_TRANSACTION"
+      ],
+      "scope": "CROSS_DOMAIN",
+      "relationship_role": "CROSS_DOMAIN_BRIDGE",
+      "status": "CANDIDATE",
+      "basis": "inherits candidate domains and roles from real ER endpoints; requires business review"
+    },
+    {
+      "relationship_id": "rel::sale_order::settlement_report_info::name.order_id",
+      "domain_ids": [
+        "FINANCE_SETTLEMENT",
+        "ORDER_TRANSACTION"
+      ],
+      "scope": "CROSS_DOMAIN",
+      "relationship_role": "EXTERNAL_RECONCILIATION",
+      "status": "CANDIDATE",
+      "basis": "inherits candidate domains and roles from real ER endpoints; requires business review"
+    },
+    {
+      "relationship_id": "rel::sale_order::stock_warehouse::warehouse_id.id",
+      "domain_ids": [
+        "INVENTORY_SUPPLY",
+        "ORDER_TRANSACTION"
+      ],
+      "scope": "CROSS_DOMAIN",
+      "relationship_role": "CROSS_DOMAIN_BRIDGE",
+      "status": "CANDIDATE",
+      "basis": "inherits candidate domains and roles from real ER endpoints; requires business review"
+    },
+    {
+      "relationship_id": "rel::sale_order::walmart_marketplace::walmart_market_id.id",
+      "domain_ids": [
+        "ORDER_TRANSACTION"
+      ],
+      "scope": "CROSS_DOMAIN",
+      "relationship_role": "CROSS_DOMAIN_BRIDGE",
+      "status": "CANDIDATE",
+      "basis": "inherits candidate domains and roles from real ER endpoints; requires business review"
+    },
+    {
+      "relationship_id": "rel::sale_order_line::sale_order_package::order_id.order_id",
+      "domain_ids": [
+        "LOGISTICS_FULFILLMENT",
+        "ORDER_TRANSACTION"
+      ],
+      "scope": "CROSS_DOMAIN",
+      "relationship_role": "CROSS_DOMAIN_BRIDGE",
+      "status": "CANDIDATE",
+      "basis": "inherits candidate domains and roles from real ER endpoints; requires business review"
+    },
+    {
+      "relationship_id": "rel::stock_move::stock_quant::product_id.product_id",
+      "domain_ids": [
+        "INVENTORY_SUPPLY"
+      ],
+      "scope": "INTRA_DOMAIN",
+      "relationship_role": "INTRA_DOMAIN_RELATION",
+      "status": "CANDIDATE",
+      "basis": "inherits candidate domains and roles from real ER endpoints; requires business review"
+    },
+    {
+      "relationship_id": "rel::stock_move_line::stock_production_lot::lot_id.id",
+      "domain_ids": [
+        "INVENTORY_SUPPLY",
+        "PRODUCT_MASTER"
+      ],
+      "scope": "INTRA_DOMAIN",
+      "relationship_role": "INTRA_DOMAIN_RELATION",
+      "status": "CANDIDATE",
+      "basis": "inherits candidate domains and roles from real ER endpoints; requires business review"
+    },
+    {
+      "relationship_id": "rel::stock_move_line::stock_production_lot::lot_id.id|product_id.product_id",
+      "domain_ids": [
+        "INVENTORY_SUPPLY",
+        "PRODUCT_MASTER"
+      ],
+      "scope": "INTRA_DOMAIN",
+      "relationship_role": "INTRA_DOMAIN_RELATION",
+      "status": "CANDIDATE",
+      "basis": "inherits candidate domains and roles from real ER endpoints; requires business review"
+    },
+    {
+      "relationship_id": "rel::stock_production_lot::stock_quant::id.lot_id",
+      "domain_ids": [
+        "INVENTORY_SUPPLY",
+        "PRODUCT_MASTER"
+      ],
+      "scope": "INTRA_DOMAIN",
+      "relationship_role": "INTRA_DOMAIN_RELATION",
+      "status": "CANDIDATE",
+      "basis": "inherits candidate domains and roles from real ER endpoints; requires business review"
+    },
+    {
+      "relationship_id": "reviewed::shipping_cost::amazon_shipping_tracking_to_package",
+      "domain_ids": [
+        "LOGISTICS_FULFILLMENT",
+        "ORDER_TRANSACTION"
+      ],
+      "scope": "INTRA_DOMAIN",
+      "relationship_role": "EXTERNAL_RECONCILIATION",
+      "status": "CANDIDATE",
+      "basis": "inherits candidate domains and roles from real ER endpoints; requires business review"
+    },
+    {
+      "relationship_id": "reviewed::shipping_cost::fedex_tracking_to_package",
+      "domain_ids": [
+        "LOGISTICS_FULFILLMENT",
+        "ORDER_TRANSACTION"
+      ],
+      "scope": "INTRA_DOMAIN",
+      "relationship_role": "EXTERNAL_RECONCILIATION",
+      "status": "CANDIDATE",
+      "basis": "inherits candidate domains and roles from real ER endpoints; requires business review"
+    },
+    {
+      "relationship_id": "reviewed::shipping_cost::ups_tracking_to_package",
+      "domain_ids": [
+        "LOGISTICS_FULFILLMENT",
+        "ORDER_TRANSACTION"
+      ],
+      "scope": "INTRA_DOMAIN",
+      "relationship_role": "EXTERNAL_RECONCILIATION",
+      "status": "CANDIDATE",
+      "basis": "inherits candidate domains and roles from real ER endpoints; requires business review"
+    }
+  ]
+}
