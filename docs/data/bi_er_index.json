@@ -1,6 +1,6 @@
 {
   "format_version": "1.0",
-  "generated_at": "2026-09-07T01:12:39.528404+00:00",
+  "generated_at": "2026-10-20T09:17:28.055185+00:00",
   "source": {
     "metadata": "docs/data/metadata.json",
     "er_model": "docs/data/er_model.json"
@@ -295,29 +295,40 @@
     {
       "bi_id": "bi.ba_bfcm_all_channel_daily_sales",
       "technical_type": "VIEW",
-      "direct_source_entity_ids": [
-        "datas.pm_product_line_mapping_2024"
-      ],
+      "direct_source_entity_ids": [],
       "terminal_source_entity_ids": [
         "amazon_instance_ept",
         "amazon_product_asin",
+        "amazon_product_ept",
         "amazon_product_sku",
         "cwzy_bundle_sku",
         "cwzy_bundle_sku_lines",
         "cwzy_shipstation_sku",
         "cwzy_shipstation_store",
-        "datas.pm_product_line_mapping_2024",
         "datas.pm_realtime_order_line_all_channels",
+        "hr_department",
+        "hr_employee",
+        "mail_followers",
         "newegg_marketplace",
         "newegg_sku",
+        "product_attribute",
+        "product_attribute_line",
+        "product_attribute_line_product_attribute_value_rel",
+        "product_attribute_value",
+        "product_brand",
+        "product_category",
         "product_product",
         "product_template",
         "public.newegg_sku",
         "public.walmart_sku",
+        "res_users",
+        "resource_resource",
         "walmart_marketplace",
         "walmart_sku"
       ],
       "upstream_view_ids": [
+        "bi.ba_ir_category_mapping",
+        "bi.ba_product_attribute_info",
         "bi.ba_store_commission",
         "bi.bi_pm_sku_ir_marketplace_mapping",
         "bi.pm_marketplace_order_line_report_hourly"
@@ -325,7 +336,9 @@
       "source_entity_ids": [
         "amazon_instance_ept",
         "amazon_product_asin",
+        "amazon_product_ept",
         "amazon_product_sku",
+        "bi.ba_ir_category_mapping",
         "bi.ba_store_commission",
         "bi.bi_pm_sku_ir_marketplace_mapping",
         "bi.pm_marketplace_order_line_report_hourly",
@@ -333,29 +346,48 @@
         "cwzy_bundle_sku_lines",
         "cwzy_shipstation_sku",
         "cwzy_shipstation_store",
-        "datas.pm_product_line_mapping_2024",
         "datas.pm_realtime_order_line_all_channels",
+        "hr_department",
+        "hr_employee",
+        "mail_followers",
         "newegg_marketplace",
         "newegg_sku",
+        "product_attribute",
+        "product_attribute_line",
+        "product_attribute_line_product_attribute_value_rel",
+        "product_attribute_value",
+        "product_brand",
+        "product_category",
         "product_product",
         "product_template",
         "public.newegg_sku",
         "public.walmart_sku",
+        "res_users",
+        "resource_resource",
         "walmart_marketplace",
         "walmart_sku"
       ],
       "relationship_ids": [
         "rel::amazon_product_asin::amazon_product_sku::id.product_asin_id",
         "rel::amazon_product_asin::cwzy_bundle_sku::id.product_asin_id",
+        "rel::amazon_product_ept::amazon_product_sku::product_sku_id.id",
+        "rel::bi.ba_ir_category_mapping::bi.bi_pm_sku_ir_marketplace_mapping::ir.origin_ir",
         "rel::bi.ba_store_commission::datas.pm_realtime_order_line_all_channels::store.store_name",
         "rel::bi.bi_pm_sku_ir_marketplace_mapping::bi.pm_marketplace_order_line_report_hourly::marketplace.marketplace|sku.sku",
-        "rel::bi.bi_pm_sku_ir_marketplace_mapping::datas.pm_product_line_mapping_2024::origin_ir.origin_ir",
         "rel::cwzy_bundle_sku::cwzy_bundle_sku_lines::id.bundle_sku_id",
         "rel::cwzy_bundle_sku_lines::product_product::product_id.id",
         "rel::cwzy_shipstation_sku::cwzy_shipstation_store::store_id.id",
         "rel::datas.pm_realtime_order_line_all_channels::newegg_sku::sku.name",
         "rel::datas.pm_realtime_order_line_all_channels::walmart_sku::sku.name",
-        "rel::product_product::product_template::product_tmpl_id.id"
+        "rel::hr_department::hr_employee::id.department_id",
+        "rel::hr_employee::resource_resource::resource_id.id",
+        "rel::mail_followers::res_users::partner_id.partner_id",
+        "rel::product_attribute::product_attribute_line::id.attribute_id",
+        "rel::product_attribute_line::product_attribute_line_product_attribute_value_rel::id.product_attribute_line_id",
+        "rel::product_attribute_line::product_template::product_tmpl_id.id",
+        "rel::product_attribute_line_product_attribute_value_rel::product_attribute_value::product_attribute_value_id.id",
+        "rel::product_product::product_template::product_tmpl_id.id",
+        "rel::res_users::resource_resource::id.user_id"
       ]
     },
     {
@@ -364,11 +396,11 @@
       "direct_source_entity_ids": [
         "datas.pm_amazon_sku_buy_box_info",
         "datas.pm_buybox_ir",
-        "datas.pm_origin_amazon_sku_listing_inventory_report",
-        "datas.pm_product_line_mapping_2024"
+        "datas.pm_origin_amazon_sku_listing_inventory_report"
       ],
       "terminal_source_entity_ids": [
         "amazon_product_asin",
+        "amazon_product_ept",
         "amazon_product_sku",
         "cwzy_bundle_sku",
         "cwzy_bundle_sku_lines",
@@ -377,18 +409,32 @@
         "datas.pm_amazon_sku_buy_box_info",
         "datas.pm_buybox_ir",
         "datas.pm_origin_amazon_sku_listing_inventory_report",
-        "datas.pm_product_line_mapping_2024",
+        "hr_department",
+        "hr_employee",
+        "mail_followers",
+        "product_attribute",
+        "product_attribute_line",
+        "product_attribute_line_product_attribute_value_rel",
+        "product_attribute_value",
+        "product_brand",
+        "product_category",
         "product_product",
         "product_template",
         "public.newegg_sku",
-        "public.walmart_sku"
+        "public.walmart_sku",
+        "res_users",
+        "resource_resource"
       ],
       "upstream_view_ids": [
+        "bi.ba_ir_category_mapping",
+        "bi.ba_product_attribute_info",
         "bi.bi_pm_sku_ir_marketplace_mapping"
       ],
       "source_entity_ids": [
         "amazon_product_asin",
+        "amazon_product_ept",
         "amazon_product_sku",
+        "bi.ba_ir_category_mapping",
         "bi.bi_pm_sku_ir_marketplace_mapping",
         "cwzy_bundle_sku",
         "cwzy_bundle_sku_lines",
@@ -397,21 +443,40 @@
         "datas.pm_amazon_sku_buy_box_info",
         "datas.pm_buybox_ir",
         "datas.pm_origin_amazon_sku_listing_inventory_report",
-        "datas.pm_product_line_mapping_2024",
+        "hr_department",
+        "hr_employee",
+        "mail_followers",
+        "product_attribute",
+        "product_attribute_line",
+        "product_attribute_line_product_attribute_value_rel",
+        "product_attribute_value",
+        "product_brand",
+        "product_category",
         "product_product",
         "product_template",
         "public.newegg_sku",
-        "public.walmart_sku"
+        "public.walmart_sku",
+        "res_users",
+        "resource_resource"
       ],
       "relationship_ids": [
         "rel::amazon_product_asin::amazon_product_sku::id.product_asin_id",
         "rel::amazon_product_asin::cwzy_bundle_sku::id.product_asin_id",
+        "rel::amazon_product_ept::amazon_product_sku::product_sku_id.id",
+        "rel::bi.ba_ir_category_mapping::bi.bi_pm_sku_ir_marketplace_mapping::ir.origin_ir",
         "rel::bi.bi_pm_sku_ir_marketplace_mapping::datas.pm_amazon_sku_buy_box_info::sku.sku",
-        "rel::bi.bi_pm_sku_ir_marketplace_mapping::datas.pm_product_line_mapping_2024::origin_ir.origin_ir",
         "rel::cwzy_bundle_sku::cwzy_bundle_sku_lines::id.bundle_sku_id",
         "rel::cwzy_bundle_sku_lines::product_product::product_id.id",
         "rel::cwzy_shipstation_sku::cwzy_shipstation_store::store_id.id",
-        "rel::product_product::product_template::product_tmpl_id.id"
+        "rel::hr_department::hr_employee::id.department_id",
+        "rel::hr_employee::resource_resource::resource_id.id",
+        "rel::mail_followers::res_users::partner_id.partner_id",
+        "rel::product_attribute::product_attribute_line::id.attribute_id",
+        "rel::product_attribute_line::product_attribute_line_product_attribute_value_rel::id.product_attribute_line_id",
+        "rel::product_attribute_line::product_template::product_tmpl_id.id",
+        "rel::product_attribute_line_product_attribute_value_rel::product_attribute_value::product_attribute_value_id.id",
+        "rel::product_product::product_template::product_tmpl_id.id",
+        "rel::res_users::resource_resource::id.user_id"
       ]
     },
     {
@@ -419,30 +484,42 @@
       "technical_type": "MATERIALIZED_VIEW",
       "direct_source_entity_ids": [
         "bi_pm_ir_info",
-        "datas.pm_product_line_mapping_2024",
         "product_template"
       ],
       "terminal_source_entity_ids": [
         "amazon_instance_ept",
         "amazon_product_asin",
+        "amazon_product_ept",
         "amazon_product_sku",
         "bi_pm_ir_info",
         "cwzy_bundle_sku",
         "cwzy_bundle_sku_lines",
         "cwzy_shipstation_sku",
         "cwzy_shipstation_store",
-        "datas.pm_product_line_mapping_2024",
         "datas.pm_realtime_order_line_all_channels",
+        "hr_department",
+        "hr_employee",
+        "mail_followers",
         "newegg_marketplace",
         "newegg_sku",
+        "product_attribute",
+        "product_attribute_line",
+        "product_attribute_line_product_attribute_value_rel",
+        "product_attribute_value",
+        "product_brand",
+        "product_category",
         "product_product",
         "product_template",
         "public.newegg_sku",
         "public.walmart_sku",
+        "res_users",
+        "resource_resource",
         "walmart_marketplace",
         "walmart_sku"
       ],
       "upstream_view_ids": [
+        "bi.ba_ir_category_mapping",
+        "bi.ba_product_attribute_info",
         "bi.ba_store_commission",
         "bi.bi_pm_sku_ir_marketplace_mapping",
         "bi.pm_marketplace_order_line_report_hourly"
@@ -450,7 +527,9 @@
       "source_entity_ids": [
         "amazon_instance_ept",
         "amazon_product_asin",
+        "amazon_product_ept",
         "amazon_product_sku",
+        "bi.ba_ir_category_mapping",
         "bi.ba_store_commission",
         "bi.bi_pm_sku_ir_marketplace_mapping",
         "bi.pm_marketplace_order_line_report_hourly",
@@ -459,31 +538,50 @@
         "cwzy_bundle_sku_lines",
         "cwzy_shipstation_sku",
         "cwzy_shipstation_store",
-        "datas.pm_product_line_mapping_2024",
         "datas.pm_realtime_order_line_all_channels",
+        "hr_department",
+        "hr_employee",
+        "mail_followers",
         "newegg_marketplace",
         "newegg_sku",
+        "product_attribute",
+        "product_attribute_line",
+        "product_attribute_line_product_attribute_value_rel",
+        "product_attribute_value",
+        "product_brand",
+        "product_category",
         "product_product",
         "product_template",
         "public.newegg_sku",
         "public.walmart_sku",
+        "res_users",
+        "resource_resource",
         "walmart_marketplace",
         "walmart_sku"
       ],
       "relationship_ids": [
         "rel::amazon_product_asin::amazon_product_sku::id.product_asin_id",
         "rel::amazon_product_asin::cwzy_bundle_sku::id.product_asin_id",
+        "rel::amazon_product_ept::amazon_product_sku::product_sku_id.id",
+        "rel::bi.ba_ir_category_mapping::bi.pm_marketplace_order_line_report_hourly::ir.main_ir",
         "rel::bi.ba_store_commission::datas.pm_realtime_order_line_all_channels::store.store_name",
         "rel::bi.bi_pm_sku_ir_marketplace_mapping::bi.pm_marketplace_order_line_report_hourly::marketplace.marketplace|sku.sku",
         "rel::bi.pm_marketplace_order_line_report_hourly::bi_pm_ir_info::ir.ir",
-        "rel::bi.pm_marketplace_order_line_report_hourly::datas.pm_product_line_mapping_2024::main_ir.origin_ir",
         "rel::bi_pm_ir_info::product_template::ir.default_code",
         "rel::cwzy_bundle_sku::cwzy_bundle_sku_lines::id.bundle_sku_id",
         "rel::cwzy_bundle_sku_lines::product_product::product_id.id",
         "rel::cwzy_shipstation_sku::cwzy_shipstation_store::store_id.id",
         "rel::datas.pm_realtime_order_line_all_channels::newegg_sku::sku.name",
         "rel::datas.pm_realtime_order_line_all_channels::walmart_sku::sku.name",
-        "rel::product_product::product_template::product_tmpl_id.id"
+        "rel::hr_department::hr_employee::id.department_id",
+        "rel::hr_employee::resource_resource::resource_id.id",
+        "rel::mail_followers::res_users::partner_id.partner_id",
+        "rel::product_attribute::product_attribute_line::id.attribute_id",
+        "rel::product_attribute_line::product_attribute_line_product_attribute_value_rel::id.product_attribute_line_id",
+        "rel::product_attribute_line::product_template::product_tmpl_id.id",
+        "rel::product_attribute_line_product_attribute_value_rel::product_attribute_value::product_attribute_value_id.id",
+        "rel::product_product::product_template::product_tmpl_id.id",
+        "rel::res_users::resource_resource::id.user_id"
       ]
     },
     {
@@ -492,7 +590,6 @@
       "direct_source_entity_ids": [
         "datas.newegg_advertised_product_reports",
         "datas.newegg_item_report",
-        "datas.pm_product_line_mapping_2024",
         "datas.sd_advertised_product_reports",
         "datas.sp_advertised_product_reports",
         "sale_order",
@@ -502,6 +599,7 @@
       "terminal_source_entity_ids": [
         "amazon_instance_ept",
         "amazon_product_asin",
+        "amazon_product_ept",
         "amazon_product_sku",
         "bi_pm_ir_info",
         "cwzy_bundle_sku",
@@ -510,16 +608,26 @@
         "cwzy_shipstation_store",
         "datas.newegg_advertised_product_reports",
         "datas.newegg_item_report",
-        "datas.pm_product_line_mapping_2024",
         "datas.pm_realtime_order_line_all_channels",
         "datas.sd_advertised_product_reports",
         "datas.sp_advertised_product_reports",
+        "hr_department",
+        "hr_employee",
+        "mail_followers",
         "newegg_marketplace",
         "newegg_sku",
+        "product_attribute",
+        "product_attribute_line",
+        "product_attribute_line_product_attribute_value_rel",
+        "product_attribute_value",
+        "product_brand",
+        "product_category",
         "product_product",
         "product_template",
         "public.newegg_sku",
         "public.walmart_sku",
+        "res_users",
+        "resource_resource",
         "sale_order",
         "sale_order_line",
         "sale_order_package",
@@ -528,6 +636,8 @@
       ],
       "upstream_view_ids": [
         "bi.ba_bfcm_daily_accu_sales_by_sku",
+        "bi.ba_ir_category_mapping",
+        "bi.ba_product_attribute_info",
         "bi.ba_so_mp_store",
         "bi.ba_store_commission",
         "bi.bi_pm_sku_ir_marketplace_mapping",
@@ -536,7 +646,9 @@
       "source_entity_ids": [
         "amazon_instance_ept",
         "amazon_product_asin",
+        "amazon_product_ept",
         "amazon_product_sku",
+        "bi.ba_ir_category_mapping",
         "bi.ba_so_mp_store",
         "bi.ba_store_commission",
         "bi.bi_pm_sku_ir_marketplace_mapping",
@@ -548,16 +660,26 @@
         "cwzy_shipstation_store",
         "datas.newegg_advertised_product_reports",
         "datas.newegg_item_report",
-        "datas.pm_product_line_mapping_2024",
         "datas.pm_realtime_order_line_all_channels",
         "datas.sd_advertised_product_reports",
         "datas.sp_advertised_product_reports",
+        "hr_department",
+        "hr_employee",
+        "mail_followers",
         "newegg_marketplace",
         "newegg_sku",
+        "product_attribute",
+        "product_attribute_line",
+        "product_attribute_line_product_attribute_value_rel",
+        "product_attribute_value",
+        "product_brand",
+        "product_category",
         "product_product",
         "product_template",
         "public.newegg_sku",
         "public.walmart_sku",
+        "res_users",
+        "resource_resource",
         "sale_order",
         "sale_order_line",
         "sale_order_package",
@@ -568,6 +690,8 @@
         "rel::amazon_instance_ept::sale_order::id.amz_instance_id",
         "rel::amazon_product_asin::amazon_product_sku::id.product_asin_id",
         "rel::amazon_product_asin::cwzy_bundle_sku::id.product_asin_id",
+        "rel::amazon_product_ept::amazon_product_sku::product_sku_id.id",
+        "rel::bi.ba_ir_category_mapping::bi.pm_marketplace_order_line_report_hourly::ir.main_ir",
         "rel::bi.ba_so_mp_store::sale_order_line::order_id.order_id",
         "rel::bi.ba_store_commission::datas.pm_realtime_order_line_all_channels::store.store_name",
         "rel::bi.bi_pm_sku_ir_marketplace_mapping::bi.pm_marketplace_order_line_report_hourly::marketplace.marketplace|sku.sku",
@@ -575,7 +699,6 @@
         "rel::bi.bi_pm_sku_ir_marketplace_mapping::datas.sd_advertised_product_reports::sku.promotedSku",
         "rel::bi.bi_pm_sku_ir_marketplace_mapping::datas.sp_advertised_product_reports::sku.advertisedSku",
         "rel::bi.pm_marketplace_order_line_report_hourly::bi_pm_ir_info::ir.ir",
-        "rel::bi.pm_marketplace_order_line_report_hourly::datas.pm_product_line_mapping_2024::main_ir.origin_ir",
         "rel::bi_pm_ir_info::product_template::ir.default_code",
         "rel::cwzy_bundle_sku::cwzy_bundle_sku_lines::id.bundle_sku_id",
         "rel::cwzy_bundle_sku_lines::product_product::product_id.id",
@@ -584,8 +707,16 @@
         "rel::datas.newegg_advertised_product_reports::datas.newegg_item_report::itemNumber.item_number",
         "rel::datas.pm_realtime_order_line_all_channels::newegg_sku::sku.name",
         "rel::datas.pm_realtime_order_line_all_channels::walmart_sku::sku.name",
+        "rel::hr_department::hr_employee::id.department_id",
+        "rel::hr_employee::resource_resource::resource_id.id",
+        "rel::mail_followers::res_users::partner_id.partner_id",
         "rel::newegg_marketplace::sale_order::id.newegg_market_id",
+        "rel::product_attribute::product_attribute_line::id.attribute_id",
+        "rel::product_attribute_line::product_attribute_line_product_attribute_value_rel::id.product_attribute_line_id",
+        "rel::product_attribute_line::product_template::product_tmpl_id.id",
+        "rel::product_attribute_line_product_attribute_value_rel::product_attribute_value::product_attribute_value_id.id",
         "rel::product_product::product_template::product_tmpl_id.id",
+        "rel::res_users::resource_resource::id.user_id",
         "rel::sale_order::sale_order_line::id.order_id",
         "rel::sale_order::walmart_marketplace::walmart_market_id.id",
         "rel::sale_order_line::sale_order_package::order_id.order_id"
@@ -627,6 +758,7 @@
         "amazon_custom_v3_3",
         "amazon_instance_ept",
         "amazon_product_asin",
+        "amazon_product_ept",
         "amazon_product_sku",
         "amazon_sponsored_display_advertised_product",
         "amazon_sponsored_products_advertised_product",
@@ -641,7 +773,6 @@
         "datas.ads_console_campaign_report",
         "datas.newegg_advertised_product_reports",
         "datas.newegg_item_report",
-        "datas.pm_product_line_mapping_2024",
         "datas.pm_realtime_order_line_all_channels",
         "datas.portfolio_id_name",
         "datas.sd_advertised_product_reports",
@@ -680,6 +811,7 @@
         "bi.ba_ad_spend",
         "bi.ba_ad_spend_daily",
         "bi.ba_bfcm_hourly_sales_by_ir",
+        "bi.ba_ir_category_mapping",
         "bi.ba_main_product_info",
         "bi.ba_mv_profit_order_line_and_ad_info",
         "bi.ba_order_line_info",
@@ -696,6 +828,7 @@
         "amazon_custom_v3_3",
         "amazon_instance_ept",
         "amazon_product_asin",
+        "amazon_product_ept",
         "amazon_product_sku",
         "amazon_sponsored_display_advertised_product",
         "amazon_sponsored_products_advertised_product",
@@ -717,7 +850,6 @@
         "datas.ads_console_campaign_report",
         "datas.newegg_advertised_product_reports",
         "datas.newegg_item_report",
-        "datas.pm_product_line_mapping_2024",
         "datas.pm_realtime_order_line_all_channels",
         "datas.portfolio_id_name",
         "datas.sd_advertised_product_reports",
@@ -758,6 +890,7 @@
         "rel::amazon_instance_ept::sale_order::id.amz_instance_id",
         "rel::amazon_product_asin::amazon_product_sku::id.product_asin_id",
         "rel::amazon_product_asin::cwzy_bundle_sku::id.product_asin_id",
+        "rel::amazon_product_ept::amazon_product_sku::product_sku_id.id",
         "rel::amazon_product_sku::bi.ba_ad_spend_daily::name.sku",
         "rel::amazon_product_sku::product_product::product_id.id",
         "rel::amazon_product_sku::sale_order_line::id.product_sku",
@@ -811,6 +944,7 @@
         "amazon_custom_v3_3",
         "amazon_instance_ept",
         "amazon_product_asin",
+        "amazon_product_ept",
         "amazon_product_sku",
         "amazon_sponsored_display_advertised_product",
         "amazon_sponsored_products_advertised_product",
@@ -825,7 +959,6 @@
         "datas.ads_console_campaign_report",
         "datas.newegg_advertised_product_reports",
         "datas.newegg_item_report",
-        "datas.pm_product_line_mapping_2024",
         "datas.pm_realtime_order_line_all_channels",
         "datas.sd_advertised_product_reports",
         "datas.sd_product_ad_reports",
@@ -863,6 +996,7 @@
         "bi.ba_ad_spend",
         "bi.ba_ad_spend_daily",
         "bi.ba_bfcm_hourly_sales_by_ir",
+        "bi.ba_ir_category_mapping",
         "bi.ba_main_product_info",
         "bi.ba_mv_profit_order_line_and_ad_info",
         "bi.ba_order_line_info",
@@ -879,6 +1013,7 @@
         "amazon_custom_v3_3",
         "amazon_instance_ept",
         "amazon_product_asin",
+        "amazon_product_ept",
         "amazon_product_sku",
         "amazon_sponsored_display_advertised_product",
         "amazon_sponsored_products_advertised_product",
@@ -900,7 +1035,6 @@
         "datas.ads_console_campaign_report",
         "datas.newegg_advertised_product_reports",
         "datas.newegg_item_report",
-        "datas.pm_product_line_mapping_2024",
         "datas.pm_realtime_order_line_all_channels",
         "datas.sd_advertised_product_reports",
         "datas.sd_product_ad_reports",
@@ -940,6 +1074,7 @@
         "rel::amazon_instance_ept::sale_order::id.amz_instance_id",
         "rel::amazon_product_asin::amazon_product_sku::id.product_asin_id",
         "rel::amazon_product_asin::cwzy_bundle_sku::id.product_asin_id",
+        "rel::amazon_product_ept::amazon_product_sku::product_sku_id.id",
         "rel::amazon_product_sku::bi.ba_ad_spend_daily::name.sku",
         "rel::amazon_product_sku::product_product::product_id.id",
         "rel::amazon_product_sku::sale_order_line::id.product_sku",
@@ -1014,13 +1149,13 @@
       "technical_type": "MATERIALIZED_VIEW",
       "direct_source_entity_ids": [
         "bi_pm_ir_info",
-        "datas.pm_product_line_mapping_2024",
         "product_template"
       ],
       "terminal_source_entity_ids": [
         "amazon_custom_v3_3",
         "amazon_instance_ept",
         "amazon_product_asin",
+        "amazon_product_ept",
         "amazon_product_sku",
         "amazon_sponsored_display_advertised_product",
         "amazon_sponsored_products_advertised_product",
@@ -1034,7 +1169,6 @@
         "cwzy_walmart_recon_info",
         "datas.newegg_advertised_product_reports",
         "datas.newegg_item_report",
-        "datas.pm_product_line_mapping_2024",
         "datas.pm_realtime_order_line_all_channels",
         "datas.sd_advertised_product_reports",
         "datas.sd_product_ad_reports",
@@ -1071,6 +1205,7 @@
       "upstream_view_ids": [
         "bi.ba_ad_spend",
         "bi.ba_ad_spend_daily",
+        "bi.ba_ir_category_mapping",
         "bi.ba_main_product_info",
         "bi.ba_mv_profit_order_line_and_ad_info",
         "bi.ba_order_line_info",
@@ -1087,6 +1222,7 @@
         "amazon_custom_v3_3",
         "amazon_instance_ept",
         "amazon_product_asin",
+        "amazon_product_ept",
         "amazon_product_sku",
         "amazon_sponsored_display_advertised_product",
         "amazon_sponsored_products_advertised_product",
@@ -1107,7 +1243,6 @@
         "cwzy_walmart_recon_info",
         "datas.newegg_advertised_product_reports",
         "datas.newegg_item_report",
-        "datas.pm_product_line_mapping_2024",
         "datas.pm_realtime_order_line_all_channels",
         "datas.sd_advertised_product_reports",
         "datas.sd_product_ad_reports",
@@ -1147,6 +1282,7 @@
         "rel::amazon_instance_ept::sale_order::id.amz_instance_id",
         "rel::amazon_product_asin::amazon_product_sku::id.product_asin_id",
         "rel::amazon_product_asin::cwzy_bundle_sku::id.product_asin_id",
+        "rel::amazon_product_ept::amazon_product_sku::product_sku_id.id",
         "rel::amazon_product_sku::bi.ba_ad_spend_daily::name.sku",
         "rel::amazon_product_sku::product_product::product_id.id",
         "rel::amazon_product_sku::sale_order_line::id.product_sku",
@@ -1196,6 +1332,7 @@
         "amazon_custom_v3_3",
         "amazon_instance_ept",
         "amazon_product_asin",
+        "amazon_product_ept",
         "amazon_product_sku",
         "amazon_sponsored_display_advertised_product",
         "amazon_sponsored_products_advertised_product",
@@ -1260,6 +1397,7 @@
         "amazon_custom_v3_3",
         "amazon_instance_ept",
         "amazon_product_asin",
+        "amazon_product_ept",
         "amazon_product_sku",
         "amazon_sponsored_display_advertised_product",
         "amazon_sponsored_products_advertised_product",
@@ -1318,6 +1456,7 @@
         "rel::amazon_instance_ept::sale_order::id.amz_instance_id",
         "rel::amazon_product_asin::amazon_product_sku::id.product_asin_id",
         "rel::amazon_product_asin::cwzy_bundle_sku::id.product_asin_id",
+        "rel::amazon_product_ept::amazon_product_sku::product_sku_id.id",
         "rel::amazon_product_sku::bi.ba_ad_spend_daily::name.sku",
         "rel::amazon_product_sku::product_product::product_id.id",
         "rel::amazon_product_sku::sale_order_line::id.product_sku",
@@ -1368,6 +1507,7 @@
         "amazon_custom_v3_3",
         "amazon_instance_ept",
         "amazon_product_asin",
+        "amazon_product_ept",
         "amazon_product_sku",
         "amazon_sponsored_display_advertised_product",
         "amazon_sponsored_products_advertised_product",
@@ -1381,7 +1521,6 @@
         "cwzy_walmart_recon_info",
         "datas.newegg_advertised_product_reports",
         "datas.newegg_item_report",
-        "datas.pm_product_line_mapping_2024",
         "datas.pm_realtime_order_line_all_channels",
         "datas.sd_advertised_product_reports",
         "datas.sd_product_ad_reports",
@@ -1420,6 +1559,7 @@
         "bi.ba_ad_spend",
         "bi.ba_ad_spend_daily",
         "bi.ba_bfcm_daily_accu_sales_by_sku",
+        "bi.ba_ir_category_mapping",
         "bi.ba_main_product_info",
         "bi.ba_mv_profit_order_line_and_ad_info",
         "bi.ba_order_line_info",
@@ -1436,10 +1576,12 @@
         "amazon_custom_v3_3",
         "amazon_instance_ept",
         "amazon_product_asin",
+        "amazon_product_ept",
         "amazon_product_sku",
         "amazon_sponsored_display_advertised_product",
         "amazon_sponsored_products_advertised_product",
         "bi.ba_ad_spend_daily",
+        "bi.ba_ir_category_mapping",
         "bi.ba_order_line_info",
         "bi.ba_order_line_shipping_cost_organized",
         "bi.ba_so_mp_store",
@@ -1456,7 +1598,6 @@
         "cwzy_walmart_recon_info",
         "datas.newegg_advertised_product_reports",
         "datas.newegg_item_report",
-        "datas.pm_product_line_mapping_2024",
         "datas.pm_realtime_order_line_all_channels",
         "datas.sd_advertised_product_reports",
         "datas.sd_product_ad_reports",
@@ -1497,9 +1638,11 @@
         "rel::amazon_instance_ept::sale_order::id.amz_instance_id",
         "rel::amazon_product_asin::amazon_product_sku::id.product_asin_id",
         "rel::amazon_product_asin::cwzy_bundle_sku::id.product_asin_id",
+        "rel::amazon_product_ept::amazon_product_sku::product_sku_id.id",
         "rel::amazon_product_sku::bi.ba_ad_spend_daily::name.sku",
         "rel::amazon_product_sku::product_product::product_id.id",
         "rel::amazon_product_sku::sale_order_line::id.product_sku",
+        "rel::bi.ba_ir_category_mapping::bi.pm_marketplace_order_line_report_hourly::ir.main_ir",
         "rel::bi.ba_order_line_info::bi.ba_order_line_shipping_cost_organized::order_line_id.sale_order_line_id",
         "rel::bi.ba_order_line_info::bi.ba_store_commission::store.store",
         "rel::bi.ba_order_line_info::cwzy_amazon_promotion::order_line_id.sale_order_line_id",
@@ -1510,7 +1653,6 @@
         "rel::bi.ba_store_commission::datas.pm_realtime_order_line_all_channels::store.store_name",
         "rel::bi.bi_pm_sku_ir_marketplace_mapping::bi.pm_marketplace_order_line_report_hourly::marketplace.marketplace|sku.sku",
         "rel::bi.pm_marketplace_order_line_report_hourly::bi_pm_ir_info::ir.ir",
-        "rel::bi.pm_marketplace_order_line_report_hourly::datas.pm_product_line_mapping_2024::main_ir.origin_ir",
         "rel::bi_pm_ir_info::product_template::ir.default_code",
         "rel::cwzy_bundle_sku::cwzy_bundle_sku_lines::id.bundle_sku_id",
         "rel::cwzy_bundle_sku::sale_order_line::id.bundle_sku_id",
@@ -1546,11 +1688,11 @@
       "direct_source_entity_ids": [
         "datas.pm_amazon_asin_rank",
         "datas.pm_origin_amazon_sku_listing_inventory_report",
-        "datas.pm_product_line_mapping_2024",
         "datas.pm_rank_ir"
       ],
       "terminal_source_entity_ids": [
         "amazon_product_asin",
+        "amazon_product_ept",
         "amazon_product_sku",
         "cwzy_bundle_sku",
         "cwzy_bundle_sku_lines",
@@ -1558,19 +1700,33 @@
         "cwzy_shipstation_store",
         "datas.pm_amazon_asin_rank",
         "datas.pm_origin_amazon_sku_listing_inventory_report",
-        "datas.pm_product_line_mapping_2024",
         "datas.pm_rank_ir",
+        "hr_department",
+        "hr_employee",
+        "mail_followers",
+        "product_attribute",
+        "product_attribute_line",
+        "product_attribute_line_product_attribute_value_rel",
+        "product_attribute_value",
+        "product_brand",
+        "product_category",
         "product_product",
         "product_template",
         "public.newegg_sku",
-        "public.walmart_sku"
+        "public.walmart_sku",
+        "res_users",
+        "resource_resource"
       ],
       "upstream_view_ids": [
+        "bi.ba_ir_category_mapping",
+        "bi.ba_product_attribute_info",
         "bi.bi_pm_sku_ir_marketplace_mapping"
       ],
       "source_entity_ids": [
         "amazon_product_asin",
+        "amazon_product_ept",
         "amazon_product_sku",
+        "bi.ba_ir_category_mapping",
         "bi.bi_pm_sku_ir_marketplace_mapping",
         "cwzy_bundle_sku",
         "cwzy_bundle_sku_lines",
@@ -1578,61 +1734,109 @@
         "cwzy_shipstation_store",
         "datas.pm_amazon_asin_rank",
         "datas.pm_origin_amazon_sku_listing_inventory_report",
-        "datas.pm_product_line_mapping_2024",
         "datas.pm_rank_ir",
+        "hr_department",
+        "hr_employee",
+        "mail_followers",
+        "product_attribute",
+        "product_attribute_line",
+        "product_attribute_line_product_attribute_value_rel",
+        "product_attribute_value",
+        "product_brand",
+        "product_category",
         "product_product",
         "product_template",
         "public.newegg_sku",
-        "public.walmart_sku"
+        "public.walmart_sku",
+        "res_users",
+        "resource_resource"
       ],
       "relationship_ids": [
         "rel::amazon_product_asin::amazon_product_sku::id.product_asin_id",
         "rel::amazon_product_asin::cwzy_bundle_sku::id.product_asin_id",
+        "rel::amazon_product_ept::amazon_product_sku::product_sku_id.id",
+        "rel::bi.ba_ir_category_mapping::bi.bi_pm_sku_ir_marketplace_mapping::ir.origin_ir",
         "rel::bi.bi_pm_sku_ir_marketplace_mapping::datas.pm_amazon_asin_rank::asin.asin",
-        "rel::bi.bi_pm_sku_ir_marketplace_mapping::datas.pm_product_line_mapping_2024::origin_ir.origin_ir",
         "rel::cwzy_bundle_sku::cwzy_bundle_sku_lines::id.bundle_sku_id",
         "rel::cwzy_bundle_sku_lines::product_product::product_id.id",
         "rel::cwzy_shipstation_sku::cwzy_shipstation_store::store_id.id",
-        "rel::product_product::product_template::product_tmpl_id.id"
+        "rel::hr_department::hr_employee::id.department_id",
+        "rel::hr_employee::resource_resource::resource_id.id",
+        "rel::mail_followers::res_users::partner_id.partner_id",
+        "rel::product_attribute::product_attribute_line::id.attribute_id",
+        "rel::product_attribute_line::product_attribute_line_product_attribute_value_rel::id.product_attribute_line_id",
+        "rel::product_attribute_line::product_template::product_tmpl_id.id",
+        "rel::product_attribute_line_product_attribute_value_rel::product_attribute_value::product_attribute_value_id.id",
+        "rel::product_product::product_template::product_tmpl_id.id",
+        "rel::res_users::resource_resource::id.user_id"
       ]
     },
     {
       "bi_id": "bi.ba_bfcm_realtime_inventory_by_ir",
       "technical_type": "VIEW",
       "direct_source_entity_ids": [
-        "datas.pm_product_line_mapping_2024",
         "datas.real_time_inventory",
         "product_product",
         "product_template"
       ],
       "terminal_source_entity_ids": [
-        "datas.pm_product_line_mapping_2024",
         "datas.real_time_inventory",
+        "hr_department",
+        "hr_employee",
+        "mail_followers",
+        "product_attribute",
+        "product_attribute_line",
+        "product_attribute_line_product_attribute_value_rel",
+        "product_attribute_value",
+        "product_brand",
+        "product_category",
         "product_product",
-        "product_template"
+        "product_template",
+        "res_users",
+        "resource_resource"
       ],
-      "upstream_view_ids": [],
+      "upstream_view_ids": [
+        "bi.ba_ir_category_mapping",
+        "bi.ba_product_attribute_info"
+      ],
       "source_entity_ids": [
-        "datas.pm_product_line_mapping_2024",
         "datas.real_time_inventory",
+        "hr_department",
+        "hr_employee",
+        "mail_followers",
+        "product_attribute",
+        "product_attribute_line",
+        "product_attribute_line_product_attribute_value_rel",
+        "product_attribute_value",
+        "product_brand",
+        "product_category",
         "product_product",
-        "product_template"
+        "product_template",
+        "res_users",
+        "resource_resource"
       ],
       "relationship_ids": [
         "rel::datas.real_time_inventory::product_template::default_code.default_code",
-        "rel::product_product::product_template::product_tmpl_id.id"
+        "rel::hr_department::hr_employee::id.department_id",
+        "rel::hr_employee::resource_resource::resource_id.id",
+        "rel::mail_followers::res_users::partner_id.partner_id",
+        "rel::product_attribute::product_attribute_line::id.attribute_id",
+        "rel::product_attribute_line::product_attribute_line_product_attribute_value_rel::id.product_attribute_line_id",
+        "rel::product_attribute_line::product_template::product_tmpl_id.id",
+        "rel::product_attribute_line_product_attribute_value_rel::product_attribute_value::product_attribute_value_id.id",
+        "rel::product_product::product_template::product_tmpl_id.id",
+        "rel::res_users::resource_resource::id.user_id"
       ]
     },
     {
       "bi_id": "bi.ba_bfcm_unit_change_rank_by_origin_ir",
       "technical_type": "VIEW",
-      "direct_source_entity_ids": [
-        "datas.pm_product_line_mapping_2024"
-      ],
+      "direct_source_entity_ids": [],
       "terminal_source_entity_ids": [
         "amazon_custom_v3_3",
         "amazon_instance_ept",
         "amazon_product_asin",
+        "amazon_product_ept",
         "amazon_product_sku",
         "amazon_sponsored_display_advertised_product",
         "amazon_sponsored_products_advertised_product",
@@ -1646,7 +1850,6 @@
         "cwzy_walmart_recon_info",
         "datas.newegg_advertised_product_reports",
         "datas.newegg_item_report",
-        "datas.pm_product_line_mapping_2024",
         "datas.pm_realtime_order_line_all_channels",
         "datas.sd_advertised_product_reports",
         "datas.sd_product_ad_reports",
@@ -1684,6 +1887,7 @@
         "bi.ba_ad_spend",
         "bi.ba_ad_spend_daily",
         "bi.ba_bfcm_hourly_sales_by_ir",
+        "bi.ba_ir_category_mapping",
         "bi.ba_main_product_info",
         "bi.ba_mv_profit_order_line_and_ad_info",
         "bi.ba_order_line_info",
@@ -1700,11 +1904,13 @@
         "amazon_custom_v3_3",
         "amazon_instance_ept",
         "amazon_product_asin",
+        "amazon_product_ept",
         "amazon_product_sku",
         "amazon_sponsored_display_advertised_product",
         "amazon_sponsored_products_advertised_product",
         "bi.ba_ad_spend_daily",
         "bi.ba_bfcm_hourly_sales_by_ir",
+        "bi.ba_ir_category_mapping",
         "bi.ba_order_line_info",
         "bi.ba_order_line_shipping_cost_organized",
         "bi.ba_so_mp_store",
@@ -1721,7 +1927,6 @@
         "cwzy_walmart_recon_info",
         "datas.newegg_advertised_product_reports",
         "datas.newegg_item_report",
-        "datas.pm_product_line_mapping_2024",
         "datas.pm_realtime_order_line_all_channels",
         "datas.sd_advertised_product_reports",
         "datas.sd_product_ad_reports",
@@ -1761,10 +1966,11 @@
         "rel::amazon_instance_ept::sale_order::id.amz_instance_id",
         "rel::amazon_product_asin::amazon_product_sku::id.product_asin_id",
         "rel::amazon_product_asin::cwzy_bundle_sku::id.product_asin_id",
+        "rel::amazon_product_ept::amazon_product_sku::product_sku_id.id",
         "rel::amazon_product_sku::bi.ba_ad_spend_daily::name.sku",
         "rel::amazon_product_sku::product_product::product_id.id",
         "rel::amazon_product_sku::sale_order_line::id.product_sku",
-        "rel::bi.ba_bfcm_hourly_sales_by_ir::datas.pm_product_line_mapping_2024::origin_ir.origin_ir",
+        "rel::bi.ba_bfcm_hourly_sales_by_ir::bi.ba_ir_category_mapping::origin_ir.ir",
         "rel::bi.ba_order_line_info::bi.ba_order_line_shipping_cost_organized::order_line_id.sale_order_line_id",
         "rel::bi.ba_order_line_info::bi.ba_store_commission::store.store",
         "rel::bi.ba_order_line_info::cwzy_amazon_promotion::order_line_id.sale_order_line_id",
@@ -1887,6 +2093,8 @@
       "terminal_source_entity_ids": [
         "amazon_custom_v3_3",
         "amazon_instance_ept",
+        "amazon_product_asin",
+        "amazon_product_ept",
         "amazon_product_sku",
         "amazon_sponsored_display_advertised_product",
         "amazon_sponsored_products_advertised_product",
@@ -1895,6 +2103,7 @@
         "cwzy_bundle_sku",
         "cwzy_bundle_sku_lines",
         "cwzy_newegg_settlement_info",
+        "cwzy_shipstation_sku",
         "cwzy_shipstation_store",
         "cwzy_walmart_recon_info",
         "datas.newegg_advertised_product_reports",
@@ -1921,6 +2130,8 @@
         "product_category",
         "product_product",
         "product_template",
+        "public.newegg_sku",
+        "public.walmart_sku",
         "res_users",
         "resource_resource",
         "sale_order",
@@ -1940,11 +2151,14 @@
         "bi.ba_profit_order_line_info",
         "bi.ba_so_mp_store",
         "bi.ba_store_commission",
+        "bi.bi_pm_sku_ir_marketplace_mapping",
         "bi.bundle_sku_primary_product"
       ],
       "source_entity_ids": [
         "amazon_custom_v3_3",
         "amazon_instance_ept",
+        "amazon_product_asin",
+        "amazon_product_ept",
         "amazon_product_sku",
         "amazon_sponsored_display_advertised_product",
         "amazon_sponsored_products_advertised_product",
@@ -1958,6 +2172,7 @@
         "cwzy_bundle_sku",
         "cwzy_bundle_sku_lines",
         "cwzy_newegg_settlement_info",
+        "cwzy_shipstation_sku",
         "cwzy_shipstation_store",
         "cwzy_walmart_recon_info",
         "datas.newegg_advertised_product_reports",
@@ -1984,6 +2199,8 @@
         "product_category",
         "product_product",
         "product_template",
+        "public.newegg_sku",
+        "public.walmart_sku",
         "res_users",
         "resource_resource",
         "sale_order",
@@ -1996,6 +2213,9 @@
         "rel::amazon_custom_v3_3::amazon_product_sku::amazon_product_sku_id.id",
         "rel::amazon_custom_v3_3::product_product::product_id.id",
         "rel::amazon_instance_ept::sale_order::id.amz_instance_id",
+        "rel::amazon_product_asin::amazon_product_sku::id.product_asin_id",
+        "rel::amazon_product_asin::cwzy_bundle_sku::id.product_asin_id",
+        "rel::amazon_product_ept::amazon_product_sku::product_sku_id.id",
         "rel::amazon_product_sku::bi.ba_ad_spend_daily::name.sku",
         "rel::amazon_product_sku::product_product::product_id.id",
         "rel::amazon_product_sku::sale_order_line::id.product_sku",
@@ -2010,6 +2230,7 @@
         "rel::cwzy_bundle_sku::cwzy_bundle_sku_lines::id.bundle_sku_id",
         "rel::cwzy_bundle_sku::sale_order_line::id.bundle_sku_id",
         "rel::cwzy_bundle_sku_lines::product_product::product_id.id",
+        "rel::cwzy_shipstation_sku::cwzy_shipstation_store::store_id.id",
         "rel::cwzy_shipstation_store::sale_order::id.cwzy_store_id",
         "rel::datas.newegg_advertised_product_reports::datas.newegg_item_report::itemNumber.item_number",
         "rel::datas.portfolio_id_name::datas.sp_advertised_product_reports::portfolio_id.portfolioId",
@@ -2042,6 +2263,8 @@
       "terminal_source_entity_ids": [
         "amazon_custom_v3_3",
         "amazon_instance_ept",
+        "amazon_product_asin",
+        "amazon_product_ept",
         "amazon_product_sku",
         "amazon_sponsored_display_advertised_product",
         "amazon_sponsored_products_advertised_product",
@@ -2049,6 +2272,7 @@
         "cwzy_bundle_sku",
         "cwzy_bundle_sku_lines",
         "cwzy_newegg_settlement_info",
+        "cwzy_shipstation_sku",
         "cwzy_shipstation_store",
         "cwzy_walmart_recon_info",
         "datas.newegg_advertised_product_reports",
@@ -2074,6 +2298,8 @@
         "product_category",
         "product_product",
         "product_template",
+        "public.newegg_sku",
+        "public.walmart_sku",
         "res_users",
         "resource_resource",
         "sale_order",
@@ -2093,11 +2319,14 @@
         "bi.ba_profit_order_line_info",
         "bi.ba_so_mp_store",
         "bi.ba_store_commission",
+        "bi.bi_pm_sku_ir_marketplace_mapping",
         "bi.bundle_sku_primary_product"
       ],
       "source_entity_ids": [
         "amazon_custom_v3_3",
         "amazon_instance_ept",
+        "amazon_product_asin",
+        "amazon_product_ept",
         "amazon_product_sku",
         "amazon_sponsored_display_advertised_product",
         "amazon_sponsored_products_advertised_product",
@@ -2110,6 +2339,7 @@
         "cwzy_bundle_sku",
         "cwzy_bundle_sku_lines",
         "cwzy_newegg_settlement_info",
+        "cwzy_shipstation_sku",
         "cwzy_shipstation_store",
         "cwzy_walmart_recon_info",
         "datas.newegg_advertised_product_reports",
@@ -2135,6 +2365,8 @@
         "product_category",
         "product_product",
         "product_template",
+        "public.newegg_sku",
+        "public.walmart_sku",
         "res_users",
         "resource_resource",
         "sale_order",
@@ -2147,6 +2379,9 @@
         "rel::amazon_custom_v3_3::amazon_product_sku::amazon_product_sku_id.id",
         "rel::amazon_custom_v3_3::product_product::product_id.id",
         "rel::amazon_instance_ept::sale_order::id.amz_instance_id",
+        "rel::amazon_product_asin::amazon_product_sku::id.product_asin_id",
+        "rel::amazon_product_asin::cwzy_bundle_sku::id.product_asin_id",
+        "rel::amazon_product_ept::amazon_product_sku::product_sku_id.id",
         "rel::amazon_product_sku::bi.ba_ad_spend_daily::name.sku",
         "rel::amazon_product_sku::product_product::product_id.id",
         "rel::amazon_product_sku::sale_order_line::id.product_sku",
@@ -2160,6 +2395,7 @@
         "rel::cwzy_bundle_sku::cwzy_bundle_sku_lines::id.bundle_sku_id",
         "rel::cwzy_bundle_sku::sale_order_line::id.bundle_sku_id",
         "rel::cwzy_bundle_sku_lines::product_product::product_id.id",
+        "rel::cwzy_shipstation_sku::cwzy_shipstation_store::store_id.id",
         "rel::cwzy_shipstation_store::sale_order::id.cwzy_store_id",
         "rel::datas.newegg_advertised_product_reports::datas.newegg_item_report::itemNumber.item_number",
         "rel::datas.shipping_invoice_amazon_shipping::datas.shipping_invoice_amazon_shipping_adjustments::tracking_id.tracking_id",
@@ -2200,6 +2436,10 @@
         "hr_department",
         "hr_employee",
         "mail_followers",
+        "product_attribute",
+        "product_attribute_line",
+        "product_attribute_line_product_attribute_value_rel",
+        "product_attribute_value",
         "product_brand",
         "product_category",
         "product_product",
@@ -2207,11 +2447,17 @@
         "res_users",
         "resource_resource"
       ],
-      "upstream_view_ids": [],
+      "upstream_view_ids": [
+        "bi.ba_product_attribute_info"
+      ],
       "source_entity_ids": [
         "hr_department",
         "hr_employee",
         "mail_followers",
+        "product_attribute",
+        "product_attribute_line",
+        "product_attribute_line_product_attribute_value_rel",
+        "product_attribute_value",
         "product_brand",
         "product_category",
         "product_product",
@@ -2223,8 +2469,10 @@
         "rel::hr_department::hr_employee::id.department_id",
         "rel::hr_employee::resource_resource::resource_id.id",
         "rel::mail_followers::res_users::partner_id.partner_id",
-        "rel::product_brand::product_template::id.product_brand_id",
-        "rel::product_category::product_template::id.categ_id",
+        "rel::product_attribute::product_attribute_line::id.attribute_id",
+        "rel::product_attribute_line::product_attribute_line_product_attribute_value_rel::id.product_attribute_line_id",
+        "rel::product_attribute_line::product_template::product_tmpl_id.id",
+        "rel::product_attribute_line_product_attribute_value_rel::product_attribute_value::product_attribute_value_id.id",
         "rel::product_product::product_template::product_tmpl_id.id",
         "rel::res_users::resource_resource::id.user_id"
       ]
@@ -2345,6 +2593,8 @@
       "terminal_source_entity_ids": [
         "amazon_custom_v3_3",
         "amazon_instance_ept",
+        "amazon_product_asin",
+        "amazon_product_ept",
         "amazon_product_sku",
         "amazon_sponsored_display_advertised_product",
         "amazon_sponsored_products_advertised_product",
@@ -2353,6 +2603,7 @@
         "cwzy_bundle_sku",
         "cwzy_bundle_sku_lines",
         "cwzy_newegg_settlement_info",
+        "cwzy_shipstation_sku",
         "cwzy_shipstation_store",
         "cwzy_walmart_recon_info",
         "datas.newegg_advertised_product_reports",
@@ -2378,6 +2629,8 @@
         "product_category",
         "product_product",
         "product_template",
+        "public.newegg_sku",
+        "public.walmart_sku",
         "res_users",
         "resource_resource",
         "sale_order",
@@ -2397,11 +2650,14 @@
         "bi.ba_profit_order_line_info",
         "bi.ba_so_mp_store",
         "bi.ba_store_commission",
+        "bi.bi_pm_sku_ir_marketplace_mapping",
         "bi.bundle_sku_primary_product"
       ],
       "source_entity_ids": [
         "amazon_custom_v3_3",
         "amazon_instance_ept",
+        "amazon_product_asin",
+        "amazon_product_ept",
         "amazon_product_sku",
         "amazon_sponsored_display_advertised_product",
         "amazon_sponsored_products_advertised_product",
@@ -2416,6 +2672,7 @@
         "cwzy_bundle_sku",
         "cwzy_bundle_sku_lines",
         "cwzy_newegg_settlement_info",
+        "cwzy_shipstation_sku",
         "cwzy_shipstation_store",
         "cwzy_walmart_recon_info",
         "datas.newegg_advertised_product_reports",
@@ -2441,6 +2698,8 @@
         "product_category",
         "product_product",
         "product_template",
+        "public.newegg_sku",
+        "public.walmart_sku",
         "res_users",
         "resource_resource",
         "sale_order",
@@ -2453,6 +2712,9 @@
         "rel::amazon_custom_v3_3::amazon_product_sku::amazon_product_sku_id.id",
         "rel::amazon_custom_v3_3::product_product::product_id.id",
         "rel::amazon_instance_ept::sale_order::id.amz_instance_id",
+        "rel::amazon_product_asin::amazon_product_sku::id.product_asin_id",
+        "rel::amazon_product_asin::cwzy_bundle_sku::id.product_asin_id",
+        "rel::amazon_product_ept::amazon_product_sku::product_sku_id.id",
         "rel::amazon_product_sku::bi.ba_ad_spend_daily::name.sku",
         "rel::amazon_product_sku::product_product::product_id.id",
         "rel::amazon_product_sku::sale_order_line::id.product_sku",
@@ -2468,6 +2730,7 @@
         "rel::cwzy_bundle_sku::cwzy_bundle_sku_lines::id.bundle_sku_id",
         "rel::cwzy_bundle_sku::sale_order_line::id.bundle_sku_id",
         "rel::cwzy_bundle_sku_lines::product_product::product_id.id",
+        "rel::cwzy_shipstation_sku::cwzy_shipstation_store::store_id.id",
         "rel::cwzy_shipstation_store::sale_order::id.cwzy_store_id",
         "rel::datas.newegg_advertised_product_reports::datas.newegg_item_report::itemNumber.item_number",
         "rel::datas.shipping_invoice_amazon_shipping::datas.shipping_invoice_amazon_shipping_adjustments::tracking_id.tracking_id",
@@ -2570,6 +2833,8 @@
       "terminal_source_entity_ids": [
         "amazon_custom_v3_3",
         "amazon_instance_ept",
+        "amazon_product_asin",
+        "amazon_product_ept",
         "amazon_product_sku",
         "amazon_sponsored_display_advertised_product",
         "amazon_sponsored_products_advertised_product",
@@ -2577,6 +2842,7 @@
         "cwzy_bundle_sku",
         "cwzy_bundle_sku_lines",
         "cwzy_newegg_settlement_info",
+        "cwzy_shipstation_sku",
         "cwzy_shipstation_store",
         "cwzy_walmart_recon_info",
         "datas.newegg_advertised_product_reports",
@@ -2602,6 +2868,8 @@
         "product_category",
         "product_product",
         "product_template",
+        "public.newegg_sku",
+        "public.walmart_sku",
         "res_users",
         "resource_resource",
         "sale_order",
@@ -2620,11 +2888,14 @@
         "bi.ba_profit_order_line_info",
         "bi.ba_so_mp_store",
         "bi.ba_store_commission",
+        "bi.bi_pm_sku_ir_marketplace_mapping",
         "bi.bundle_sku_primary_product"
       ],
       "source_entity_ids": [
         "amazon_custom_v3_3",
         "amazon_instance_ept",
+        "amazon_product_asin",
+        "amazon_product_ept",
         "amazon_product_sku",
         "amazon_sponsored_display_advertised_product",
         "amazon_sponsored_products_advertised_product",
@@ -2637,6 +2908,7 @@
         "cwzy_bundle_sku",
         "cwzy_bundle_sku_lines",
         "cwzy_newegg_settlement_info",
+        "cwzy_shipstation_sku",
         "cwzy_shipstation_store",
         "cwzy_walmart_recon_info",
         "datas.newegg_advertised_product_reports",
@@ -2662,6 +2934,8 @@
         "product_category",
         "product_product",
         "product_template",
+        "public.newegg_sku",
+        "public.walmart_sku",
         "res_users",
         "resource_resource",
         "sale_order",
@@ -2674,6 +2948,9 @@
         "rel::amazon_custom_v3_3::amazon_product_sku::amazon_product_sku_id.id",
         "rel::amazon_custom_v3_3::product_product::product_id.id",
         "rel::amazon_instance_ept::sale_order::id.amz_instance_id",
+        "rel::amazon_product_asin::amazon_product_sku::id.product_asin_id",
+        "rel::amazon_product_asin::cwzy_bundle_sku::id.product_asin_id",
+        "rel::amazon_product_ept::amazon_product_sku::product_sku_id.id",
         "rel::amazon_product_sku::bi.ba_ad_spend_daily::name.sku",
         "rel::amazon_product_sku::product_product::product_id.id",
         "rel::amazon_product_sku::sale_order_line::id.product_sku",
@@ -2687,6 +2964,7 @@
         "rel::cwzy_bundle_sku::cwzy_bundle_sku_lines::id.bundle_sku_id",
         "rel::cwzy_bundle_sku::sale_order_line::id.bundle_sku_id",
         "rel::cwzy_bundle_sku_lines::product_product::product_id.id",
+        "rel::cwzy_shipstation_sku::cwzy_shipstation_store::store_id.id",
         "rel::cwzy_shipstation_store::sale_order::id.cwzy_store_id",
         "rel::datas.newegg_advertised_product_reports::datas.newegg_item_report::itemNumber.item_number",
         "rel::datas.shipping_invoice_amazon_shipping::datas.shipping_invoice_amazon_shipping_adjustments::tracking_id.tracking_id",
@@ -3156,6 +3434,8 @@
       "terminal_source_entity_ids": [
         "amazon_custom_v3_3",
         "amazon_instance_ept",
+        "amazon_product_asin",
+        "amazon_product_ept",
         "amazon_product_sku",
         "amazon_sponsored_display_advertised_product",
         "amazon_sponsored_products_advertised_product",
@@ -3163,6 +3443,7 @@
         "cwzy_bundle_sku",
         "cwzy_bundle_sku_lines",
         "cwzy_newegg_settlement_info",
+        "cwzy_shipstation_sku",
         "cwzy_shipstation_store",
         "cwzy_walmart_recon_info",
         "datas.daily_product_info",
@@ -3189,6 +3470,8 @@
         "product_category",
         "product_product",
         "product_template",
+        "public.newegg_sku",
+        "public.walmart_sku",
         "res_users",
         "resource_resource",
         "sale_order",
@@ -3208,11 +3491,14 @@
         "bi.ba_profit_order_line_info",
         "bi.ba_so_mp_store",
         "bi.ba_store_commission",
+        "bi.bi_pm_sku_ir_marketplace_mapping",
         "bi.bundle_sku_primary_product"
       ],
       "source_entity_ids": [
         "amazon_custom_v3_3",
         "amazon_instance_ept",
+        "amazon_product_asin",
+        "amazon_product_ept",
         "amazon_product_sku",
         "amazon_sponsored_display_advertised_product",
         "amazon_sponsored_products_advertised_product",
@@ -3225,6 +3511,7 @@
         "cwzy_bundle_sku",
         "cwzy_bundle_sku_lines",
         "cwzy_newegg_settlement_info",
+        "cwzy_shipstation_sku",
         "cwzy_shipstation_store",
         "cwzy_walmart_recon_info",
         "datas.daily_product_info",
@@ -3251,6 +3538,8 @@
         "product_category",
         "product_product",
         "product_template",
+        "public.newegg_sku",
+        "public.walmart_sku",
         "res_users",
         "resource_resource",
         "sale_order",
@@ -3263,6 +3552,9 @@
         "rel::amazon_custom_v3_3::amazon_product_sku::amazon_product_sku_id.id",
         "rel::amazon_custom_v3_3::product_product::product_id.id",
         "rel::amazon_instance_ept::sale_order::id.amz_instance_id",
+        "rel::amazon_product_asin::amazon_product_sku::id.product_asin_id",
+        "rel::amazon_product_asin::cwzy_bundle_sku::id.product_asin_id",
+        "rel::amazon_product_ept::amazon_product_sku::product_sku_id.id",
         "rel::amazon_product_sku::bi.ba_ad_spend_daily::name.sku",
         "rel::amazon_product_sku::product_product::product_id.id",
         "rel::amazon_product_sku::sale_order_line::id.product_sku",
@@ -3276,6 +3568,7 @@
         "rel::cwzy_bundle_sku::cwzy_bundle_sku_lines::id.bundle_sku_id",
         "rel::cwzy_bundle_sku::sale_order_line::id.bundle_sku_id",
         "rel::cwzy_bundle_sku_lines::product_product::product_id.id",
+        "rel::cwzy_shipstation_sku::cwzy_shipstation_store::store_id.id",
         "rel::cwzy_shipstation_store::sale_order::id.cwzy_store_id",
         "rel::datas.newegg_advertised_product_reports::datas.newegg_item_report::itemNumber.item_number",
         "rel::datas.shipping_invoice_amazon_shipping::datas.shipping_invoice_amazon_shipping_adjustments::tracking_id.tracking_id",
@@ -3653,6 +3946,46 @@
       ]
     },
     {
+      "bi_id": "bi.ba_warranty_warehouse_rate_v2",
+      "technical_type": "VIEW",
+      "direct_source_entity_ids": [
+        "product_brand",
+        "product_category",
+        "product_product",
+        "product_template",
+        "stock_move_line",
+        "stock_production_lot",
+        "stock_quant"
+      ],
+      "terminal_source_entity_ids": [
+        "product_brand",
+        "product_category",
+        "product_product",
+        "product_template",
+        "stock_move_line",
+        "stock_production_lot",
+        "stock_quant"
+      ],
+      "upstream_view_ids": [],
+      "source_entity_ids": [
+        "product_brand",
+        "product_category",
+        "product_product",
+        "product_template",
+        "stock_move_line",
+        "stock_production_lot",
+        "stock_quant"
+      ],
+      "relationship_ids": [
+        "rel::product_brand::product_template::id.product_brand_id",
+        "rel::product_category::product_template::id.categ_id",
+        "rel::product_product::product_template::product_tmpl_id.id",
+        "rel::product_product::stock_move_line::id.product_id",
+        "rel::product_product::stock_quant::id.product_id",
+        "rel::stock_move_line::stock_production_lot::lot_id.id"
+      ]
+    },
+    {
       "bi_id": "bi.ba_warranty_warehouse_sn_stock",
       "technical_type": "VIEW",
       "direct_source_entity_ids": [
@@ -3720,6 +4053,58 @@
       ]
     },
     {
+      "bi_id": "bi.ba_warranty_warehouse_sn_stock_v2",
+      "technical_type": "VIEW",
+      "direct_source_entity_ids": [
+        "bi_pm_ir_info",
+        "product_brand",
+        "product_category",
+        "product_product",
+        "product_template",
+        "res_users",
+        "resource_resource",
+        "stock_move_line",
+        "stock_production_lot",
+        "stock_quant"
+      ],
+      "terminal_source_entity_ids": [
+        "bi_pm_ir_info",
+        "product_brand",
+        "product_category",
+        "product_product",
+        "product_template",
+        "res_users",
+        "resource_resource",
+        "stock_move_line",
+        "stock_production_lot",
+        "stock_quant"
+      ],
+      "upstream_view_ids": [],
+      "source_entity_ids": [
+        "bi_pm_ir_info",
+        "product_brand",
+        "product_category",
+        "product_product",
+        "product_template",
+        "res_users",
+        "resource_resource",
+        "stock_move_line",
+        "stock_production_lot",
+        "stock_quant"
+      ],
+      "relationship_ids": [
+        "rel::bi_pm_ir_info::product_product::ir.default_code",
+        "rel::product_brand::product_template::id.product_brand_id",
+        "rel::product_product::product_template::product_tmpl_id.id",
+        "rel::product_product::stock_move_line::id.product_id",
+        "rel::product_product::stock_quant::id.product_id",
+        "rel::res_users::resource_resource::id.user_id",
+        "rel::res_users::stock_move_line::id.write_uid",
+        "rel::stock_move_line::stock_production_lot::lot_id.id",
+        "rel::stock_production_lot::stock_quant::id.lot_id"
+      ]
+    },
+    {
       "bi_id": "bi.ba_warranty_warehouse_stock_move_history",
       "technical_type": "VIEW",
       "direct_source_entity_ids": [
@@ -3760,10 +4145,55 @@
       ]
     },
     {
+      "bi_id": "bi.ba_warranty_warehouse_stock_move_history_v2",
+      "technical_type": "VIEW",
+      "direct_source_entity_ids": [
+        "bi_pm_ir_info",
+        "product_brand",
+        "product_category",
+        "product_product",
+        "product_template",
+        "stock_move_line",
+        "stock_production_lot",
+        "stock_quant"
+      ],
+      "terminal_source_entity_ids": [
+        "bi_pm_ir_info",
+        "product_brand",
+        "product_category",
+        "product_product",
+        "product_template",
+        "stock_move_line",
+        "stock_production_lot",
+        "stock_quant"
+      ],
+      "upstream_view_ids": [],
+      "source_entity_ids": [
+        "bi_pm_ir_info",
+        "product_brand",
+        "product_category",
+        "product_product",
+        "product_template",
+        "stock_move_line",
+        "stock_production_lot",
+        "stock_quant"
+      ],
+      "relationship_ids": [
+        "rel::bi_pm_ir_info::product_product::ir.default_code",
+        "rel::product_brand::product_template::id.product_brand_id",
+        "rel::product_product::product_template::product_tmpl_id.id",
+        "rel::product_product::stock_move_line::id.product_id",
+        "rel::product_product::stock_quant::id.product_id",
+        "rel::stock_move_line::stock_production_lot::lot_id.id",
+        "rel::stock_production_lot::stock_quant::id.lot_id"
+      ]
+    },
+    {
       "bi_id": "bi.bi_pm_sku_ir_marketplace_mapping",
       "technical_type": "VIEW",
       "direct_source_entity_ids": [
         "amazon_product_asin",
+        "amazon_product_ept",
         "amazon_product_sku",
         "cwzy_bundle_sku",
         "cwzy_bundle_sku_lines",
@@ -3776,6 +4206,7 @@
       ],
       "terminal_source_entity_ids": [
         "amazon_product_asin",
+        "amazon_product_ept",
         "amazon_product_sku",
         "cwzy_bundle_sku",
         "cwzy_bundle_sku_lines",
@@ -3789,6 +4220,7 @@
       "upstream_view_ids": [],
       "source_entity_ids": [
         "amazon_product_asin",
+        "amazon_product_ept",
         "amazon_product_sku",
         "cwzy_bundle_sku",
         "cwzy_bundle_sku_lines",
@@ -3802,6 +4234,7 @@
       "relationship_ids": [
         "rel::amazon_product_asin::amazon_product_sku::id.product_asin_id",
         "rel::amazon_product_asin::cwzy_bundle_sku::id.product_asin_id",
+        "rel::amazon_product_ept::amazon_product_sku::product_sku_id.id",
         "rel::cwzy_bundle_sku::cwzy_bundle_sku_lines::id.bundle_sku_id",
         "rel::cwzy_bundle_sku_lines::product_product::product_id.id",
         "rel::cwzy_shipstation_sku::cwzy_shipstation_store::store_id.id",
@@ -3981,6 +4414,8 @@
       "terminal_source_entity_ids": [
         "amazon_custom_v3_3",
         "amazon_instance_ept",
+        "amazon_product_asin",
+        "amazon_product_ept",
         "amazon_product_sku",
         "amazon_sponsored_display_advertised_product",
         "amazon_sponsored_products_advertised_product",
@@ -3988,6 +4423,7 @@
         "cwzy_bundle_sku",
         "cwzy_bundle_sku_lines",
         "cwzy_newegg_settlement_info",
+        "cwzy_shipstation_sku",
         "cwzy_shipstation_store",
         "cwzy_walmart_recon_info",
         "datas.newegg_advertised_product_reports",
@@ -4013,6 +4449,8 @@
         "product_category",
         "product_product",
         "product_template",
+        "public.newegg_sku",
+        "public.walmart_sku",
         "res_users",
         "resource_resource",
         "sale_order",
@@ -4032,11 +4470,14 @@
         "bi.ba_profit_order_line_info",
         "bi.ba_so_mp_store",
         "bi.ba_store_commission",
+        "bi.bi_pm_sku_ir_marketplace_mapping",
         "bi.bundle_sku_primary_product"
       ],
       "source_entity_ids": [
         "amazon_custom_v3_3",
         "amazon_instance_ept",
+        "amazon_product_asin",
+        "amazon_product_ept",
         "amazon_product_sku",
         "amazon_sponsored_display_advertised_product",
         "amazon_sponsored_products_advertised_product",
@@ -4050,6 +4491,7 @@
         "cwzy_bundle_sku",
         "cwzy_bundle_sku_lines",
         "cwzy_newegg_settlement_info",
+        "cwzy_shipstation_sku",
         "cwzy_shipstation_store",
         "cwzy_walmart_recon_info",
         "datas.newegg_advertised_product_reports",
@@ -4075,6 +4517,8 @@
         "product_category",
         "product_product",
         "product_template",
+        "public.newegg_sku",
+        "public.walmart_sku",
         "res_users",
         "resource_resource",
         "sale_order",
@@ -4087,6 +4531,9 @@
         "rel::amazon_custom_v3_3::amazon_product_sku::amazon_product_sku_id.id",
         "rel::amazon_custom_v3_3::product_product::product_id.id",
         "rel::amazon_instance_ept::sale_order::id.amz_instance_id",
+        "rel::amazon_product_asin::amazon_product_sku::id.product_asin_id",
+        "rel::amazon_product_asin::cwzy_bundle_sku::id.product_asin_id",
+        "rel::amazon_product_ept::amazon_product_sku::product_sku_id.id",
         "rel::amazon_product_sku::bi.ba_ad_spend_daily::name.sku",
         "rel::amazon_product_sku::product_product::product_id.id",
         "rel::amazon_product_sku::sale_order_line::id.product_sku",
@@ -4101,6 +4548,7 @@
         "rel::cwzy_bundle_sku::cwzy_bundle_sku_lines::id.bundle_sku_id",
         "rel::cwzy_bundle_sku::sale_order_line::id.bundle_sku_id",
         "rel::cwzy_bundle_sku_lines::product_product::product_id.id",
+        "rel::cwzy_shipstation_sku::cwzy_shipstation_store::store_id.id",
         "rel::cwzy_shipstation_store::sale_order::id.cwzy_store_id",
         "rel::datas.newegg_advertised_product_reports::datas.newegg_item_report::itemNumber.item_number",
         "rel::datas.shipping_invoice_amazon_shipping::datas.shipping_invoice_amazon_shipping_adjustments::tracking_id.tracking_id",
@@ -4162,6 +4610,46 @@
         "rel::cwzy_shipstation_sku::cwzy_shipstation_store::store_id.id",
         "rel::datas.pm_realtime_order_line_all_channels::newegg_sku::sku.name",
         "rel::datas.pm_realtime_order_line_all_channels::walmart_sku::sku.name"
+      ]
+    },
+    {
+      "bi_id": "datas.v_pm_product_line_mapping_system_source",
+      "technical_type": "VIEW",
+      "direct_source_entity_ids": [
+        "product_attribute",
+        "product_attribute_line",
+        "product_attribute_line_product_attribute_value_rel",
+        "product_attribute_value",
+        "product_category",
+        "product_product",
+        "product_template"
+      ],
+      "terminal_source_entity_ids": [
+        "product_attribute",
+        "product_attribute_line",
+        "product_attribute_line_product_attribute_value_rel",
+        "product_attribute_value",
+        "product_category",
+        "product_product",
+        "product_template"
+      ],
+      "upstream_view_ids": [],
+      "source_entity_ids": [
+        "product_attribute",
+        "product_attribute_line",
+        "product_attribute_line_product_attribute_value_rel",
+        "product_attribute_value",
+        "product_category",
+        "product_product",
+        "product_template"
+      ],
+      "relationship_ids": [
+        "rel::product_attribute::product_attribute_line::id.attribute_id",
+        "rel::product_attribute_line::product_attribute_line_product_attribute_value_rel::id.product_attribute_line_id",
+        "rel::product_attribute_line::product_template::product_tmpl_id.id",
+        "rel::product_attribute_line_product_attribute_value_rel::product_attribute_value::product_attribute_value_id.id",
+        "rel::product_category::product_template::id.categ_id",
+        "rel::product_product::product_template::product_tmpl_id.id"
       ]
     }
   ],
@@ -4236,8 +4724,40 @@
         "bi.ba_bfcm_lead_time_daily_ads_data_total",
         "bi.ba_bfcm_rank_info_by_asin",
         "bi.ba_bfcm_unit_change_rank_by_origin_ir",
+        "bi.ba_dm_weekly_report_by_dm",
+        "bi.ba_dm_weekly_report_total",
+        "bi.ba_mv_dm_weekly_report_by_dm",
+        "bi.ba_mv_profit_order_line_and_ad_info",
+        "bi.ba_pm_daily_sales_inventory_info",
         "bi.ba_report_order_line",
+        "bi.bi_pm_sku_ir_marketplace_mapping",
+        "bi.lenovo_sales_statistics_last_week"
+      ]
+    },
+    {
+      "entity_id": "amazon_product_ept",
+      "direct_bi_ids": [
         "bi.bi_pm_sku_ir_marketplace_mapping"
+      ],
+      "transitive_bi_ids": [
+        "bi.ba_bfcm_all_channel_daily_sales",
+        "bi.ba_bfcm_buybox_info_by_sku",
+        "bi.ba_bfcm_daily_accu_sales_by_sku",
+        "bi.ba_bfcm_daily_profit_by_sku",
+        "bi.ba_bfcm_hourly_ads_data_by_product_line",
+        "bi.ba_bfcm_hourly_ads_data_total",
+        "bi.ba_bfcm_hourly_sales_by_ir",
+        "bi.ba_bfcm_hourly_ttl_sales_by_marketplace",
+        "bi.ba_bfcm_lead_time_daily_ads_data_total",
+        "bi.ba_bfcm_rank_info_by_asin",
+        "bi.ba_bfcm_unit_change_rank_by_origin_ir",
+        "bi.ba_dm_weekly_report_by_dm",
+        "bi.ba_dm_weekly_report_total",
+        "bi.ba_mv_dm_weekly_report_by_dm",
+        "bi.ba_mv_profit_order_line_and_ad_info",
+        "bi.ba_pm_daily_sales_inventory_info",
+        "bi.bi_pm_sku_ir_marketplace_mapping",
+        "bi.lenovo_sales_statistics_last_week"
       ]
     },
     {
@@ -4379,6 +4899,19 @@
       "direct_bi_ids": [],
       "transitive_bi_ids": [
         "bi.ba_not_received_inv_info"
+      ]
+    },
+    {
+      "entity_id": "bi.ba_ir_category_mapping",
+      "direct_bi_ids": [],
+      "transitive_bi_ids": [
+        "bi.ba_bfcm_all_channel_daily_sales",
+        "bi.ba_bfcm_buybox_info_by_sku",
+        "bi.ba_bfcm_daily_accu_sales_by_sku",
+        "bi.ba_bfcm_daily_profit_by_sku",
+        "bi.ba_bfcm_lead_time_daily_ads_data_total",
+        "bi.ba_bfcm_rank_info_by_asin",
+        "bi.ba_bfcm_unit_change_rank_by_origin_ir"
       ]
     },
     {
@@ -4551,7 +5084,9 @@
       "direct_bi_ids": [
         "bi.ba_bfcm_daily_accu_sales_by_sku",
         "bi.ba_bfcm_hourly_sales_by_ir",
-        "bi.ba_warranty_warehouse_stock_move_history"
+        "bi.ba_warranty_warehouse_sn_stock_v2",
+        "bi.ba_warranty_warehouse_stock_move_history",
+        "bi.ba_warranty_warehouse_stock_move_history_v2"
       ],
       "transitive_bi_ids": [
         "bi.ba_bfcm_daily_accu_sales_by_sku",
@@ -4561,7 +5096,9 @@
         "bi.ba_bfcm_hourly_sales_by_ir",
         "bi.ba_bfcm_lead_time_daily_ads_data_total",
         "bi.ba_bfcm_unit_change_rank_by_origin_ir",
-        "bi.ba_warranty_warehouse_stock_move_history"
+        "bi.ba_warranty_warehouse_sn_stock_v2",
+        "bi.ba_warranty_warehouse_stock_move_history",
+        "bi.ba_warranty_warehouse_stock_move_history_v2"
       ]
     },
     {
@@ -4704,7 +5241,13 @@
         "bi.ba_bfcm_lead_time_daily_ads_data_total",
         "bi.ba_bfcm_rank_info_by_asin",
         "bi.ba_bfcm_unit_change_rank_by_origin_ir",
+        "bi.ba_dm_weekly_report_by_dm",
+        "bi.ba_dm_weekly_report_total",
+        "bi.ba_mv_dm_weekly_report_by_dm",
+        "bi.ba_mv_profit_order_line_and_ad_info",
+        "bi.ba_pm_daily_sales_inventory_info",
         "bi.bi_pm_sku_ir_marketplace_mapping",
+        "bi.lenovo_sales_statistics_last_week",
         "bi.pm_marketplace_order_line_report_hourly"
       ]
     },
@@ -4893,32 +5436,6 @@
       "transitive_bi_ids": [
         "bi.ba_bfcm_buybox_info_by_sku",
         "bi.ba_bfcm_rank_info_by_asin"
-      ]
-    },
-    {
-      "entity_id": "datas.pm_product_line_mapping_2024",
-      "direct_bi_ids": [
-        "bi.ba_bfcm_all_channel_daily_sales",
-        "bi.ba_bfcm_buybox_info_by_sku",
-        "bi.ba_bfcm_daily_accu_sales_by_sku",
-        "bi.ba_bfcm_daily_profit_by_sku",
-        "bi.ba_bfcm_hourly_sales_by_ir",
-        "bi.ba_bfcm_rank_info_by_asin",
-        "bi.ba_bfcm_realtime_inventory_by_ir",
-        "bi.ba_bfcm_unit_change_rank_by_origin_ir"
-      ],
-      "transitive_bi_ids": [
-        "bi.ba_bfcm_all_channel_daily_sales",
-        "bi.ba_bfcm_buybox_info_by_sku",
-        "bi.ba_bfcm_daily_accu_sales_by_sku",
-        "bi.ba_bfcm_daily_profit_by_sku",
-        "bi.ba_bfcm_hourly_ads_data_by_product_line",
-        "bi.ba_bfcm_hourly_ads_data_total",
-        "bi.ba_bfcm_hourly_sales_by_ir",
-        "bi.ba_bfcm_lead_time_daily_ads_data_total",
-        "bi.ba_bfcm_rank_info_by_asin",
-        "bi.ba_bfcm_realtime_inventory_by_ir",
-        "bi.ba_bfcm_unit_change_rank_by_origin_ir"
       ]
     },
     {
@@ -5339,11 +5856,17 @@
         "bi.ba_mv_outbound_order_return_data"
       ],
       "transitive_bi_ids": [
+        "bi.ba_bfcm_all_channel_daily_sales",
+        "bi.ba_bfcm_buybox_info_by_sku",
+        "bi.ba_bfcm_daily_accu_sales_by_sku",
+        "bi.ba_bfcm_daily_profit_by_sku",
         "bi.ba_bfcm_hourly_ads_data_by_product_line",
         "bi.ba_bfcm_hourly_ads_data_total",
         "bi.ba_bfcm_hourly_sales_by_ir",
         "bi.ba_bfcm_hourly_ttl_sales_by_marketplace",
         "bi.ba_bfcm_lead_time_daily_ads_data_total",
+        "bi.ba_bfcm_rank_info_by_asin",
+        "bi.ba_bfcm_realtime_inventory_by_ir",
         "bi.ba_bfcm_unit_change_rank_by_origin_ir",
         "bi.ba_dm_weekly_report_by_dm",
         "bi.ba_dm_weekly_report_total",
@@ -5368,11 +5891,17 @@
         "bi.ba_warranty_warehouse_sn_stock"
       ],
       "transitive_bi_ids": [
+        "bi.ba_bfcm_all_channel_daily_sales",
+        "bi.ba_bfcm_buybox_info_by_sku",
+        "bi.ba_bfcm_daily_accu_sales_by_sku",
+        "bi.ba_bfcm_daily_profit_by_sku",
         "bi.ba_bfcm_hourly_ads_data_by_product_line",
         "bi.ba_bfcm_hourly_ads_data_total",
         "bi.ba_bfcm_hourly_sales_by_ir",
         "bi.ba_bfcm_hourly_ttl_sales_by_marketplace",
         "bi.ba_bfcm_lead_time_daily_ads_data_total",
+        "bi.ba_bfcm_rank_info_by_asin",
+        "bi.ba_bfcm_realtime_inventory_by_ir",
         "bi.ba_bfcm_unit_change_rank_by_origin_ir",
         "bi.ba_dm_weekly_report_by_dm",
         "bi.ba_dm_weekly_report_total",
@@ -5407,11 +5936,17 @@
         "bi.ba_sale_purchased"
       ],
       "transitive_bi_ids": [
+        "bi.ba_bfcm_all_channel_daily_sales",
+        "bi.ba_bfcm_buybox_info_by_sku",
+        "bi.ba_bfcm_daily_accu_sales_by_sku",
+        "bi.ba_bfcm_daily_profit_by_sku",
         "bi.ba_bfcm_hourly_ads_data_by_product_line",
         "bi.ba_bfcm_hourly_ads_data_total",
         "bi.ba_bfcm_hourly_sales_by_ir",
         "bi.ba_bfcm_hourly_ttl_sales_by_marketplace",
         "bi.ba_bfcm_lead_time_daily_ads_data_total",
+        "bi.ba_bfcm_rank_info_by_asin",
+        "bi.ba_bfcm_realtime_inventory_by_ir",
         "bi.ba_bfcm_unit_change_rank_by_origin_ir",
         "bi.ba_dm_weekly_report_by_dm",
         "bi.ba_dm_weekly_report_total",
@@ -5509,23 +6044,32 @@
       "direct_bi_ids": [
         "bi.ba_product_attribute_info",
         "bi.ba_warranty_warehouse_sn_stock",
-        "bi.lenovo_sales_statistics_last_week"
+        "bi.lenovo_sales_statistics_last_week",
+        "datas.v_pm_product_line_mapping_system_source"
       ],
       "transitive_bi_ids": [
+        "bi.ba_bfcm_all_channel_daily_sales",
+        "bi.ba_bfcm_buybox_info_by_sku",
+        "bi.ba_bfcm_daily_accu_sales_by_sku",
+        "bi.ba_bfcm_daily_profit_by_sku",
         "bi.ba_bfcm_hourly_ads_data_by_product_line",
         "bi.ba_bfcm_hourly_ads_data_total",
         "bi.ba_bfcm_hourly_sales_by_ir",
         "bi.ba_bfcm_hourly_ttl_sales_by_marketplace",
         "bi.ba_bfcm_lead_time_daily_ads_data_total",
+        "bi.ba_bfcm_rank_info_by_asin",
+        "bi.ba_bfcm_realtime_inventory_by_ir",
         "bi.ba_bfcm_unit_change_rank_by_origin_ir",
         "bi.ba_dm_weekly_report_by_dm",
         "bi.ba_dm_weekly_report_total",
+        "bi.ba_ir_category_mapping",
         "bi.ba_mv_dm_weekly_report_by_dm",
         "bi.ba_mv_profit_order_line_and_ad_info",
         "bi.ba_pm_daily_sales_inventory_info",
         "bi.ba_product_attribute_info",
         "bi.ba_warranty_warehouse_sn_stock",
-        "bi.lenovo_sales_statistics_last_week"
+        "bi.lenovo_sales_statistics_last_week",
+        "datas.v_pm_product_line_mapping_system_source"
       ]
     },
     {
@@ -5533,23 +6077,32 @@
       "direct_bi_ids": [
         "bi.ba_product_attribute_info",
         "bi.ba_warranty_warehouse_sn_stock",
-        "bi.lenovo_sales_statistics_last_week"
+        "bi.lenovo_sales_statistics_last_week",
+        "datas.v_pm_product_line_mapping_system_source"
       ],
       "transitive_bi_ids": [
+        "bi.ba_bfcm_all_channel_daily_sales",
+        "bi.ba_bfcm_buybox_info_by_sku",
+        "bi.ba_bfcm_daily_accu_sales_by_sku",
+        "bi.ba_bfcm_daily_profit_by_sku",
         "bi.ba_bfcm_hourly_ads_data_by_product_line",
         "bi.ba_bfcm_hourly_ads_data_total",
         "bi.ba_bfcm_hourly_sales_by_ir",
         "bi.ba_bfcm_hourly_ttl_sales_by_marketplace",
         "bi.ba_bfcm_lead_time_daily_ads_data_total",
+        "bi.ba_bfcm_rank_info_by_asin",
+        "bi.ba_bfcm_realtime_inventory_by_ir",
         "bi.ba_bfcm_unit_change_rank_by_origin_ir",
         "bi.ba_dm_weekly_report_by_dm",
         "bi.ba_dm_weekly_report_total",
+        "bi.ba_ir_category_mapping",
         "bi.ba_mv_dm_weekly_report_by_dm",
         "bi.ba_mv_profit_order_line_and_ad_info",
         "bi.ba_pm_daily_sales_inventory_info",
         "bi.ba_product_attribute_info",
         "bi.ba_warranty_warehouse_sn_stock",
-        "bi.lenovo_sales_statistics_last_week"
+        "bi.lenovo_sales_statistics_last_week",
+        "datas.v_pm_product_line_mapping_system_source"
       ]
     },
     {
@@ -5557,23 +6110,32 @@
       "direct_bi_ids": [
         "bi.ba_product_attribute_info",
         "bi.ba_warranty_warehouse_sn_stock",
-        "bi.lenovo_sales_statistics_last_week"
+        "bi.lenovo_sales_statistics_last_week",
+        "datas.v_pm_product_line_mapping_system_source"
       ],
       "transitive_bi_ids": [
+        "bi.ba_bfcm_all_channel_daily_sales",
+        "bi.ba_bfcm_buybox_info_by_sku",
+        "bi.ba_bfcm_daily_accu_sales_by_sku",
+        "bi.ba_bfcm_daily_profit_by_sku",
         "bi.ba_bfcm_hourly_ads_data_by_product_line",
         "bi.ba_bfcm_hourly_ads_data_total",
         "bi.ba_bfcm_hourly_sales_by_ir",
         "bi.ba_bfcm_hourly_ttl_sales_by_marketplace",
         "bi.ba_bfcm_lead_time_daily_ads_data_total",
+        "bi.ba_bfcm_rank_info_by_asin",
+        "bi.ba_bfcm_realtime_inventory_by_ir",
         "bi.ba_bfcm_unit_change_rank_by_origin_ir",
         "bi.ba_dm_weekly_report_by_dm",
         "bi.ba_dm_weekly_report_total",
+        "bi.ba_ir_category_mapping",
         "bi.ba_mv_dm_weekly_report_by_dm",
         "bi.ba_mv_profit_order_line_and_ad_info",
         "bi.ba_pm_daily_sales_inventory_info",
         "bi.ba_product_attribute_info",
         "bi.ba_warranty_warehouse_sn_stock",
-        "bi.lenovo_sales_statistics_last_week"
+        "bi.lenovo_sales_statistics_last_week",
+        "datas.v_pm_product_line_mapping_system_source"
       ]
     },
     {
@@ -5581,23 +6143,32 @@
       "direct_bi_ids": [
         "bi.ba_product_attribute_info",
         "bi.ba_warranty_warehouse_sn_stock",
-        "bi.lenovo_sales_statistics_last_week"
+        "bi.lenovo_sales_statistics_last_week",
+        "datas.v_pm_product_line_mapping_system_source"
       ],
       "transitive_bi_ids": [
+        "bi.ba_bfcm_all_channel_daily_sales",
+        "bi.ba_bfcm_buybox_info_by_sku",
+        "bi.ba_bfcm_daily_accu_sales_by_sku",
+        "bi.ba_bfcm_daily_profit_by_sku",
         "bi.ba_bfcm_hourly_ads_data_by_product_line",
         "bi.ba_bfcm_hourly_ads_data_total",
         "bi.ba_bfcm_hourly_sales_by_ir",
         "bi.ba_bfcm_hourly_ttl_sales_by_marketplace",
         "bi.ba_bfcm_lead_time_daily_ads_data_total",
+        "bi.ba_bfcm_rank_info_by_asin",
+        "bi.ba_bfcm_realtime_inventory_by_ir",
         "bi.ba_bfcm_unit_change_rank_by_origin_ir",
         "bi.ba_dm_weekly_report_by_dm",
         "bi.ba_dm_weekly_report_total",
+        "bi.ba_ir_category_mapping",
         "bi.ba_mv_dm_weekly_report_by_dm",
         "bi.ba_mv_profit_order_line_and_ad_info",
         "bi.ba_pm_daily_sales_inventory_info",
         "bi.ba_product_attribute_info",
         "bi.ba_warranty_warehouse_sn_stock",
-        "bi.lenovo_sales_statistics_last_week"
+        "bi.lenovo_sales_statistics_last_week",
+        "datas.v_pm_product_line_mapping_system_source"
       ]
     },
     {
@@ -5608,15 +6179,24 @@
         "bi.ba_order_line_info",
         "bi.ba_report_order_line",
         "bi.ba_warranty_warehouse_rate",
+        "bi.ba_warranty_warehouse_rate_v2",
         "bi.ba_warranty_warehouse_sn_stock",
-        "bi.ba_warranty_warehouse_stock_move_history"
+        "bi.ba_warranty_warehouse_sn_stock_v2",
+        "bi.ba_warranty_warehouse_stock_move_history",
+        "bi.ba_warranty_warehouse_stock_move_history_v2"
       ],
       "transitive_bi_ids": [
+        "bi.ba_bfcm_all_channel_daily_sales",
+        "bi.ba_bfcm_buybox_info_by_sku",
+        "bi.ba_bfcm_daily_accu_sales_by_sku",
+        "bi.ba_bfcm_daily_profit_by_sku",
         "bi.ba_bfcm_hourly_ads_data_by_product_line",
         "bi.ba_bfcm_hourly_ads_data_total",
         "bi.ba_bfcm_hourly_sales_by_ir",
         "bi.ba_bfcm_hourly_ttl_sales_by_marketplace",
         "bi.ba_bfcm_lead_time_daily_ads_data_total",
+        "bi.ba_bfcm_rank_info_by_asin",
+        "bi.ba_bfcm_realtime_inventory_by_ir",
         "bi.ba_bfcm_unit_change_rank_by_origin_ir",
         "bi.ba_dm_weekly_report_by_dm",
         "bi.ba_dm_weekly_report_total",
@@ -5632,8 +6212,11 @@
         "bi.ba_profit_order_line_info",
         "bi.ba_report_order_line",
         "bi.ba_warranty_warehouse_rate",
+        "bi.ba_warranty_warehouse_rate_v2",
         "bi.ba_warranty_warehouse_sn_stock",
+        "bi.ba_warranty_warehouse_sn_stock_v2",
         "bi.ba_warranty_warehouse_stock_move_history",
+        "bi.ba_warranty_warehouse_stock_move_history_v2",
         "bi.correct_bundle_promotion_shipping_fee",
         "bi.lenovo_sales_statistics_last_week"
       ]
@@ -5649,15 +6232,25 @@
         "bi.ba_report_order_line",
         "bi.ba_sale_purchased",
         "bi.ba_warranty_warehouse_rate",
+        "bi.ba_warranty_warehouse_rate_v2",
         "bi.ba_warranty_warehouse_sn_stock",
-        "bi.ba_warranty_warehouse_stock_move_history"
+        "bi.ba_warranty_warehouse_sn_stock_v2",
+        "bi.ba_warranty_warehouse_stock_move_history",
+        "bi.ba_warranty_warehouse_stock_move_history_v2",
+        "datas.v_pm_product_line_mapping_system_source"
       ],
       "transitive_bi_ids": [
+        "bi.ba_bfcm_all_channel_daily_sales",
+        "bi.ba_bfcm_buybox_info_by_sku",
+        "bi.ba_bfcm_daily_accu_sales_by_sku",
+        "bi.ba_bfcm_daily_profit_by_sku",
         "bi.ba_bfcm_hourly_ads_data_by_product_line",
         "bi.ba_bfcm_hourly_ads_data_total",
         "bi.ba_bfcm_hourly_sales_by_ir",
         "bi.ba_bfcm_hourly_ttl_sales_by_marketplace",
         "bi.ba_bfcm_lead_time_daily_ads_data_total",
+        "bi.ba_bfcm_rank_info_by_asin",
+        "bi.ba_bfcm_realtime_inventory_by_ir",
         "bi.ba_bfcm_unit_change_rank_by_origin_ir",
         "bi.ba_dm_weekly_report_by_dm",
         "bi.ba_dm_weekly_report_total",
@@ -5675,10 +6268,14 @@
         "bi.ba_report_order_line",
         "bi.ba_sale_purchased",
         "bi.ba_warranty_warehouse_rate",
+        "bi.ba_warranty_warehouse_rate_v2",
         "bi.ba_warranty_warehouse_sn_stock",
+        "bi.ba_warranty_warehouse_sn_stock_v2",
         "bi.ba_warranty_warehouse_stock_move_history",
+        "bi.ba_warranty_warehouse_stock_move_history_v2",
         "bi.correct_bundle_promotion_shipping_fee",
-        "bi.lenovo_sales_statistics_last_week"
+        "bi.lenovo_sales_statistics_last_week",
+        "datas.v_pm_product_line_mapping_system_source"
       ]
     },
     {
@@ -5701,10 +6298,14 @@
         "bi.ba_report_order_line",
         "bi.ba_sale_purchased",
         "bi.ba_warranty_warehouse_rate",
+        "bi.ba_warranty_warehouse_rate_v2",
         "bi.ba_warranty_warehouse_sn_stock",
+        "bi.ba_warranty_warehouse_sn_stock_v2",
         "bi.ba_warranty_warehouse_stock_move_history",
+        "bi.ba_warranty_warehouse_stock_move_history_v2",
         "bi.bi_pm_sku_ir_marketplace_mapping",
-        "bi.bundle_sku_primary_product"
+        "bi.bundle_sku_primary_product",
+        "datas.v_pm_product_line_mapping_system_source"
       ],
       "transitive_bi_ids": [
         "bi.ba_ad_spend",
@@ -5741,12 +6342,16 @@
         "bi.ba_report_order_line",
         "bi.ba_sale_purchased",
         "bi.ba_warranty_warehouse_rate",
+        "bi.ba_warranty_warehouse_rate_v2",
         "bi.ba_warranty_warehouse_sn_stock",
+        "bi.ba_warranty_warehouse_sn_stock_v2",
         "bi.ba_warranty_warehouse_stock_move_history",
+        "bi.ba_warranty_warehouse_stock_move_history_v2",
         "bi.bi_pm_sku_ir_marketplace_mapping",
         "bi.bundle_sku_primary_product",
         "bi.correct_bundle_promotion_shipping_fee",
-        "bi.lenovo_sales_statistics_last_week"
+        "bi.lenovo_sales_statistics_last_week",
+        "datas.v_pm_product_line_mapping_system_source"
       ]
     },
     {
@@ -5764,10 +6369,14 @@
         "bi.ba_report_order_line",
         "bi.ba_sale_purchased",
         "bi.ba_warranty_warehouse_rate",
+        "bi.ba_warranty_warehouse_rate_v2",
         "bi.ba_warranty_warehouse_sn_stock",
+        "bi.ba_warranty_warehouse_sn_stock_v2",
         "bi.ba_warranty_warehouse_stock_move_history",
+        "bi.ba_warranty_warehouse_stock_move_history_v2",
         "bi.bi_pm_sku_ir_marketplace_mapping",
-        "bi.lenovo_sales_statistics_last_week"
+        "bi.lenovo_sales_statistics_last_week",
+        "datas.v_pm_product_line_mapping_system_source"
       ],
       "transitive_bi_ids": [
         "bi.ba_bfcm_all_channel_daily_sales",
@@ -5800,11 +6409,15 @@
         "bi.ba_report_order_line",
         "bi.ba_sale_purchased",
         "bi.ba_warranty_warehouse_rate",
+        "bi.ba_warranty_warehouse_rate_v2",
         "bi.ba_warranty_warehouse_sn_stock",
+        "bi.ba_warranty_warehouse_sn_stock_v2",
         "bi.ba_warranty_warehouse_stock_move_history",
+        "bi.ba_warranty_warehouse_stock_move_history_v2",
         "bi.bi_pm_sku_ir_marketplace_mapping",
         "bi.correct_bundle_promotion_shipping_fee",
-        "bi.lenovo_sales_statistics_last_week"
+        "bi.lenovo_sales_statistics_last_week",
+        "datas.v_pm_product_line_mapping_system_source"
       ]
     },
     {
@@ -5824,7 +6437,13 @@
         "bi.ba_bfcm_lead_time_daily_ads_data_total",
         "bi.ba_bfcm_rank_info_by_asin",
         "bi.ba_bfcm_unit_change_rank_by_origin_ir",
-        "bi.bi_pm_sku_ir_marketplace_mapping"
+        "bi.ba_dm_weekly_report_by_dm",
+        "bi.ba_dm_weekly_report_total",
+        "bi.ba_mv_dm_weekly_report_by_dm",
+        "bi.ba_mv_profit_order_line_and_ad_info",
+        "bi.ba_pm_daily_sales_inventory_info",
+        "bi.bi_pm_sku_ir_marketplace_mapping",
+        "bi.lenovo_sales_statistics_last_week"
       ]
     },
     {
@@ -5844,7 +6463,13 @@
         "bi.ba_bfcm_lead_time_daily_ads_data_total",
         "bi.ba_bfcm_rank_info_by_asin",
         "bi.ba_bfcm_unit_change_rank_by_origin_ir",
-        "bi.bi_pm_sku_ir_marketplace_mapping"
+        "bi.ba_dm_weekly_report_by_dm",
+        "bi.ba_dm_weekly_report_total",
+        "bi.ba_mv_dm_weekly_report_by_dm",
+        "bi.ba_mv_profit_order_line_and_ad_info",
+        "bi.ba_pm_daily_sales_inventory_info",
+        "bi.bi_pm_sku_ir_marketplace_mapping",
+        "bi.lenovo_sales_statistics_last_week"
       ]
     },
     {
@@ -5902,14 +6527,21 @@
         "bi.ba_ir_category_mapping",
         "bi.ba_main_product_info",
         "bi.ba_mv_outbound_order_return_data",
-        "bi.ba_warranty_warehouse_sn_stock"
+        "bi.ba_warranty_warehouse_sn_stock",
+        "bi.ba_warranty_warehouse_sn_stock_v2"
       ],
       "transitive_bi_ids": [
+        "bi.ba_bfcm_all_channel_daily_sales",
+        "bi.ba_bfcm_buybox_info_by_sku",
+        "bi.ba_bfcm_daily_accu_sales_by_sku",
+        "bi.ba_bfcm_daily_profit_by_sku",
         "bi.ba_bfcm_hourly_ads_data_by_product_line",
         "bi.ba_bfcm_hourly_ads_data_total",
         "bi.ba_bfcm_hourly_sales_by_ir",
         "bi.ba_bfcm_hourly_ttl_sales_by_marketplace",
         "bi.ba_bfcm_lead_time_daily_ads_data_total",
+        "bi.ba_bfcm_rank_info_by_asin",
+        "bi.ba_bfcm_realtime_inventory_by_ir",
         "bi.ba_bfcm_unit_change_rank_by_origin_ir",
         "bi.ba_dm_weekly_report_by_dm",
         "bi.ba_dm_weekly_report_total",
@@ -5923,6 +6555,7 @@
         "bi.ba_order_line_tob_rc_info",
         "bi.ba_pm_daily_sales_inventory_info",
         "bi.ba_warranty_warehouse_sn_stock",
+        "bi.ba_warranty_warehouse_sn_stock_v2",
         "bi.lenovo_sales_statistics_last_week"
       ]
     },
@@ -5932,14 +6565,21 @@
         "bi.ba_ir_category_mapping",
         "bi.ba_main_product_info",
         "bi.ba_mv_outbound_order_return_data",
-        "bi.ba_warranty_warehouse_sn_stock"
+        "bi.ba_warranty_warehouse_sn_stock",
+        "bi.ba_warranty_warehouse_sn_stock_v2"
       ],
       "transitive_bi_ids": [
+        "bi.ba_bfcm_all_channel_daily_sales",
+        "bi.ba_bfcm_buybox_info_by_sku",
+        "bi.ba_bfcm_daily_accu_sales_by_sku",
+        "bi.ba_bfcm_daily_profit_by_sku",
         "bi.ba_bfcm_hourly_ads_data_by_product_line",
         "bi.ba_bfcm_hourly_ads_data_total",
         "bi.ba_bfcm_hourly_sales_by_ir",
         "bi.ba_bfcm_hourly_ttl_sales_by_marketplace",
         "bi.ba_bfcm_lead_time_daily_ads_data_total",
+        "bi.ba_bfcm_rank_info_by_asin",
+        "bi.ba_bfcm_realtime_inventory_by_ir",
         "bi.ba_bfcm_unit_change_rank_by_origin_ir",
         "bi.ba_dm_weekly_report_by_dm",
         "bi.ba_dm_weekly_report_total",
@@ -5953,6 +6593,7 @@
         "bi.ba_order_line_tob_rc_info",
         "bi.ba_pm_daily_sales_inventory_info",
         "bi.ba_warranty_warehouse_sn_stock",
+        "bi.ba_warranty_warehouse_sn_stock_v2",
         "bi.lenovo_sales_statistics_last_week"
       ]
     },
@@ -6116,22 +6757,34 @@
       "entity_id": "stock_move_line",
       "direct_bi_ids": [
         "bi.ba_warranty_warehouse_rate",
-        "bi.ba_warranty_warehouse_sn_stock"
+        "bi.ba_warranty_warehouse_rate_v2",
+        "bi.ba_warranty_warehouse_sn_stock",
+        "bi.ba_warranty_warehouse_sn_stock_v2",
+        "bi.ba_warranty_warehouse_stock_move_history_v2"
       ],
       "transitive_bi_ids": [
         "bi.ba_warranty_warehouse_rate",
-        "bi.ba_warranty_warehouse_sn_stock"
+        "bi.ba_warranty_warehouse_rate_v2",
+        "bi.ba_warranty_warehouse_sn_stock",
+        "bi.ba_warranty_warehouse_sn_stock_v2",
+        "bi.ba_warranty_warehouse_stock_move_history_v2"
       ]
     },
     {
       "entity_id": "stock_production_lot",
       "direct_bi_ids": [
         "bi.ba_warranty_warehouse_rate",
-        "bi.ba_warranty_warehouse_sn_stock"
+        "bi.ba_warranty_warehouse_rate_v2",
+        "bi.ba_warranty_warehouse_sn_stock",
+        "bi.ba_warranty_warehouse_sn_stock_v2",
+        "bi.ba_warranty_warehouse_stock_move_history_v2"
       ],
       "transitive_bi_ids": [
         "bi.ba_warranty_warehouse_rate",
-        "bi.ba_warranty_warehouse_sn_stock"
+        "bi.ba_warranty_warehouse_rate_v2",
+        "bi.ba_warranty_warehouse_sn_stock",
+        "bi.ba_warranty_warehouse_sn_stock_v2",
+        "bi.ba_warranty_warehouse_stock_move_history_v2"
       ]
     },
     {
@@ -6140,15 +6793,21 @@
         "bi.ba_bundle_accessory_ir_inv",
         "bi.ba_no_dm_ir_list",
         "bi.ba_warranty_warehouse_rate",
+        "bi.ba_warranty_warehouse_rate_v2",
         "bi.ba_warranty_warehouse_sn_stock",
-        "bi.ba_warranty_warehouse_stock_move_history"
+        "bi.ba_warranty_warehouse_sn_stock_v2",
+        "bi.ba_warranty_warehouse_stock_move_history",
+        "bi.ba_warranty_warehouse_stock_move_history_v2"
       ],
       "transitive_bi_ids": [
         "bi.ba_bundle_accessory_ir_inv",
         "bi.ba_no_dm_ir_list",
         "bi.ba_warranty_warehouse_rate",
+        "bi.ba_warranty_warehouse_rate_v2",
         "bi.ba_warranty_warehouse_sn_stock",
-        "bi.ba_warranty_warehouse_stock_move_history"
+        "bi.ba_warranty_warehouse_sn_stock_v2",
+        "bi.ba_warranty_warehouse_stock_move_history",
+        "bi.ba_warranty_warehouse_stock_move_history_v2"
       ]
     },
     {
@@ -6284,8 +6943,14 @@
         "bi.ba_bfcm_lead_time_daily_ads_data_total",
         "bi.ba_bfcm_rank_info_by_asin",
         "bi.ba_bfcm_unit_change_rank_by_origin_ir",
+        "bi.ba_dm_weekly_report_by_dm",
+        "bi.ba_dm_weekly_report_total",
+        "bi.ba_mv_dm_weekly_report_by_dm",
+        "bi.ba_mv_profit_order_line_and_ad_info",
+        "bi.ba_pm_daily_sales_inventory_info",
         "bi.ba_report_order_line",
-        "bi.bi_pm_sku_ir_marketplace_mapping"
+        "bi.bi_pm_sku_ir_marketplace_mapping",
+        "bi.lenovo_sales_statistics_last_week"
       ]
     },
     {
@@ -6302,7 +6967,36 @@
         "bi.ba_bfcm_lead_time_daily_ads_data_total",
         "bi.ba_bfcm_rank_info_by_asin",
         "bi.ba_bfcm_unit_change_rank_by_origin_ir",
-        "bi.bi_pm_sku_ir_marketplace_mapping"
+        "bi.ba_dm_weekly_report_by_dm",
+        "bi.ba_dm_weekly_report_total",
+        "bi.ba_mv_dm_weekly_report_by_dm",
+        "bi.ba_mv_profit_order_line_and_ad_info",
+        "bi.ba_pm_daily_sales_inventory_info",
+        "bi.bi_pm_sku_ir_marketplace_mapping",
+        "bi.lenovo_sales_statistics_last_week"
+      ]
+    },
+    {
+      "relationship_id": "rel::amazon_product_ept::amazon_product_sku::product_sku_id.id",
+      "bi_ids": [
+        "bi.ba_bfcm_all_channel_daily_sales",
+        "bi.ba_bfcm_buybox_info_by_sku",
+        "bi.ba_bfcm_daily_accu_sales_by_sku",
+        "bi.ba_bfcm_daily_profit_by_sku",
+        "bi.ba_bfcm_hourly_ads_data_by_product_line",
+        "bi.ba_bfcm_hourly_ads_data_total",
+        "bi.ba_bfcm_hourly_sales_by_ir",
+        "bi.ba_bfcm_hourly_ttl_sales_by_marketplace",
+        "bi.ba_bfcm_lead_time_daily_ads_data_total",
+        "bi.ba_bfcm_rank_info_by_asin",
+        "bi.ba_bfcm_unit_change_rank_by_origin_ir",
+        "bi.ba_dm_weekly_report_by_dm",
+        "bi.ba_dm_weekly_report_total",
+        "bi.ba_mv_dm_weekly_report_by_dm",
+        "bi.ba_mv_profit_order_line_and_ad_info",
+        "bi.ba_pm_daily_sales_inventory_info",
+        "bi.bi_pm_sku_ir_marketplace_mapping",
+        "bi.lenovo_sales_statistics_last_week"
       ]
     },
     {
@@ -6401,7 +7095,7 @@
       ]
     },
     {
-      "relationship_id": "rel::bi.ba_bfcm_hourly_sales_by_ir::datas.pm_product_line_mapping_2024::origin_ir.origin_ir",
+      "relationship_id": "rel::bi.ba_bfcm_hourly_sales_by_ir::bi.ba_ir_category_mapping::origin_ir.ir",
       "bi_ids": [
         "bi.ba_bfcm_unit_change_rank_by_origin_ir"
       ]
@@ -6410,6 +7104,22 @@
       "relationship_id": "rel::bi.ba_daily_product_info::product_product::ir.default_code",
       "bi_ids": [
         "bi.ba_not_received_inv_info"
+      ]
+    },
+    {
+      "relationship_id": "rel::bi.ba_ir_category_mapping::bi.bi_pm_sku_ir_marketplace_mapping::ir.origin_ir",
+      "bi_ids": [
+        "bi.ba_bfcm_all_channel_daily_sales",
+        "bi.ba_bfcm_buybox_info_by_sku",
+        "bi.ba_bfcm_rank_info_by_asin"
+      ]
+    },
+    {
+      "relationship_id": "rel::bi.ba_ir_category_mapping::bi.pm_marketplace_order_line_report_hourly::ir.main_ir",
+      "bi_ids": [
+        "bi.ba_bfcm_daily_accu_sales_by_sku",
+        "bi.ba_bfcm_daily_profit_by_sku",
+        "bi.ba_bfcm_lead_time_daily_ads_data_total"
       ]
     },
     {
@@ -6650,14 +7360,6 @@
       ]
     },
     {
-      "relationship_id": "rel::bi.bi_pm_sku_ir_marketplace_mapping::datas.pm_product_line_mapping_2024::origin_ir.origin_ir",
-      "bi_ids": [
-        "bi.ba_bfcm_all_channel_daily_sales",
-        "bi.ba_bfcm_buybox_info_by_sku",
-        "bi.ba_bfcm_rank_info_by_asin"
-      ]
-    },
-    {
       "relationship_id": "rel::bi.bi_pm_sku_ir_marketplace_mapping::datas.sd_advertised_product_reports::sku.promotedSku",
       "bi_ids": [
         "bi.ba_bfcm_daily_profit_by_sku"
@@ -6678,14 +7380,6 @@
       ]
     },
     {
-      "relationship_id": "rel::bi.pm_marketplace_order_line_report_hourly::datas.pm_product_line_mapping_2024::main_ir.origin_ir",
-      "bi_ids": [
-        "bi.ba_bfcm_daily_accu_sales_by_sku",
-        "bi.ba_bfcm_daily_profit_by_sku",
-        "bi.ba_bfcm_lead_time_daily_ads_data_total"
-      ]
-    },
-    {
       "relationship_id": "rel::bi_pm_amazon_sku_ir_mapping::datas.sp_advertised_product_reports::sku.advertisedSku",
       "bi_ids": [
         "bi.ba_dm_weekly_report_by_dm",
@@ -6695,7 +7389,9 @@
     {
       "relationship_id": "rel::bi_pm_ir_info::product_product::ir.default_code",
       "bi_ids": [
-        "bi.ba_warranty_warehouse_stock_move_history"
+        "bi.ba_warranty_warehouse_sn_stock_v2",
+        "bi.ba_warranty_warehouse_stock_move_history",
+        "bi.ba_warranty_warehouse_stock_move_history_v2"
       ]
     },
     {
@@ -6811,7 +7507,13 @@
         "bi.ba_bfcm_lead_time_daily_ads_data_total",
         "bi.ba_bfcm_rank_info_by_asin",
         "bi.ba_bfcm_unit_change_rank_by_origin_ir",
+        "bi.ba_dm_weekly_report_by_dm",
+        "bi.ba_dm_weekly_report_total",
+        "bi.ba_mv_dm_weekly_report_by_dm",
+        "bi.ba_mv_profit_order_line_and_ad_info",
+        "bi.ba_pm_daily_sales_inventory_info",
         "bi.bi_pm_sku_ir_marketplace_mapping",
+        "bi.lenovo_sales_statistics_last_week",
         "bi.pm_marketplace_order_line_report_hourly"
       ]
     },
@@ -7046,11 +7748,17 @@
     {
       "relationship_id": "rel::hr_department::hr_employee::id.department_id",
       "bi_ids": [
+        "bi.ba_bfcm_all_channel_daily_sales",
+        "bi.ba_bfcm_buybox_info_by_sku",
+        "bi.ba_bfcm_daily_accu_sales_by_sku",
+        "bi.ba_bfcm_daily_profit_by_sku",
         "bi.ba_bfcm_hourly_ads_data_by_product_line",
         "bi.ba_bfcm_hourly_ads_data_total",
         "bi.ba_bfcm_hourly_sales_by_ir",
         "bi.ba_bfcm_hourly_ttl_sales_by_marketplace",
         "bi.ba_bfcm_lead_time_daily_ads_data_total",
+        "bi.ba_bfcm_rank_info_by_asin",
+        "bi.ba_bfcm_realtime_inventory_by_ir",
         "bi.ba_bfcm_unit_change_rank_by_origin_ir",
         "bi.ba_dm_weekly_report_by_dm",
         "bi.ba_dm_weekly_report_total",
@@ -7069,11 +7777,17 @@
     {
       "relationship_id": "rel::hr_employee::resource_resource::resource_id.id",
       "bi_ids": [
+        "bi.ba_bfcm_all_channel_daily_sales",
+        "bi.ba_bfcm_buybox_info_by_sku",
+        "bi.ba_bfcm_daily_accu_sales_by_sku",
+        "bi.ba_bfcm_daily_profit_by_sku",
         "bi.ba_bfcm_hourly_ads_data_by_product_line",
         "bi.ba_bfcm_hourly_ads_data_total",
         "bi.ba_bfcm_hourly_sales_by_ir",
         "bi.ba_bfcm_hourly_ttl_sales_by_marketplace",
         "bi.ba_bfcm_lead_time_daily_ads_data_total",
+        "bi.ba_bfcm_rank_info_by_asin",
+        "bi.ba_bfcm_realtime_inventory_by_ir",
         "bi.ba_bfcm_unit_change_rank_by_origin_ir",
         "bi.ba_dm_weekly_report_by_dm",
         "bi.ba_dm_weekly_report_total",
@@ -7105,11 +7819,17 @@
     {
       "relationship_id": "rel::mail_followers::res_users::partner_id.partner_id",
       "bi_ids": [
+        "bi.ba_bfcm_all_channel_daily_sales",
+        "bi.ba_bfcm_buybox_info_by_sku",
+        "bi.ba_bfcm_daily_accu_sales_by_sku",
+        "bi.ba_bfcm_daily_profit_by_sku",
         "bi.ba_bfcm_hourly_ads_data_by_product_line",
         "bi.ba_bfcm_hourly_ads_data_total",
         "bi.ba_bfcm_hourly_sales_by_ir",
         "bi.ba_bfcm_hourly_ttl_sales_by_marketplace",
         "bi.ba_bfcm_lead_time_daily_ads_data_total",
+        "bi.ba_bfcm_rank_info_by_asin",
+        "bi.ba_bfcm_realtime_inventory_by_ir",
         "bi.ba_bfcm_unit_change_rank_by_origin_ir",
         "bi.ba_dm_weekly_report_by_dm",
         "bi.ba_dm_weekly_report_total",
@@ -7170,76 +7890,108 @@
     {
       "relationship_id": "rel::product_attribute::product_attribute_line::id.attribute_id",
       "bi_ids": [
+        "bi.ba_bfcm_all_channel_daily_sales",
+        "bi.ba_bfcm_buybox_info_by_sku",
+        "bi.ba_bfcm_daily_accu_sales_by_sku",
+        "bi.ba_bfcm_daily_profit_by_sku",
         "bi.ba_bfcm_hourly_ads_data_by_product_line",
         "bi.ba_bfcm_hourly_ads_data_total",
         "bi.ba_bfcm_hourly_sales_by_ir",
         "bi.ba_bfcm_hourly_ttl_sales_by_marketplace",
         "bi.ba_bfcm_lead_time_daily_ads_data_total",
+        "bi.ba_bfcm_rank_info_by_asin",
+        "bi.ba_bfcm_realtime_inventory_by_ir",
         "bi.ba_bfcm_unit_change_rank_by_origin_ir",
         "bi.ba_dm_weekly_report_by_dm",
         "bi.ba_dm_weekly_report_total",
+        "bi.ba_ir_category_mapping",
         "bi.ba_mv_dm_weekly_report_by_dm",
         "bi.ba_mv_profit_order_line_and_ad_info",
         "bi.ba_pm_daily_sales_inventory_info",
         "bi.ba_product_attribute_info",
         "bi.ba_warranty_warehouse_sn_stock",
-        "bi.lenovo_sales_statistics_last_week"
+        "bi.lenovo_sales_statistics_last_week",
+        "datas.v_pm_product_line_mapping_system_source"
       ]
     },
     {
       "relationship_id": "rel::product_attribute_line::product_attribute_line_product_attribute_value_rel::id.product_attribute_line_id",
       "bi_ids": [
+        "bi.ba_bfcm_all_channel_daily_sales",
+        "bi.ba_bfcm_buybox_info_by_sku",
+        "bi.ba_bfcm_daily_accu_sales_by_sku",
+        "bi.ba_bfcm_daily_profit_by_sku",
         "bi.ba_bfcm_hourly_ads_data_by_product_line",
         "bi.ba_bfcm_hourly_ads_data_total",
         "bi.ba_bfcm_hourly_sales_by_ir",
         "bi.ba_bfcm_hourly_ttl_sales_by_marketplace",
         "bi.ba_bfcm_lead_time_daily_ads_data_total",
+        "bi.ba_bfcm_rank_info_by_asin",
+        "bi.ba_bfcm_realtime_inventory_by_ir",
         "bi.ba_bfcm_unit_change_rank_by_origin_ir",
         "bi.ba_dm_weekly_report_by_dm",
         "bi.ba_dm_weekly_report_total",
+        "bi.ba_ir_category_mapping",
         "bi.ba_mv_dm_weekly_report_by_dm",
         "bi.ba_mv_profit_order_line_and_ad_info",
         "bi.ba_pm_daily_sales_inventory_info",
         "bi.ba_product_attribute_info",
         "bi.ba_warranty_warehouse_sn_stock",
-        "bi.lenovo_sales_statistics_last_week"
+        "bi.lenovo_sales_statistics_last_week",
+        "datas.v_pm_product_line_mapping_system_source"
       ]
     },
     {
       "relationship_id": "rel::product_attribute_line::product_template::product_tmpl_id.id",
       "bi_ids": [
+        "bi.ba_bfcm_all_channel_daily_sales",
+        "bi.ba_bfcm_buybox_info_by_sku",
+        "bi.ba_bfcm_daily_accu_sales_by_sku",
+        "bi.ba_bfcm_daily_profit_by_sku",
         "bi.ba_bfcm_hourly_ads_data_by_product_line",
         "bi.ba_bfcm_hourly_ads_data_total",
         "bi.ba_bfcm_hourly_sales_by_ir",
         "bi.ba_bfcm_hourly_ttl_sales_by_marketplace",
         "bi.ba_bfcm_lead_time_daily_ads_data_total",
+        "bi.ba_bfcm_rank_info_by_asin",
+        "bi.ba_bfcm_realtime_inventory_by_ir",
         "bi.ba_bfcm_unit_change_rank_by_origin_ir",
         "bi.ba_dm_weekly_report_by_dm",
         "bi.ba_dm_weekly_report_total",
+        "bi.ba_ir_category_mapping",
         "bi.ba_mv_dm_weekly_report_by_dm",
         "bi.ba_mv_profit_order_line_and_ad_info",
         "bi.ba_pm_daily_sales_inventory_info",
         "bi.ba_product_attribute_info",
-        "bi.lenovo_sales_statistics_last_week"
+        "bi.lenovo_sales_statistics_last_week",
+        "datas.v_pm_product_line_mapping_system_source"
       ]
     },
     {
       "relationship_id": "rel::product_attribute_line_product_attribute_value_rel::product_attribute_value::product_attribute_value_id.id",
       "bi_ids": [
+        "bi.ba_bfcm_all_channel_daily_sales",
+        "bi.ba_bfcm_buybox_info_by_sku",
+        "bi.ba_bfcm_daily_accu_sales_by_sku",
+        "bi.ba_bfcm_daily_profit_by_sku",
         "bi.ba_bfcm_hourly_ads_data_by_product_line",
         "bi.ba_bfcm_hourly_ads_data_total",
         "bi.ba_bfcm_hourly_sales_by_ir",
         "bi.ba_bfcm_hourly_ttl_sales_by_marketplace",
         "bi.ba_bfcm_lead_time_daily_ads_data_total",
+        "bi.ba_bfcm_rank_info_by_asin",
+        "bi.ba_bfcm_realtime_inventory_by_ir",
         "bi.ba_bfcm_unit_change_rank_by_origin_ir",
         "bi.ba_dm_weekly_report_by_dm",
         "bi.ba_dm_weekly_report_total",
+        "bi.ba_ir_category_mapping",
         "bi.ba_mv_dm_weekly_report_by_dm",
         "bi.ba_mv_profit_order_line_and_ad_info",
         "bi.ba_pm_daily_sales_inventory_info",
         "bi.ba_product_attribute_info",
         "bi.ba_warranty_warehouse_sn_stock",
-        "bi.lenovo_sales_statistics_last_week"
+        "bi.lenovo_sales_statistics_last_week",
+        "datas.v_pm_product_line_mapping_system_source"
       ]
     },
     {
@@ -7253,7 +8005,6 @@
         "bi.ba_bfcm_unit_change_rank_by_origin_ir",
         "bi.ba_dm_weekly_report_by_dm",
         "bi.ba_dm_weekly_report_total",
-        "bi.ba_ir_category_mapping",
         "bi.ba_main_product_info",
         "bi.ba_mv_dm_weekly_report_by_dm",
         "bi.ba_mv_profit_order_line_and_ad_info",
@@ -7265,8 +8016,11 @@
         "bi.ba_profit_order_line_info",
         "bi.ba_report_order_line",
         "bi.ba_warranty_warehouse_rate",
+        "bi.ba_warranty_warehouse_rate_v2",
         "bi.ba_warranty_warehouse_sn_stock",
+        "bi.ba_warranty_warehouse_sn_stock_v2",
         "bi.ba_warranty_warehouse_stock_move_history",
+        "bi.ba_warranty_warehouse_stock_move_history_v2",
         "bi.correct_bundle_promotion_shipping_fee",
         "bi.lenovo_sales_statistics_last_week"
       ]
@@ -7282,7 +8036,6 @@
         "bi.ba_bfcm_unit_change_rank_by_origin_ir",
         "bi.ba_dm_weekly_report_by_dm",
         "bi.ba_dm_weekly_report_total",
-        "bi.ba_ir_category_mapping",
         "bi.ba_main_product_info",
         "bi.ba_mv_dm_weekly_report_by_dm",
         "bi.ba_mv_outbound_order_return_data",
@@ -7296,10 +8049,12 @@
         "bi.ba_report_order_line",
         "bi.ba_sale_purchased",
         "bi.ba_warranty_warehouse_rate",
+        "bi.ba_warranty_warehouse_rate_v2",
         "bi.ba_warranty_warehouse_sn_stock",
         "bi.ba_warranty_warehouse_stock_move_history",
         "bi.correct_bundle_promotion_shipping_fee",
-        "bi.lenovo_sales_statistics_last_week"
+        "bi.lenovo_sales_statistics_last_week",
+        "datas.v_pm_product_line_mapping_system_source"
       ]
     },
     {
@@ -7334,11 +8089,15 @@
         "bi.ba_report_order_line",
         "bi.ba_sale_purchased",
         "bi.ba_warranty_warehouse_rate",
+        "bi.ba_warranty_warehouse_rate_v2",
         "bi.ba_warranty_warehouse_sn_stock",
+        "bi.ba_warranty_warehouse_sn_stock_v2",
         "bi.ba_warranty_warehouse_stock_move_history",
+        "bi.ba_warranty_warehouse_stock_move_history_v2",
         "bi.bi_pm_sku_ir_marketplace_mapping",
         "bi.correct_bundle_promotion_shipping_fee",
-        "bi.lenovo_sales_statistics_last_week"
+        "bi.lenovo_sales_statistics_last_week",
+        "datas.v_pm_product_line_mapping_system_source"
       ]
     },
     {
@@ -7380,6 +8139,14 @@
       ]
     },
     {
+      "relationship_id": "rel::product_product::stock_move_line::id.product_id",
+      "bi_ids": [
+        "bi.ba_warranty_warehouse_rate_v2",
+        "bi.ba_warranty_warehouse_sn_stock_v2",
+        "bi.ba_warranty_warehouse_stock_move_history_v2"
+      ]
+    },
+    {
       "relationship_id": "rel::product_product::stock_production_lot::id.product_id",
       "bi_ids": [
         "bi.ba_warranty_warehouse_sn_stock"
@@ -7390,7 +8157,10 @@
       "bi_ids": [
         "bi.ba_bundle_accessory_ir_inv",
         "bi.ba_no_dm_ir_list",
-        "bi.ba_warranty_warehouse_rate"
+        "bi.ba_warranty_warehouse_rate",
+        "bi.ba_warranty_warehouse_rate_v2",
+        "bi.ba_warranty_warehouse_sn_stock_v2",
+        "bi.ba_warranty_warehouse_stock_move_history_v2"
       ]
     },
     {
@@ -7426,11 +8196,17 @@
     {
       "relationship_id": "rel::res_users::resource_resource::id.user_id",
       "bi_ids": [
+        "bi.ba_bfcm_all_channel_daily_sales",
+        "bi.ba_bfcm_buybox_info_by_sku",
+        "bi.ba_bfcm_daily_accu_sales_by_sku",
+        "bi.ba_bfcm_daily_profit_by_sku",
         "bi.ba_bfcm_hourly_ads_data_by_product_line",
         "bi.ba_bfcm_hourly_ads_data_total",
         "bi.ba_bfcm_hourly_sales_by_ir",
         "bi.ba_bfcm_hourly_ttl_sales_by_marketplace",
         "bi.ba_bfcm_lead_time_daily_ads_data_total",
+        "bi.ba_bfcm_rank_info_by_asin",
+        "bi.ba_bfcm_realtime_inventory_by_ir",
         "bi.ba_bfcm_unit_change_rank_by_origin_ir",
         "bi.ba_dm_weekly_report_by_dm",
         "bi.ba_dm_weekly_report_total",
@@ -7444,13 +8220,15 @@
         "bi.ba_order_line_tob_rc_info",
         "bi.ba_pm_daily_sales_inventory_info",
         "bi.ba_warranty_warehouse_sn_stock",
+        "bi.ba_warranty_warehouse_sn_stock_v2",
         "bi.lenovo_sales_statistics_last_week"
       ]
     },
     {
       "relationship_id": "rel::res_users::stock_move_line::id.write_uid",
       "bi_ids": [
-        "bi.ba_warranty_warehouse_sn_stock"
+        "bi.ba_warranty_warehouse_sn_stock",
+        "bi.ba_warranty_warehouse_sn_stock_v2"
       ]
     },
     {
@@ -7558,7 +8336,10 @@
     {
       "relationship_id": "rel::stock_move_line::stock_production_lot::lot_id.id",
       "bi_ids": [
-        "bi.ba_warranty_warehouse_rate"
+        "bi.ba_warranty_warehouse_rate",
+        "bi.ba_warranty_warehouse_rate_v2",
+        "bi.ba_warranty_warehouse_sn_stock_v2",
+        "bi.ba_warranty_warehouse_stock_move_history_v2"
       ]
     },
     {
@@ -7570,7 +8351,9 @@
     {
       "relationship_id": "rel::stock_production_lot::stock_quant::id.lot_id",
       "bi_ids": [
-        "bi.ba_warranty_warehouse_sn_stock"
+        "bi.ba_warranty_warehouse_sn_stock",
+        "bi.ba_warranty_warehouse_sn_stock_v2",
+        "bi.ba_warranty_warehouse_stock_move_history_v2"
       ]
     },
     {
@@ -7593,8 +8376,8 @@
     }
   ],
   "diagnostics": {
-    "bi_count": 58,
-    "entity_with_bi_usage_count": 97,
-    "relationship_with_bi_usage_count": 111
+    "bi_count": 62,
+    "entity_with_bi_usage_count": 98,
+    "relationship_with_bi_usage_count": 113
   }
 }
